@@ -1,0 +1,495 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+/* Generali */
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin-bottom: 60px;
+}
+a:link,
+a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+a:hover {
+    color: inherit;
+    text-decoration: underline;
+}
+.clear {
+    clear: both;
+}
+.vertical-align {
+    display: flex;
+    flex-direction: row;
+}
+.vertical-align > [class^="col-"],
+.vertical-align > [class*=" col-"] {
+    display: flex;
+    align-items: center;
+}
+
+/* Header */
+header {
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 10;
+}
+header .general-info {
+    width: 100%;
+    background: #e79800;
+}
+header .info-small {
+    color: #fff;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    display: block;
+    padding: 11px 0;
+}
+header nav {
+    padding: 10px 0;
+}
+header nav .col-sm-9 {
+    justify-content: flex-end;
+}
+.menu-navigation ul li {
+    padding: 10px;
+}
+.menu-navigation ul li a {
+    color: #e79800;
+}
+.menu-navigation ul li a:hover {
+    text-decoration: none;
+    padding-bottom: 3px;
+    border-bottom: 2px solid #e79800;
+}
+.menu-navigation-mobile {
+    display: none;
+}
+.openbtn-sidenav {
+    cursor: pointer;
+}
+.overlay-sidenav {
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, .5);
+    position: fixed;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    display: none;
+}
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+}
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #999999;
+    display: block;
+    transition: 0.3s
+}
+.sidenav a:hover,
+.offcanvas a:focus {
+    color: #f1f1f1;
+}
+.sidenav .closebtn-sidenav {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* Main Homepage */
+#homepage .urbino-top {
+    background: url(../img/urbino.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: #ffffff;
+    text-shadow: black 0.1em 0.1em 0.2em;
+}
+#homepage .urbino-top h1 {
+    text-align: center;
+    text-transform: uppercase;
+    padding-top: 60px;
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 80px;
+    font-family: 'Montserrat', sans-serif;
+}
+#homepage .urbino-top h6 {
+    max-width: 600px;
+    margin: 0 auto;
+    padding-bottom: 60px;
+    padding-top: 40px;
+    text-align: center;
+}
+#homepage .about-db-cdl {
+    margin: 50px auto;
+}
+#homepage .about-db-cdl h3 {
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 30px;
+}
+#homepage .about-db-cdl blockquote {
+    background: #eceeef;
+    font-size: 14px;
+    border-color: #e79800;
+    min-height: 160px;
+}
+#homepage .about-db-cdl .blockquote-reverse {
+    text-align: left;
+    padding-left: inherit !important;
+}
+#homepage .about-db-cdl blockquote p {
+    max-width: 99%;
+    margin: 0 auto;
+}
+#homepage .about-db-cdl blockquote h4 {
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    font-size: 20px;
+    margin: 5px auto;
+}
+#homepage .uni-number {
+    background-color: #2d2e32;
+    position: relative;
+    z-index: 2;
+    padding: 30px 0px;
+}
+#homepage .uni-number:before {
+    content: "";
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    background-image: url(../img/counter-bg.png);
+    z-index: -1;
+}
+#homepage .uni-number h3 {
+    color: #ffffff;
+    font-size: 30px;
+}
+#homepage .incremental {
+    margin: 50px auto;
+}
+#homepage .numbers-grow {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    float: left;
+    width: 33.33333%;
+    border-right: 1px solid rgba(255, 255, 255, 0.31);
+    text-align: center;
+    padding: 30px 0;
+    color: #ffffff;
+}
+#homepage .numbers-grow:last-child {
+    border-right: 0px;
+}
+#homepage .numbers-grow i {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+#homepage .numbers-grow h4 {
+    font-size: 30px;
+    color: #e79800;
+}
+#homepage .numbers-grow h4.percent:after {
+    content: ' %';
+}
+#homepage .numbers-grow h5 {
+    font-size: 20px;
+    max-width: 150px;
+    margin: 0 auto;
+}
+
+/* Main Registrazione */
+#registrazione .reg-azienda {
+    font-family: 'Montserrat', sans-serif;
+    margin: 40px 0 20px 0;
+}
+#registrazione .lead {
+    font-size: 16px;
+    margin: 0 0 40px 0;
+}
+#registrazione .input-checkbox label {
+    display: block;
+    margin: 30px auto;
+}
+#registrazione .btn-warning {
+    background: #e79800;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+/* Main Login Studenti */
+#loginstudenti .log-studenti {
+    font-family: 'Montserrat', sans-serif;
+    margin: 40px 0 20px 0;
+}
+#loginstudenti .lead {
+    font-size: 16px;
+    margin: 0 0 20px 0;
+}
+#loginstudenti #form-log-studenti {
+    max-width: 350px;
+    margin: 30px auto;
+}
+#loginstudenti .form-title {
+    text-align: center;
+    max-width: 400px;
+    margin: 0 auto;
+    border-bottom: 5px solid #e79800;
+    font-size: 70px;
+    padding-bottom: 10px;
+}
+#loginstudenti #form-log-studenti .button-log {
+    text-align: center;
+    margin-bottom: 30px;
+}
+#loginstudenti #form-log-studenti input {
+	padding: 6px 20px 6px 40px;
+	    font-size: 15px;
+    color: #66727f;
+    background-color: #f9f9f9;
+    box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.05) inset;
+    -moz-box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.05) inset;
+    -webkit-box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.05) inset;
+    height: 48px;
+    width: 100%;
+    border-radius: 3px;
+    border: 2px solid #d6d9dd;
+}
+#loginstudenti #form-log-studenti .form-group {
+    position: relative;
+}
+#loginstudenti #form-log-studenti .form-group i {
+    position: absolute;
+    width: 16px;
+    height: 18px;
+    left: 18px;
+    top: 16px;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    color: #a8b6c3;
+    z-index: 1;
+}
+
+#loginstudenti .btn-warning {
+    background: #e79800;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+/* Main Login Aziende */
+#loginaziende .log-aziende {
+    font-family: 'Montserrat', sans-serif;
+    margin: 40px 0 20px 0;
+}
+#loginaziende .lead {
+    font-size: 16px;
+    margin: 0 0 20px 0;
+}
+#loginaziende #form-log-aziende {
+    max-width: 350px;
+    margin: 30px auto;
+}
+#loginaziende .form-title {
+    text-align: center;
+    max-width: 400px;
+    margin: 0 auto;
+    border-bottom: 5px solid #e79800;
+    font-size: 70px;
+    padding-bottom: 10px;
+}
+#loginaziende #form-log-aziende .button-log {
+    text-align: center;
+    margin-bottom: 30px;
+}
+#loginaziende .btn-warning {
+    background: #e79800;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+#loginaziende #form-log-aziende input {
+	padding: 6px 20px 6px 40px;
+	font-size: 15px;
+    color: #66727f;
+    background-color: #f9f9f9;
+    box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.05) inset;
+    -moz-box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.05) inset;
+    -webkit-box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.05) inset;
+    height: 48px;
+    width: 100%;
+    border-radius: 3px;
+    border: 2px solid #d6d9dd;
+}
+#loginaziende #form-log-aziende .form-group {
+    position: relative;
+}
+#loginaziende #form-log-aziende .form-group i {
+    position: absolute;
+    width: 16px;
+    height: 18px;
+    left: 18px;
+    top: 16px;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    color: #a8b6c3;
+    z-index: 1;
+}
+
+/* Main Area Aziende */
+#areaaziende .logged-menu {
+	padding: 11px 0;
+	background: #eceeef;
+}
+#areaaziende .table-lauerati {
+	margin: 30px auto;
+}
+#areaaziende h3 {
+    font-family: 'Montserrat', sans-serif;
+    margin: 40px 0 20px 0;
+}
+#areaaziende .lead {
+    font-size: 16px;
+    margin: 0 0 40px 0;
+}
+#areaaziende .criteri-ricerca {
+	margin: 50px auto;
+}
+
+.view-more-student {
+    color: #ffffff !important;
+}
+
+#areaaziende tbody tr {
+    height: 110px;
+    min-height: 110px !important;
+}
+
+/* Main Area Studenti */
+#areastudenti .logged-menu {
+    padding: 11px 0;
+    background: #eceeef;
+}
+#areastudenti h3 {
+    font-family: 'Montserrat', sans-serif;
+    margin: 40px 0 20px 0;
+}
+#areastudenti .lead {
+    font-size: 16px;
+    margin: 0 0 40px 0;
+}
+
+.timeline{
+  margin-top: 30px;
+  padding: 0 15px;
+  overflow: hidden;
+}
+
+.time-box{
+  overflow: hidden;
+}
+
+.time-box .time-data {
+    text-transform: uppercase;
+}
+
+.time-box .time-data,
+.time-box .time-description {
+  float: left;
+  padding: 5px 50px 40px 50px;
+}
+
+.time-box:last-child .time-description{
+  padding-bottom: 0;
+}
+
+.time-box .time-data{
+  width: 20%;
+  text-align: right;
+  position: relative;
+}
+
+.time-box .time-data span{
+  font-size: 12px;
+}
+
+.time-box strong{
+  display: block;
+  padding-bottom: 10px;
+}
+
+.time-box .time-data:after{
+  content: '';
+  width: 30px;
+  height: 30px;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: -16.25px;
+  border-radius: 50%;
+}
+
+.time-box .time-description{
+  width: 80%;
+}
+
+.time-box .time-description strong {
+}
+
+.time-box .time-description p{
+  line-height: 1.4;
+}
+.time-box .time-description {
+    border-left: 2px solid #cccccc;
+}
+.time-box .time-data:after {
+    border: 5px solid #ffffff;
+}
+
+.time-box .time-data:after {
+    background-color: #e79800;
+}
+#areastudenti .student-button .btn {
+    color: #ffffff;
+    cursor: pointer;
+}
+
+/* 404 */
+.turn-to-hp {
+    color: #ffffff !important;
+}
+
+
+/* Footer */
+footer {
+    font-size: 14px;
+    background: #000000;
+    color: #ffffff;
+    position: absolute;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+    line-height: 60px;
+}
