@@ -17,6 +17,7 @@
         $controller = new PagesController();
       break;
       case 'login':
+        require_once('models/Login.php');
         $controller = new LoginController();
       break;
       case 'registrazione':

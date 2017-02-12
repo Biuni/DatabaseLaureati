@@ -49,6 +49,7 @@ jQuery(document).ready(function($) {
     var count_row = table.rows().count();
     $('.dataTables_length').prepend('<p class="lead text-warning"><strong>'+count_row+' laureati trovati</strong></p>');
 
+    // Validazione del form di registrazione delle aziende
     $('#form-reg-azienda').submit(function(e){
 
         var all_right = true;
@@ -114,6 +115,34 @@ jQuery(document).ready(function($) {
         
     });
 
+    // Validazione del form di login degli studenti
+    $('#form-log-studenti').submit(function(e){
+
+        var all_right = true;
+        var form = $(this).serialize();
+        var validate = deparam(form);
+
+        var pwd_studente = validate.pwd_studente;
+        var user_studente = validate.user_studente;
+
+        if (user_studente == '' || !validInteger(user_studente)) {
+            all_right = false;
+            $('.input-user_studente').addClass('has-danger');
+        } else {
+            $('.input-user_studente').removeClass('has-danger');
+        }
+        if (pwd_studente == '') {
+            all_right = false;
+            $('.input-pwd_studente').addClass('has-danger');
+        } else {
+            $('.input-pwd_studente').removeClass('has-danger');
+        }
+
+        if (!all_right) {
+            e.preventDefault();
+        }
+    });
+
     function deparam(query) {
         var pairs, i, keyValuePair, key, value, map = {};
         if (query.slice(0, 1) === '?') {
@@ -138,6 +167,11 @@ jQuery(document).ready(function($) {
 
     function validText(text) {
         var pattern = /^[a-zA-Z]*$/;
+        return pattern.test(text);
+    };
+
+    function validInteger(text) {
+        var pattern = /^[0-9]*$/;
         return pattern.test(text);
     };
 

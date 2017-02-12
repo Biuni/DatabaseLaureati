@@ -29,6 +29,12 @@ a:hover {
     display: flex;
     align-items: center;
 }
+.hide {
+    display: none !important;
+}
+.has-danger .form-control {
+    border-color: #d9534f !important;
+}
 
 /* Header */
 header {
