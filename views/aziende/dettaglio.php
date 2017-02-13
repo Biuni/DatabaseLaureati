@@ -165,7 +165,7 @@
 
 						<div class="time-box">
 							<div class="time-data">
-								Curriculum
+								Download Curriculum
 							</div>
 							<div class="time-description">
 								<?php echo ($details->CV_download)? '<a href="'.$details->CV_download.'" class="view-more-student btn btn-warning">Scarica Curriculum</a>' : ''; ?>

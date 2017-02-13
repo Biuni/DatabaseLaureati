@@ -6,7 +6,7 @@ class AziendeController {
 
         // Controllo la sessione
         if (Session::checkSession('aziende')) {
-          $username = $_SESSION['azienda'];
+          $username = htmlspecialchars($_SESSION['azienda']);
         } else {
           return call('pages','home');
         }
@@ -45,7 +45,7 @@ class AziendeController {
 
         // Controllo la sessione
         if (Session::checkSession('aziende')) {
-          $username = $_SESSION['azienda'];
+          $username = htmlspecialchars($_SESSION['azienda']);
         } else {
           return call('pages','home');
         }
@@ -59,7 +59,7 @@ class AziendeController {
 
         // Controllo la sessione
         if (Session::checkSession('aziende')) {
-          $username = $_SESSION['azienda'];
+          $username = htmlspecialchars($_SESSION['azienda']);
         } else {
           return call('pages','home');
         }

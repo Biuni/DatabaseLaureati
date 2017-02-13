@@ -23,7 +23,7 @@
 								Nome
 							</div>
 							<div class="time-description">
-								<strong>Gianluca</strong>	
+								<strong><?php echo $students->Nome; ?></strong>	
 							</div>
 						</div>
 
@@ -32,7 +32,7 @@
 								Cognome
 							</div>
 							<div class="time-description">
-								<strong>Bonifazi</strong>
+								<strong><?php echo $students->Cognome; ?></strong>
 							</div>
 						</div>
 
@@ -41,7 +41,7 @@
 								Data di nascita
 							</div>
 							<div class="time-description">
-								<strong>1994-12-29</strong>
+								<strong><?php echo ($students->Data_n != '0000-00-00')? $students->Data_n : ""; ?></strong>
 									
 							</div>
 						</div>
@@ -51,7 +51,7 @@
 								Matricola
 							</div>
 							<div class="time-description">
-								<strong>261989</strong>	
+								<strong><?php echo $students->Matricola; ?></strong>	
 							</div>
 						</div>
 
@@ -60,7 +60,7 @@
 								Sesso
 							</div>
 							<div class="time-description">
-								<strong>M</strong>	
+								<strong><?php echo $students->Sesso; ?></strong>	
 							</div>
 						</div>
 
@@ -69,7 +69,7 @@
 								Codice Fiscale
 							</div>
 							<div class="time-description">
-								<strong>BNFGLCT29H211J</strong>	
+								<strong><?php echo $students->CF; ?></strong>	
 							</div>
 						</div>
 
@@ -78,7 +78,7 @@
 								Luogo di Nascita
 							</div>
 							<div class="time-description">
-								<strong>Recanati (MC)</strong>	
+								<strong><?php echo $students->Luogo_n; ?> <?php echo ($students->Prov_n)? "(".$students->Prov_n.")" : ""; ?></strong>	
 							</div>
 						</div>
 
@@ -87,7 +87,7 @@
 								Comune di residenza
 							</div>
 							<div class="time-description">
-								<strong>Castelfidardo (AN)</strong>	
+								<strong><?php echo $students->Luogo_r; ?> <?php echo ($students->Prov_r)? "(".$students->Prov_r.")" : ""; ?></strong>	
 							</div>
 						</div>
 
@@ -96,7 +96,7 @@
 								Telefono
 							</div>
 							<div class="time-description">
-								<strong>3376545321</strong>	
+								<strong><?php echo $students->Telefono; ?></strong>	
 							</div>
 						</div>
 
@@ -105,7 +105,7 @@
 								Email
 							</div>
 							<div class="time-description">
-								<strong>info@biuni.it</strong>	
+								<strong><?php echo $students->e_mail; ?></strong>	
 							</div>
 						</div>
 
@@ -114,7 +114,7 @@
 								Curriculum
 							</div>
 							<div class="time-description">
-								<strong>indefinito</strong>	
+								<strong><?php echo $students->curriculum; ?></strong>	
 							</div>
 						</div>
 
@@ -123,7 +123,7 @@
 								Titolo tesi
 							</div>
 							<div class="time-description">
-								<strong>Progettazzione e realizzazzione di una web app per la gestione del database dei laureati del corso di laurea.</strong>	
+								<strong><?php echo $students->Titolo_tesi; ?></strong>	
 							</div>
 						</div>
 
@@ -132,7 +132,7 @@
 								Tipologia
 							</div>
 							<div class="time-description">
-								<strong>Sperimentale</strong>	
+								<strong><?php echo $students->tipologia; ?></strong>	
 							</div>
 						</div>
 
@@ -141,7 +141,7 @@
 								Relatore
 							</div>
 							<div class="time-description">
-								<strong>Aldini Alessandro</strong>	
+								<strong><?php echo $students->relatore; ?></strong>	
 							</div>
 						</div>
 
@@ -150,7 +150,7 @@
 								Voto Laurea
 							</div>
 							<div class="time-description">
-								<strong>NaN</strong>	
+								<strong><?php echo $students->Voto_laurea; echo ($students->cum_laude == 'si')? " e lode" : ""; ?></strong>	
 							</div>
 						</div>
 
@@ -159,7 +159,7 @@
 								Data Laurea
 							</div>
 							<div class="time-description">
-								<strong>2017-06-20</strong>	
+								<strong><?php echo $students->Data_Laurea; ?></strong>	
 							</div>
 						</div>
 
@@ -169,18 +169,17 @@
 							</div>
 							<div class="time-description">
 								<strong>
-								<i class="fa fa-check" aria-hidden="true"></i> (visibile) |
-								<i class="fa fa-times" aria-hidden="true"></i> (nascosto)
+								<?php echo ($students->Visibility == 1)? '<i class="fa fa-check" aria-hidden="true"></i> (visibile)' : '<i class="fa fa-times" aria-hidden="true"></i> (nascosto)'?>
 								</strong>	
 							</div>
 						</div>
 
 						<div class="time-box">
 							<div class="time-data">
-								Curriculum
+								Download Curriculum
 							</div>
 							<div class="time-description">
-								<strong>Non presente</strong>	
+								<?php echo ($students->CV_download)? '<a href="'.$students->CV_download.'" class="view-more-student btn btn-warning">Scarica Curriculum</a>' : ''; ?>	
 							</div>
 						</div>
 
@@ -189,7 +188,7 @@
 								Note
 							</div>
 							<div class="time-description">
-								<strong>Lorem Ipsum Dolor Sit Amet</strong>	
+								<strong><?php echo $students->Note; ?></strong>	
 							</div>
 						</div>
 

@@ -4,10 +4,12 @@
 
       // Controllo la sessione
       if (Session::checkSession('studenti')) {
-        $username = $_SESSION['studente'];
+        $username = htmlspecialchars($_SESSION['studente']);
       } else {
         return call('pages','home');
       }
+
+      $students = Studenti::userData($username);
 
       require_once('views/studenti/index.php');
     }
@@ -16,7 +18,7 @@
 
       // Controllo la sessione
       if (Session::checkSession('studenti')) {
-        $username = $_SESSION['studente'];
+        $username = htmlspecialchars($_SESSION['studente']);
       } else {
         return call('pages','home');
       }
