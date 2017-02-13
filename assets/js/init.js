@@ -143,6 +143,34 @@ jQuery(document).ready(function($) {
         }
     });
 
+    // Validazione del form di login delle aziende
+    $('#form-log-aziende').submit(function(e){
+
+        var all_right = true;
+        var form = $(this).serialize();
+        var validate = deparam(form);
+
+        var pwd_aziende = validate.pwd_aziende;
+        var user_aziende = validate.user_aziende;
+
+        if (user_aziende == '' || !validUsername(user_aziende)) {
+            all_right = false;
+            $('.input-user_aziende').addClass('has-danger');
+        } else {
+            $('.input-user_aziende').removeClass('has-danger');
+        }
+        if (pwd_aziende == '') {
+            all_right = false;
+            $('.input-pwd_aziende').addClass('has-danger');
+        } else {
+            $('.input-pwd_aziende').removeClass('has-danger');
+        }
+
+        if (!all_right) {
+            e.preventDefault();
+        }
+    });
+
     function deparam(query) {
         var pairs, i, keyValuePair, key, value, map = {};
         if (query.slice(0, 1) === '?') {
@@ -167,6 +195,11 @@ jQuery(document).ready(function($) {
 
     function validText(text) {
         var pattern = /^[a-zA-Z]*$/;
+        return pattern.test(text);
+    };
+
+    function validUsername(text) {
+        var pattern = /^[^<>&]*(?:&(?!(?:[a-z\d]+|#\d+|#x[a-f\d]+);)[^<>&]*)*$/i;
         return pattern.test(text);
     };
 
