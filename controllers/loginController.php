@@ -22,6 +22,11 @@ class LoginController {
 
     public function studenti() {
 
+        // Se sono già loggato vado all'area riservata
+        if (Session::checkSession('studenti')) {
+          return call('studenti','index');
+        }
+
         // Di default nascondo l'alert di errore
         $hide = 'hide';
 
@@ -43,6 +48,7 @@ class LoginController {
           if (Login::loginStudenti($clean_value)) {
             // Login RIUSCITO 
             // Redirect all'area riservata degli studenti
+            $_SESSION['studente'] = $clean_value['user_studente'];
             return call('studenti','index');
 
           } else {
@@ -69,6 +75,11 @@ class LoginController {
 
     public function aziende() {
 
+        // Se sono già loggato vado all'area riservata
+        if (Session::checkSession('aziende')) {
+          return call('aziende','index');
+        }
+
         // Di default nascondo l'alert di errore
         $hide = 'hide';
 
@@ -89,7 +100,8 @@ class LoginController {
           // passandogli i parametri appena puliti
           if (Login::loginAziende($clean_value)) {
             // Login RIUSCITO 
-            // Redirect all'area riservata degli studenti
+            // Redirect all'area riservata delle aziende
+            $_SESSION['azienda'] = $clean_value['user_aziende'];
             return call('aziende','index');
 
           } else {

@@ -4,7 +4,7 @@
 		<div class="logged-menu">
 			<div class="container">
 				<div class=" float-right">
-					<i class="fa fa-graduation-cap" aria-hidden="true"></i> <a href="area_studenti.html"><strong>Gianluca Bonifazi</strong></a> | <a href="#">Logout</a>
+					<i class="fa fa-graduation-cap" aria-hidden="true"></i> <a href="?controller=studenti&action=index"><strong><?php echo $username; ?></strong></a> | <a href="?controller=studenti&action=logout">Logout</a>
 				</div>
 				<div class="clear"></div>
 			</div>

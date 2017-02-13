@@ -3,6 +3,14 @@ class AziendeController {
 
 	// Pagina principale
     public function index() {
+
+        // Controllo la sessione
+        if (Session::checkSession('aziende')) {
+          $username = $_SESSION['azienda'];
+        } else {
+          return call('pages','home');
+        }
+
     	// Faccio la chiamata al metodo del Model
     	// e stampo la lista di tutti i laureati
         $students = Aziende::getList();
@@ -34,12 +42,28 @@ class AziendeController {
     
     // Pagina impostazioni dell'account
     public function impostazioni() {
+
+        // Controllo la sessione
+        if (Session::checkSession('aziende')) {
+          $username = $_SESSION['azienda'];
+        } else {
+          return call('pages','home');
+        }
+
         // Layout delle impostazioni
         require_once('views/aziende/impostazioni.php');
     }
     
     // Pagina dettaglio laureato
     public function dettaglio() {
+
+        // Controllo la sessione
+        if (Session::checkSession('aziende')) {
+          $username = $_SESSION['azienda'];
+        } else {
+          return call('pages','home');
+        }
+        
         // Se non viene passato l'id come GET
         // o se non è un valore intero
         // faccio il redirect alla pagina di errore
@@ -54,6 +78,12 @@ class AziendeController {
 
         // Layout del dettaglio del laureato
         require_once('views/aziende/dettaglio.php');
+    }
+    
+    // Funzione di logout
+    public function logout() {
+        unset($_SESSION['azienda']);
+        return call('pages','home');
     }
     
 }

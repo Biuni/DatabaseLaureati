@@ -33,11 +33,6 @@
         require_once('models/Studenti.php');
         $controller = new StudentiController();
       break;
-
-      /*case 'posts':
-        require_once('models/Post.php');
-        $controller = new PostsController();
-      break;*/
     }
 
     // Chiamo il metodo (action)
@@ -52,8 +47,8 @@
     'login'         => ['studenti', 'aziende', 'riservata'],
     'registrazione' => ['index','privacy'],
     // Aree private
-    'aziende'       => ['index','impostazioni', 'dettaglio'],
-    'studenti'      => ['index','impostazioni'],
+    'aziende'       => ['index','impostazioni', 'dettaglio','logout'],
+    'studenti'      => ['index','impostazioni','logout']
   );
 
   // Controllo che il controller e il
