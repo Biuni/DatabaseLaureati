@@ -41,8 +41,11 @@
 								Data di nascita
 							</div>
 							<div class="time-description">
-								<strong><?php echo ($students->Data_n != '0000-00-00')? $students->Data_n : ""; ?></strong>
-									
+                				<?php if($students->Data_n != '0000-00-00') : ?>
+								<strong><?php echo $students->Data_n; ?></strong>
+				                <?php else : ?>
+				                  <i>Non ancora inserita</i>
+				                <?php endif; ?>
 							</div>
 						</div>
 
@@ -69,7 +72,11 @@
 								Codice Fiscale
 							</div>
 							<div class="time-description">
+                				<?php if($students->CF != '') : ?>
 								<strong><?php echo $students->CF; ?></strong>	
+				                <?php else : ?>
+				                  <i>Non ancora inserito</i>
+				                <?php endif; ?>
 							</div>
 						</div>
 
@@ -78,7 +85,11 @@
 								Luogo di Nascita
 							</div>
 							<div class="time-description">
+                				<?php if($students->Luogo_n != '') : ?>
 								<strong><?php echo $students->Luogo_n; ?> <?php echo ($students->Prov_n)? "(".$students->Prov_n.")" : ""; ?></strong>	
+				                <?php else : ?>
+				                  <i>Non ancora inserito</i>
+				                <?php endif; ?>
 							</div>
 						</div>
 
@@ -87,7 +98,11 @@
 								Comune di residenza
 							</div>
 							<div class="time-description">
+                				<?php if($students->Luogo_r != '') : ?>
 								<strong><?php echo $students->Luogo_r; ?> <?php echo ($students->Prov_r)? "(".$students->Prov_r.")" : ""; ?></strong>	
+				                <?php else : ?>
+				                  <i>Non ancora inserito</i>
+				                <?php endif; ?>	
 							</div>
 						</div>
 
@@ -96,7 +111,11 @@
 								Telefono
 							</div>
 							<div class="time-description">
-								<strong><?php echo $students->Telefono; ?></strong>	
+                				<?php if($students->Telefono != '') : ?>
+								<strong><?php echo $students->Telefono; ?></strong>		
+				                <?php else : ?>
+				                  <i>Non ancora inserito</i>
+				                <?php endif; ?>	
 							</div>
 						</div>
 
@@ -179,7 +198,24 @@
 								Download Curriculum
 							</div>
 							<div class="time-description">
-								<?php echo ($students->CV_download)? '<a href="'.$students->CV_download.'" class="view-more-student btn btn-warning">Scarica Curriculum</a>' : ''; ?>	
+                				<?php if($students->CV_download != '') : ?>
+								<?php echo '<a href="'.$students->CV_download.'" class="view-more-student btn btn-warning">Scarica Curriculum</a>'; ?>	
+				                <?php else : ?>
+				                  <i>Non ancora caricato</i>
+				                <?php endif; ?>	
+							</div>
+						</div>
+
+						<div class="time-box">
+							<div class="time-data">
+								Download Tesi
+							</div>
+							<div class="time-description">
+                				<?php if($students->Tesi_download != '') : ?>
+								<?php echo '<a href="'.$students->Tesi_download.'" class="view-more-student btn btn-warning">Scarica Tesi</a>'; ?>	
+				                <?php else : ?>
+				                  <i>Tesi non presente</i>
+				                <?php endif; ?>	
 							</div>
 						</div>
 
@@ -188,7 +224,11 @@
 								Note
 							</div>
 							<div class="time-description">
+                				<?php if($students->Note != '') : ?>
 								<strong><?php echo $students->Note; ?></strong>	
+				                <?php else : ?>
+				                  <i>Nessuna nota inserita</i>
+				                <?php endif; ?>	
 							</div>
 						</div>
 
@@ -198,7 +238,7 @@
 
 			<div class="text-center student-button">
 				<a href="?controller=studenti&action=impostazioni" class="btn btn-warning">Modifica Dati</a>
-				<button type="button" class="btn btn-warning" id="openInviaCurriculum">Invia Curriculum</button>
+				<button type="button" class="btn btn-warning" id="openInviaCurriculum">Carica Curriculum</button>
 				<?php echo ($students->Tesi_download)? '<a href="'.$students->Tesi_download.'" class="btn btn-warning">Scarica Tesi</a>' : ''; ?>
 				
 			</div><br>
@@ -215,11 +255,15 @@
 			        </button>
 			      </div>
 			      <div class="modal-body">
-					  <input type="file" id="file">
+			      <!-- start form -->
+			      <form method="post" enctype="multipart/form-data">
+					  <input type="file" id="CV_upload" name="CV_upload">
 			      </div>
 			      <div class="modal-footer">
-			        <button type="button" class="btn btn-warning">Carica</button>
+			        <button type="submit" class="btn btn-warning">Carica</button>
 			      </div>
+				  </form>
+				  <!-- /end form -->
 			    </div>
 			  </div>
 			</div>

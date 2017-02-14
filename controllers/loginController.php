@@ -1,24 +1,6 @@
 <?php
-/*
-|* **********************************************************
-|*
-|* Controller:  login
-|* Info:        Gestisce i login degli studenti, delle aziende
-|*              e dell'area riservata ai gestori
-|*
-|* **********************************************************
-*/
-class LoginController {
 
-    /*
-    |* **********************************************************
-    |*
-    |* Action:      studenti
-    |* Url:         http://laureati.sti.uniurb.it/login/studenti
-    |* Info:        Gestisce il login degli studenti
-    |*
-    |* **********************************************************
-    */
+class LoginController {
 
     public function studenti() {
 
@@ -36,8 +18,8 @@ class LoginController {
           // Creo un array per il sanitize dei valori
           // ricevuti in $_POST
           $args = array(
-            'user_studente'   => FILTER_VALIDATE_INT,
-            'pwd_studente'    => FILTER_SANITIZE_SPECIAL_CHARS
+            'username'   => FILTER_VALIDATE_INT,
+            'password'    => FILTER_SANITIZE_SPECIAL_CHARS
           );
           // Tramite la funzione filter_input_array pulisco
           // i dati ricevuti in caso ci fossero stati
@@ -45,10 +27,11 @@ class LoginController {
           $clean_value = filter_input_array(INPUT_POST, $args);
           // Faccio la chiamata al metodo del Model 
           // passandogli i parametri appena puliti
-          if (Login::loginStudenti($clean_value)) {
+          // e la tabella al quale fare interrogazioni
+          if (Login::loginResult($clean_value,'laureati_tb')) {
             // Login RIUSCITO 
             // Redirect all'area riservata degli studenti
-            $_SESSION['studente'] = $clean_value['user_studente'];
+            $_SESSION['studente'] = $clean_value['username'];
             return Routes::call('studenti','index');
 
           } else {
@@ -62,16 +45,6 @@ class LoginController {
       require_once('views/login/studenti.php');
     }
 
-
-    /*
-    |* **********************************************************
-    |*
-    |* Action:      aziende
-    |* Url:         http://laureati.sti.uniurb.it/login/aziende
-    |* Info:        Gestisce il login delle aziende
-    |*
-    |* **********************************************************
-    */
 
     public function aziende() {
 
@@ -89,8 +62,8 @@ class LoginController {
           // Creo un array per il sanitize dei valori
           // ricevuti in $_POST
           $args = array(
-            'user_aziende'   => FILTER_SANITIZE_SPECIAL_CHARS,
-            'pwd_aziende'    => FILTER_SANITIZE_SPECIAL_CHARS
+            'username'   => FILTER_SANITIZE_SPECIAL_CHARS,
+            'password'    => FILTER_SANITIZE_SPECIAL_CHARS
           );
           // Tramite la funzione filter_input_array pulisco
           // i dati ricevuti in caso ci fossero stati
@@ -98,10 +71,10 @@ class LoginController {
           $clean_value = filter_input_array(INPUT_POST, $args);
           // Faccio la chiamata al metodo del Model 
           // passandogli i parametri appena puliti
-          if (Login::loginAziende($clean_value)) {
+          if (Login::loginResult($clean_value,'aziende')) {
             // Login RIUSCITO 
             // Redirect all'area riservata delle aziende
-            $_SESSION['azienda'] = $clean_value['user_aziende'];
+            $_SESSION['azienda'] = $clean_value['username'];
             return Routes::call('aziende','index');
 
           } else {
@@ -114,17 +87,6 @@ class LoginController {
 
       require_once('views/login/aziende.php');
     }
-
-
-    /*
-    |* **********************************************************
-    |*
-    |* Action:      riservata
-    |* Url:         http://laureati.sti.uniurb.it/login/riservata
-    |* Info:        Gestisce il login all'area riservata
-    |*
-    |* **********************************************************
-    */
 
     public function riservata() {
       require_once('views/login/riservata.php');

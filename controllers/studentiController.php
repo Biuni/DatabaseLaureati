@@ -1,5 +1,7 @@
 <?php
-  class StudentiController {
+
+class StudentiController {
+
     public function index() {
 
       // Controllo la sessione
@@ -33,5 +35,7 @@
         unset($_SESSION['studente']);
         return Routes::call('pages','home');
     }
-  }
+
+}
+
 ?>

@@ -18,11 +18,11 @@
 
 				<div class="form-group input-user_studente">
 				<i class="fa fa-user-o"></i>
-					<input type="text" class="form-control form-control-danger" id="user_studente" name="user_studente" placeholder="Username">
+					<input type="text" class="form-control form-control-danger" id="user_studente" name="username" placeholder="Username">
 				</div>
 				<div class="form-group input-pwd_studente">
 				<i class="fa fa-lock"></i>
-					<input type="password" class="form-control form-control-danger" id="pwd_studente" name="pwd_studente" placeholder="Password">
+					<input type="password" class="form-control form-control-danger" id="pwd_studente" name="password" placeholder="Password">
 				</div>
 
 				<div class="form-group button-log">

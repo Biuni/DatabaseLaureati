@@ -283,7 +283,7 @@ header nav .col-sm-9 {
     height: 48px;
     width: 100%;
     border-radius: 3px;
-    border: 2px solid #d6d9dd;
+    border: 1px solid #d6d9dd;
 }
 #loginstudenti #form-log-studenti .form-group {
     position: relative;
@@ -347,7 +347,7 @@ header nav .col-sm-9 {
     height: 48px;
     width: 100%;
     border-radius: 3px;
-    border: 2px solid #d6d9dd;
+    border: 1px solid #d6d9dd;
 }
 #loginaziende #form-log-aziende .form-group {
     position: relative;

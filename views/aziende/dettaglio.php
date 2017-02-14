@@ -36,7 +36,7 @@
 							</div>
 						</div>
 
-						<div class="time-box">
+						<div class="time-box <?php echo ($details->Data_n != '0000-00-00')? '' : 'hide'; ?>">
 							<div class="time-data">
 								Data di nascita
 							</div>
@@ -64,7 +64,7 @@
 							</div>
 						</div>
 
-						<div class="time-box">
+						<div class="time-box <?php echo ($details->CF == '')? 'hide': ''; ?>">
 							<div class="time-data">
 								Codice Fiscale
 							</div>
@@ -73,7 +73,7 @@
 							</div>
 						</div>
 
-						<div class="time-box">
+						<div class="time-box <?php echo ($details->Luogo_n == '')? 'hide': ''; ?>">
 							<div class="time-data">
 								Luogo di Nascita
 							</div>
@@ -82,7 +82,7 @@
 							</div>
 						</div>
 
-						<div class="time-box">
+						<div class="time-box <?php echo ($details->Luogo_r == '')? 'hide': ''; ?>">
 							<div class="time-data">
 								Comune di residenza
 							</div>
@@ -91,7 +91,7 @@
 							</div>
 						</div>
 
-						<div class="time-box">
+						<div class="time-box <?php echo ($details->Telefono == '')? 'hide': ''; ?>">
 							<div class="time-data">
 								Telefono
 							</div>
@@ -163,7 +163,7 @@
 							</div>
 						</div>
 
-						<div class="time-box">
+						<div class="time-box <?php echo ($details->CV_download == '')? 'hide': ''; ?>">
 							<div class="time-data">
 								Download Curriculum
 							</div>
@@ -172,7 +172,7 @@
 							</div>
 						</div>
 
-						<div class="time-box">
+						<div class="time-box <?php echo ($details->Note == '')? 'hide': ''; ?>">
 							<div class="time-data">
 								Note
 							</div>

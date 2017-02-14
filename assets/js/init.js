@@ -122,8 +122,8 @@ jQuery(document).ready(function($) {
         var form = $(this).serialize();
         var validate = deparam(form);
 
-        var pwd_studente = validate.pwd_studente;
-        var user_studente = validate.user_studente;
+        var pwd_studente = validate.password;
+        var user_studente = validate.username;
 
         if (user_studente == '' || !validInteger(user_studente)) {
             all_right = false;
@@ -150,8 +150,8 @@ jQuery(document).ready(function($) {
         var form = $(this).serialize();
         var validate = deparam(form);
 
-        var pwd_aziende = validate.pwd_aziende;
-        var user_aziende = validate.user_aziende;
+        var pwd_aziende = validate.password;
+        var user_aziende = validate.username;
 
         if (user_aziende == '' || !validUsername(user_aziende)) {
             all_right = false;
