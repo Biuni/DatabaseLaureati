@@ -5,6 +5,13 @@
 		<h3 class="reg-azienda">Registrazione azienda</h3>
 		<p class="lead">Per ricevere username e password compilare tutti i campi sottostanti. Le credenziali per l'accesso al database verranno inviate all'indirizzo email riportato. L'iscrizione alla newsletter consente di ricevere periodicamente informazioni sulle nostre iniziative e sugli aggiornamenti del database. La compilazione del form sottintende l'accettazione di quanto riportato nella nota informativa sulla privacy sotto riportata.</p>
 
+		<div class="alert alert-success <?php echo $hide_ok; ?>" role="alert">
+		  <strong>Registrazione effettuata!</strong> Stiamo controllando i tuoi dati, riceverai presto una mail con le credenziali di accesso.
+		</div>
+		<div class="alert alert-danger <?php echo $hide_err; ?>" role="alert">
+		  <strong>Attenzione!</strong> La registrazione non è andata a buon fine. Riprova più tardi.
+		</div>
+
 		<form method="post" action="#" id="form-reg-azienda">
 
 			<div class="form-group input-ragionesociale">

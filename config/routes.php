@@ -39,6 +39,7 @@ class Routes {
         $controller = new LoginController();
       break;
       case 'registrazione':
+        require_once('models/Registrazione.php');
         $controller = new RegistrazioneController();
       break;
 

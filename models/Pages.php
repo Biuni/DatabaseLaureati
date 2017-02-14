@@ -1,5 +1,6 @@
 <?php
 class Pages {
+    
     // Definisco 2 attributi di tipo pubblico
     // per renderli accessibili direttamente
     // dall'esterno senza passare per metodi
