@@ -23,6 +23,8 @@
         return Routes::call('login','studenti');
       }
 
+      $students = Studenti::userData($username);
+
       require_once('views/studenti/impostazioni.php');
     }
     

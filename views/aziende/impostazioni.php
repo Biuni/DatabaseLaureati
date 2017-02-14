@@ -4,7 +4,7 @@
 		<div class="logged-menu">
 			<div class="container">
 				<div class=" float-right">
-					<i class="fa fa-building-o" aria-hidden="true"></i> <strong><?php echo $username; ?></strong> | <a href="?controller=aziende&action=impostazioni">Impostazioni</a> | <a href="?controller=aziende&action=logout">Logout</a>
+					<i class="fa fa-building-o" aria-hidden="true"></i> <a href="?controller=aziende&action=index"><strong><?php echo $username; ?></strong></a> | <a href="?controller=aziende&action=impostazioni">Impostazioni</a> | <a href="?controller=aziende&action=logout">Logout</a>
 				</div>
 				<div class="clear"></div>
 			</div>
@@ -19,7 +19,7 @@
 		  <div class="form-group row">
 		    <label class="col-sm-2 col-form-label">Username attuale</label>
 		    <div class="col-sm-10">
-		      <p class="form-control-static"><strong>Biesse</strong></p>
+		      <p class="form-control-static"><strong><?php echo $username; ?></strong></p>
 		    </div>
 		  </div>
 		  <div class="form-group row">
