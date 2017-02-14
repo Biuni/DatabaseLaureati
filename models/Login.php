@@ -19,9 +19,11 @@ class Login {
         Login::updatePassword($user, $password,$table);
         // Login RIUSCITO.
         $result = TRUE;
+      // Provo a fare il login con la nuova modalità
       } else if (Login::newLogin($user, $password,$table)) {
         // Login RIUSCITO.
         $result = TRUE;
+      // Il login è fallito con entrambe le modalità
       } else {
         // Login FALLITO.
         $result = FALSE;
@@ -117,7 +119,7 @@ class Login {
     // il nuovo algoritmo di sha256
     private static function updatePassword($user,$password,$table) {
 
-      // Un 'salt' è generato casualmente per proteggere
+      // Il 'salt' è generato casualmente per proteggere
       // il login contro gli attacchi brute force e gli attacchi
       // rainbow table. La seguente istruzione genera un hexadecimal
       // value di un salt ad 8 bit. Ciò non porta maggiore sicurezza

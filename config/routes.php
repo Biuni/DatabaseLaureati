@@ -58,6 +58,7 @@ class Routes {
 
   }
 
+
   // Lista dei controller e dei
   // metodi considerati validi
   private function routeList(){
@@ -71,6 +72,7 @@ class Routes {
 	  );
 
   }
+
 
   // Metodo che serve a controllare
   // la validità dell'url tramite i due
@@ -99,6 +101,30 @@ class Routes {
 	  } else {
 	    Routes::call('pages', 'error');
 	  }
+  }
+
+
+  // Metodo utilizzato per il redirect che
+  // funziona anche con javascript disabilitato
+  public static function redirectTo($controller,$action) {
+
+    // Compongo l'URL
+    $url = '?controller='.$controller.'&action='.$action;
+
+      // Controllo se l'header è già stato settato
+      if (!headers_sent()) {    
+          header('Location: '.$url);
+          die();
+      // Atrimenti uso Javascript
+      } else {  
+          echo '<script type="text/javascript">';
+          echo 'window.location.href="'.$url.'";';
+          echo '</script>';
+          echo '<noscript>';
+          echo '<meta http-equiv="refresh" content="0;url='.$url.'" />';
+          echo '</noscript>';
+          die();
+      }
   }
 
 }

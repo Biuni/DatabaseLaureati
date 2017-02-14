@@ -8,7 +8,7 @@ class StudentiController {
       if (Session::checkSession('studenti')) {
         $username = htmlspecialchars($_SESSION['studente']);
       } else {
-        return Routes::call('login','studenti');
+        return Routes::redirectTo('login','studenti');
       }
 
       $students = Studenti::userData($username);
@@ -22,7 +22,7 @@ class StudentiController {
       if (Session::checkSession('studenti')) {
         $username = htmlspecialchars($_SESSION['studente']);
       } else {
-        return Routes::call('login','studenti');
+        return Routes::redirectTo('login','studenti');
       }
 
       $students = Studenti::userData($username);
@@ -33,7 +33,7 @@ class StudentiController {
     // Funzione di logout
     public function logout() {
         unset($_SESSION['studente']);
-        return Routes::call('pages','home');
+        return Routes::redirectTo('pages','home');
     }
 
 }

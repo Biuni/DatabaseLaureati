@@ -6,7 +6,7 @@ class LoginController {
 
         // Se sono già loggato vado all'area riservata
         if (Session::checkSession('studenti')) {
-          return Routes::call('studenti','index');
+          return Routes::redirectTo('studenti','index');
         }
 
         // Di default nascondo l'alert di errore
@@ -32,7 +32,9 @@ class LoginController {
             // Login RIUSCITO 
             // Redirect all'area riservata degli studenti
             $_SESSION['studente'] = $clean_value['username'];
-            return Routes::call('studenti','index');
+
+            // Redirect all'area riservata dello studente
+            return Routes::redirectTo('studenti','index');
 
           } else {
             // Login FALLITO 
@@ -50,7 +52,7 @@ class LoginController {
 
         // Se sono già loggato vado all'area riservata
         if (Session::checkSession('aziende')) {
-          return Routes::call('aziende','index');
+          return Routes::redirectTo('aziende','index');
         }
 
         // Di default nascondo l'alert di errore
@@ -75,7 +77,9 @@ class LoginController {
             // Login RIUSCITO 
             // Redirect all'area riservata delle aziende
             $_SESSION['azienda'] = $clean_value['username'];
-            return Routes::call('aziende','index');
+
+            // Redirect all'area riservata delle aziende
+            return Routes::redirectTo('aziende','index');
 
           } else {
             // Login FALLITO 
