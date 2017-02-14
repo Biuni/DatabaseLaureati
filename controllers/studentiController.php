@@ -6,7 +6,7 @@
       if (Session::checkSession('studenti')) {
         $username = htmlspecialchars($_SESSION['studente']);
       } else {
-        return call('pages','home');
+        return Routes::call('login','studenti');
       }
 
       $students = Studenti::userData($username);
@@ -20,7 +20,7 @@
       if (Session::checkSession('studenti')) {
         $username = htmlspecialchars($_SESSION['studente']);
       } else {
-        return call('pages','home');
+        return Routes::call('login','studenti');
       }
 
       require_once('views/studenti/impostazioni.php');
@@ -29,7 +29,7 @@
     // Funzione di logout
     public function logout() {
         unset($_SESSION['studente']);
-        return call('pages','home');
+        return Routes::call('pages','home');
     }
   }
 ?>

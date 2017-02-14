@@ -8,7 +8,7 @@ class AziendeController {
         if (Session::checkSession('aziende')) {
           $username = htmlspecialchars($_SESSION['azienda']);
         } else {
-          return call('pages','home');
+          return Routes::call('login','aziende');
         }
 
     	// Faccio la chiamata al metodo del Model
@@ -47,7 +47,7 @@ class AziendeController {
         if (Session::checkSession('aziende')) {
           $username = htmlspecialchars($_SESSION['azienda']);
         } else {
-          return call('pages','home');
+          return Routes::call('login','aziende');
         }
 
         // Layout delle impostazioni
@@ -61,7 +61,7 @@ class AziendeController {
         if (Session::checkSession('aziende')) {
           $username = htmlspecialchars($_SESSION['azienda']);
         } else {
-          return call('pages','home');
+          return Routes::call('login','aziende');
         }
         
         // Se non viene passato l'id come GET
@@ -70,7 +70,7 @@ class AziendeController {
         $id = isset($_GET['id']) ? (int) $_GET['id'] : null;
         // Controllo e in caso stampo errore
         if (!$id)
-            return call('pages', 'error');
+            return Routes::call('pages', 'error');
         // Passo come parametri del metodo
         // l'id ricevuto trasformandolo
         // in intero
@@ -83,7 +83,7 @@ class AziendeController {
     // Funzione di logout
     public function logout() {
         unset($_SESSION['azienda']);
-        return call('pages','home');
+        return Routes::call('pages','home');
     }
     
 }

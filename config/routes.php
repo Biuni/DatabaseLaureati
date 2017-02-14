@@ -1,16 +1,33 @@
 <?php
 
-  // Funzione call() utilizzata per
+/**
+ * Routes
+ * Gestione delle rotte
+ *
+ * Classe per la gestione delle 
+ * rotte (routes) dell'applicazione.
+ * L'applicazione gira all'interno del
+ * metodo call il quale gestisce 
+ * l'invocazione di modelli, viste e
+ * controllori in base ai $_GET
+ *
+ * @author     Gianluca Bonifazi
+ * @copyright  STI Uniurb (c) 2017
+ */
+
+class Routes {
+
+  // Metodo call() utilizzato per
   // gestire le chiamate ai controller
   // e ai loro rispettivi metodi
-  function call($controller, $action) {
+  public static function call($controller, $action) {
 
     // Richiedo il file che corrisponde
     // al nome del Controller
     require_once('controllers/' . $controller . 'Controller.php');
 
     // Creo una nuova istanza del
-    // controllo richiesto
+    // controllore richiesto
     switch($controller) {
       case 'pages':
         require_once('models/Pages.php');
@@ -38,34 +55,51 @@
     // Chiamo il metodo (action)
     // all'interno del controller
     $controller->{ $action }();
+
   }
 
   // Lista dei controller e dei
   // metodi considerati validi
-  $controllers = array(
-    'pages'         => ['home', 'error'],
-    'login'         => ['studenti', 'aziende', 'riservata'],
-    'registrazione' => ['index','privacy'],
-    // Aree private
-    'aziende'       => ['index','impostazioni', 'dettaglio','logout'],
-    'studenti'      => ['index','impostazioni','logout']
-  );
+  private function routeList(){
 
-  // Controllo che il controller e il
-  // metodo passato siano entrambi validi
-  // per poi invocare la funzione call() con
-  // i parametri esatti.
-  // Se qualcuno prova ad accedere in modo
-  // errato sarà chiamata la funzione
-  // call() alla quale sarà passato controller
-  // e metodo per stampare errore
-  if (array_key_exists($controller, $controllers)) {
-    if (in_array($action, $controllers[$controller])) {
-      call($controller, $action);
-    } else {
-      call('pages', 'error');
-    }
-  } else {
-    call('pages', 'error');
+  	return array(
+	    'pages'         => ['home', 'error'],
+	    'login'         => ['studenti', 'aziende', 'riservata'],
+	    'registrazione' => ['index','privacy'],
+	    'aziende'       => ['index','impostazioni', 'dettaglio','logout'],
+	    'studenti'      => ['index','impostazioni','logout']
+	  );
+
   }
+
+  // Metodo che serve a controllare
+  // la validità dell'url tramite i due
+  // valori arrivati in $_GET
+  public function existsRoute($controller,$action){
+
+  	  // Inizializzo una variabile con l'array
+  	  // contenente la lista delle rotte
+  	  $controllers = new Routes();
+  	  $controllers = $controllers->routeList();
+
+	  // Mi assicuro che il controller e il
+	  // metodo passati siano entrambi validi
+	  // per poi invocare il metodo call() con
+	  // i parametri esatti.
+	  // Se qualcuno prova ad accedere in modo
+	  // errato sarà chiamata la funzione
+	  // call() alla quale sarà passato controller
+	  // e metodo per stampare errore
+	  if (array_key_exists($controller, $controllers)) {
+	    if (in_array($action, $controllers[$controller])) {
+	      Routes::call($controller, $action);
+	    } else {
+	      Routes::call('pages', 'error');
+	    }
+	  } else {
+	    Routes::call('pages', 'error');
+	  }
+  }
+
+}
 ?>

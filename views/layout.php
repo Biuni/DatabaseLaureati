@@ -75,8 +75,19 @@
             <div class="float-right menu-navigation">
               <ul class="list-inline mb-0">
                 <li class="list-inline-item"><a href="?controller=pages&action=home">Homepage</a></li>
-                <li class="list-inline-item"><a href="?controller=login&action=studenti">Login Studenti</a></li>
-                <li class="list-inline-item"><a href="?controller=login&action=aziende">Login Aziende</a></li>
+
+                <?php if(!Session::checkSession('studenti')) : ?>
+                  <li class="list-inline-item"><a href="?controller=login&action=studenti">Login Studenti</a></li>
+                <?php else : ?>
+                  <li class="list-inline-item"><a href="?controller=studenti&action=index">Area Studenti</a></li>
+                <?php endif; ?>
+
+                <?php if(!Session::checkSession('aziende')) : ?>
+                  <li class="list-inline-item"><a href="?controller=login&action=aziende">Login Aziende</a></li>
+                <?php else : ?>
+                  <li class="list-inline-item"><a href="?controller=aziende&action=index">Area Aziende</a></li>
+                <?php endif; ?>
+
                 <li class="list-inline-item"><a href="?controller=registrazione&action=index">Registrazione</a></li>
               </ul>
             </div>
@@ -86,8 +97,19 @@
               <div id="mySidenav" class="sidenav">
                 <a href="javascript:void(0)" class="closebtn-sidenav">&times;</a>
                   <a href="?controller=pages&action=home">Homepage</a>
-                  <a href="?controller=login&action=studenti">Login Studenti</a>
-                  <a href="?controller=login&action=aziende">Login Aziende</a>
+
+                  <?php if(!Session::checkSession('studenti')) : ?>
+                    <a href="?controller=login&action=studenti">Login Studenti</a>
+                  <?php else : ?>
+                    <a href="?controller=studenti&action=index">Area Studenti</a>
+                  <?php endif; ?>
+
+                  <?php if(!Session::checkSession('aziende')) : ?>
+                    <a href="?controller=login&action=aziende">Login Aziende</a>
+                  <?php else : ?>
+                    <a href="?controller=aziende&action=index">Area Aziende</a>
+                  <?php endif; ?>
+
                   <a href="?controller=registrazione&action=index">Registrazione</a>
               </div>
               <div class="overlay-sidenav"></div>
@@ -99,10 +121,12 @@
   </header>
 
 
-
   <!-- Corpo centrale del sito -->
-  <?php require_once('config/routes.php'); ?>
-
+  <?php
+    require_once('config/routes.php');
+    $routes = new Routes();
+    $routes->existsRoute($controller, $action);
+  ?>
 
 
   <!-- Footer del sito -->
