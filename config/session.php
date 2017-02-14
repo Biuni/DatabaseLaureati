@@ -8,6 +8,7 @@
  * sessioni nelle aree riservate.
  *
  * @author     Gianluca Bonifazi
+ * @category   config 
  * @copyright  STI Uniurb (c) 2017
  */
 

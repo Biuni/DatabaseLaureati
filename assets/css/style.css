@@ -35,6 +35,10 @@ a:hover {
 .has-danger .form-control {
     border-color: #d9534f !important;
 }
+table.dataTable tbody td,
+table.dataTable thead th {
+  vertical-align: middle !important;
+}
 
 /* Header */
 header {

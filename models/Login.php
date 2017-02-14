@@ -1,4 +1,20 @@
 <?php
+
+/**
+ * Login
+ * Gestione dei Login
+ *
+ * Classe per la gestione dei Login.
+ * Utilizzata per interrogare il 
+ * database e richiedere la verifica
+ * delle credenziali inserite dagli
+ * utenti lato client.
+ *
+ * @author     Gianluca Bonifazi
+ * @category   models 
+ * @copyright  STI Uniurb (c) 2017
+ */
+
 class Login {
 
     // Metodo che gestisce i login
@@ -19,10 +35,12 @@ class Login {
         Login::updatePassword($user, $password,$table);
         // Login RIUSCITO.
         $result = TRUE;
+
       // Provo a fare il login con la nuova modalità
       } else if (Login::newLogin($user, $password,$table)) {
         // Login RIUSCITO.
         $result = TRUE;
+
       // Il login è fallito con entrambe le modalità
       } else {
         // Login FALLITO.
@@ -162,8 +180,6 @@ class Login {
         $stmt = $db->prepare($sql);
         // Eseguo la query
         $stmt->execute(array(':password' => $pwd, ':salt' => $salt, ':username' => $user));
-
-        print_r($stmt->debugDumpParams());
 
       } catch(PDOException $ex) {
 

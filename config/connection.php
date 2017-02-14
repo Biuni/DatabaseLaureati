@@ -13,6 +13,7 @@
  * è già stato settato una prima volta.
  *
  * @author     Gianluca Bonifazi
+ * @category   config 
  * @copyright  STI Uniurb (c) 2017
  */
 

@@ -12,6 +12,7 @@
  * controllori in base ai $_GET
  *
  * @author     Gianluca Bonifazi
+ * @category   config 
  * @copyright  STI Uniurb (c) 2017
  */
 

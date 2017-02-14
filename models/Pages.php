@@ -18,12 +18,12 @@ class Pages {
     // in homepage
     public static function getInfoLaurea() {
         // Mi collego al database
-        $db    = Db::getInstance();
+        $db = Db::getInstance();
         // Faccio la query per contare i laureati
-        $sql   = $db->query('SELECT count(*) AS counter FROM laureati_tb');
+        $sql = $db->query('SELECT count(*) AS counter FROM laureati_tb');
         $count = $sql->fetchObject();
         // Faccio la query per calcolare la media voto
-        $sql2  = $db->query('SELECT AVG(Voto_laurea) AS voto FROM laureati_tb WHERE Voto_laurea <> 0');
+        $sql2 = $db->query('SELECT AVG(Voto_laurea) AS voto FROM laureati_tb WHERE Voto_laurea <> 0');
         $media = $sql2->fetchObject();
         // Ritorno un ogetti di tipo Pages
         // con i valori delle query

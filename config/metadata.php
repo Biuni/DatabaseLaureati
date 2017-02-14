@@ -11,6 +11,7 @@
  * e l'implementazione.
  *
  * @author     Gianluca Bonifazi
+ * @category   config 
  * @copyright  STI Uniurb (c) 2017
  */
 
