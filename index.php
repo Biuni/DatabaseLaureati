@@ -5,15 +5,13 @@ require_once('config/global.php');
 require_once('config/connection.php');
 // Richiedo il file per il controllo delle sessioni
 require_once('config/session.php');
+// Inizio la sessione
+Session::startSession();
 
 // Controllo se è passato in GET il controller e l'action.
 if (isset($_GET['controller']) && isset($_GET['action'])) {
     $controller = $_GET['controller'];
     $action     = $_GET['action'];
-
-    // Inizio la sessione
-    Session::startSession();
-
 } else {
     $controller = 'pages';
     $action     = 'home';

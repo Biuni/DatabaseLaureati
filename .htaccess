@@ -5,6 +5,6 @@
 
 	RewriteRule ^([^/]*)/$ ?controller=$1&action=index [L]
 	RewriteRule ^([^/]*)/([^/]*)$ ?controller=$1&action=$2 [L]
-	RewriteRule ^([^/]*)/([^/]*)/([^/]*)$ ?controller=$1&action=$2&id=$3 [L]
+	RewriteRule ^([^/]*)/([^/]*)/([^/]*)/$ ?controller=$1&action=$2&id=$3 [L]
 
 </IfModule>

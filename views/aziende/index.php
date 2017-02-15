@@ -244,7 +244,7 @@
 			            <td><?php echo $student['Titolo_tesi']; ?></td>
 			            <td><?php echo $student['Voto_laurea'];  echo ($student['cum_laude'] == 'si')? " e lode" : ""; ?></td>
 			            <td><?php echo $student['Data_Laurea']; ?></td>
-			            <td><a href="<?php echo APP_URL; ?>/aziende/dettaglio/<?php echo $student['ID'] ?>" class="btn btn-warning view-more-student">Visualizza</a></td>
+			            <td><a href="<?php echo APP_URL; ?>/aziende/dettaglio/<?php echo $student['ID'] ?>/" class="btn btn-warning view-more-student">Visualizza</a></td>
 			            </tr>
 
 					<?php } ?>

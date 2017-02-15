@@ -18,7 +18,7 @@ class Session {
 	// la funzione session_start() all'inizio
 	// della pagina
     public static function startSession() {
-		session_start();
+	    session_start();
     }
 
     // Metodo utilizzato per controllare
