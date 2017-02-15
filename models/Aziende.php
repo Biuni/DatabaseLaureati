@@ -178,7 +178,49 @@ class Aziende {
 
     }
 
-    // Funzione che fa l'update della password
+    // Metodo che controlla se l'username esiste già
+    public static function checkIfExist($new){
+
+      $result = FALSE;
+
+      // Entro nella sezione critica dove 
+      // effetuerò la query per controllare
+      // che l'username non è già in uso
+      try {
+
+          // Mi collego al Database
+          $db = Db::getInstance();
+          // Compongo la query
+          $sql = "SELECT ID FROM aziende WHERE username = :username";
+          // Preparo la query 
+          $stmt = $db->prepare($sql);
+          // Eseguo la query
+          $stmt->execute(array(':username' => $new));
+          // Eseguo un fetch per contare le righe
+          // del risultato della query.
+          $rows = $stmt->fetch(PDO::FETCH_NUM);
+          // Se esiste almeno una riga vuol dire che le 
+          // username è già utilizzato
+          $used = ($rows > 0) ? TRUE : FALSE;
+
+          // Se esiste l'username il risultato e FALSE
+          // altrimenti setto il risultato a TRUE
+          if (!$used) {
+            $result = TRUE;
+          }
+
+      } catch(PDOException $ex) {
+
+          // Errore. Stampo l'eccezzione
+          die('Errore: '.$sql.' - '.$ex->getMessage());
+
+      }
+
+      return $result;
+    }
+
+
+    // Metodo che fa l'update della password
     public static function updatePwd($pwd_attuale,$pwd_nuova,$username) {
 
       $result = FALSE;

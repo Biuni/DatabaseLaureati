@@ -70,16 +70,24 @@ class AziendeController {
                 $new_user = str_replace('.', '', $new_user);
                 $new_user = strtolower($new_user);
 
-                // Faccio la chiamata al metodo del Model 
-                // passandogli i parametri per aggiornare
-                // l'username
-                if(Aziende::updateUser($new_user,$old_user)){
-                    // Setto il nuovo username nella sessione
-                    $_SESSION['azienda'] = $new_user;
-                    $username = htmlspecialchars($_SESSION['azienda']);
-                    // Mostro l'alert di modifica riuscita
-                    $hide_ok_user = '';
+                // Controllo se l'username esiste già
+                if(Aziende::checkIfExist($new_user)){
+                    // Faccio la chiamata al metodo del Model 
+                    // passandogli i parametri per aggiornare
+                    // l'username
+                    if(Aziende::updateUser($new_user,$old_user)){
+                        // Setto il nuovo username nella sessione
+                        $_SESSION['azienda'] = $new_user;
+                        $username = htmlspecialchars($_SESSION['azienda']);
+                        // Mostro l'alert di modifica riuscita
+                        $hide_ok_user = '';
+                    } else {
+                        // Errore nella query
+                        // Mostro l'alert di errore
+                        $hide_err_user = '';
+                    }
                 } else {
+                    // username già utilizzato
                     // Mostro l'alert di errore
                     $hide_err_user = '';
                 }
@@ -110,6 +118,8 @@ class AziendeController {
                         $hide_err_pwd = '';
                     }
                 } else {
+                    // Non è stata inserita la stessa
+                    // password
                     // Mostro l'alert di errore
                     $hide_err_pwd = '';
                 }

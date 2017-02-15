@@ -23,6 +23,47 @@ class Registrazione {
       $username = str_replace(' ', '-', $ragionesociale);
       $username = str_replace('.', '', $username);
       $username = strtolower($username);
+      
+      // Controllo l'unicità dell'username
+      do {
+
+        // Entro nella sezione critica dove 
+        // effetuerò la query per controllare
+        // che l'username non è già in uso
+        try {
+
+          // Mi collego al Database
+          $db = Db::getInstance();
+          // Compongo la query
+          $sql = "SELECT ID FROM aziende WHERE username = :username";
+          // Preparo la query 
+          $stmt = $db->prepare($sql);
+          // Eseguo la query
+          $stmt->execute(array(':username' => $username));
+          // Eseguo un fetch per contare le righe
+          // del risultato della query.
+          $rows = $stmt->fetch(PDO::FETCH_NUM);
+          // Se esiste almeno una riga vuol dire che le 
+          // username è già utilizzato
+          $used = ($rows > 0) ? TRUE : FALSE;
+
+          // Se esiste l'username ne riscrivo un altro
+          // aggiungendoci un numero casuale
+          if ($used) {
+            $username .= rand(1, 20);
+          }
+
+        } catch(PDOException $ex) {
+
+          // Errore. Stampo l'eccezzione
+          die('Errore: '.$sql.' - '.$ex->getMessage());
+
+        }
+
+      // Se l'username è già in uso
+      // utilizzo quello nuovo e rifaccio la query
+      // per rieseguire il controllo
+      } while ($used);
 
       // Il 'salt' è generato casualmente per proteggere
       // il login contro gli attacchi brute force e gli attacchi
