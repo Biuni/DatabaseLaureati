@@ -23,10 +23,10 @@ class Db {
   // il design pattern Singleton
   private static $instance  = NULL;
   // Attributi per la connessione al DB
-  private static $host      = 'localhost';
-  private static $db_name   = 'db_laureati';
-  private static $user      = 'root';
-  private static $password  = '';
+  private static $host      = DB_HOST;
+  private static $db_name   = DB_NAME;
+  private static $user      = DB_USER;
+  private static $password  = DB_PWD;
   
   // Costruttore della classe
   private function __construct() {}

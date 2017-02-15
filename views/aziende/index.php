@@ -4,7 +4,7 @@
 		<div class="logged-menu">
 			<div class="container">
 				<div class=" float-right">
-					<i class="fa fa-building-o" aria-hidden="true"></i> <a href="?controller=aziende&action=index"><strong><?php echo $username; ?></strong></a> | <a href="?controller=aziende&action=impostazioni">Impostazioni</a> | <a href="?controller=aziende&action=logout">Logout</a>
+					<i class="fa fa-building-o" aria-hidden="true"></i> <a href="<?php echo APP_URL; ?>/aziende/"><strong><?php echo $username; ?></strong></a> | <a href="<?php echo APP_URL; ?>/aziende/impostazioni">Impostazioni</a> | <a href="<?php echo APP_URL; ?>/aziende/logout">Logout</a>
 				</div>
 				<div class="clear"></div>
 			</div>
@@ -17,7 +17,7 @@
 
 			<div class="row criteri-ricerca">
 
-				<form action="?controller=aziende&action=index#ricerca" method="post" id="ricerca-aziende">
+				<form action="<?php echo APP_URL; ?>/aziende/index#ricerca" method="post" id="ricerca-aziende">
 					<div class="row">
 
 						<div class="col-md-6">
@@ -244,7 +244,7 @@
 			            <td><?php echo $student['Titolo_tesi']; ?></td>
 			            <td><?php echo $student['Voto_laurea'];  echo ($student['cum_laude'] == 'si')? " e lode" : ""; ?></td>
 			            <td><?php echo $student['Data_Laurea']; ?></td>
-			            <td><a href="?controller=aziende&action=dettaglio&id=<?php echo $student['ID'] ?>" class="btn btn-warning view-more-student">Visualizza</a></td>
+			            <td><a href="<?php echo APP_URL; ?>/aziende/dettaglio/<?php echo $student['ID'] ?>" class="btn btn-warning view-more-student">Visualizza</a></td>
 			            </tr>
 
 					<?php } ?>

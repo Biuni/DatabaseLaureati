@@ -5,14 +5,15 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="it">
+<html lang="<?php echo APP_LANG; ?>">
 <head>
-  <meta charset="utf-8">
+  <meta charset="<?php echo APP_CHARSET; ?>">
   
   <!-- Info -->
   <title><?php echo $metadata->title; ?></title>
   <meta name="description" content="<?php echo $metadata->description; ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="<?php echo APP_COLOR; ?>">
 
   <!-- Facebook Share -->
   <meta property="og:title" content="<?php echo $metadata->share_title; ?>" />
@@ -21,14 +22,14 @@
   <meta property="og:image" content="<?php echo $metadata->share_img; ?>" />
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="assets/img/favicon.ico">
+  <link rel="shortcut icon" href="<?php echo APP_URL; ?>/assets/img/favicon.ico">
 
   <!-- Stili -->
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-  <link rel="stylesheet" href="assets/css/datatable.css">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/mobile.css">
+  <link rel="stylesheet" href="<?php echo APP_URL; ?>/assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="<?php echo APP_URL; ?>/assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="<?php echo APP_URL; ?>/assets/css/datatable.css">
+  <link rel="stylesheet" href="<?php echo APP_URL; ?>/assets/css/style.css">
+  <link rel="stylesheet" href="<?php echo APP_URL; ?>/assets/css/mobile.css">
 
 </head>
 <body>
@@ -42,7 +43,7 @@
           <!-- Colonna Sinistra -->
           <div class="col-sm-5">
             <div class="float-left info-small">
-              <i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:#">info@campus.uniurb.it</a>
+              <i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:#"><?php echo APP_MAIL; ?></a>
             </div>
           </div>
           <!-- Colonna Destra -->
@@ -51,7 +52,7 @@
               <ul class="list-inline mb-0">
                 <li class="list-inline-item"><a href="https://www.facebook.com/InfoAppl">Facebook</a></li>
                 <li class="list-inline-item">| <a href="https://twitter.com/InfoAppl">Twitter</a> |</li>
-                <li class="list-inline-item"><a href="?controller=login&action=riservata">Area Riservata</a></li>
+                <li class="list-inline-item"><a href="<?php echo APP_URL; ?>/login/riservata">Area Riservata</a></li>
               </ul>
             </div>
           </div>
@@ -66,7 +67,7 @@
           <!-- Logo -->
           <div class="col-sm-3">
             <div class="float-left">
-              <img src="assets/img/logo_sti.png" alt="Logo Uniurb" title="Logo Uniurb" class="logo">
+              <img src="<?php echo APP_URL; ?>/assets/img/logo_sti.png" alt="Logo Uniurb" title="Logo Uniurb" class="logo">
             </div>
           </div>
           <!-- Menu -->
@@ -74,21 +75,21 @@
             <!-- Desktop -->
             <div class="float-right menu-navigation">
               <ul class="list-inline mb-0">
-                <li class="list-inline-item"><a href="?controller=pages&action=home">Homepage</a></li>
+                <li class="list-inline-item"><a href="<?php echo APP_URL; ?>">Homepage</a></li>
 
                 <?php if(!Session::checkSession('studenti')) : ?>
-                  <li class="list-inline-item"><a href="?controller=login&action=studenti">Login Studenti</a></li>
+                  <li class="list-inline-item"><a href="<?php echo APP_URL; ?>/login/studenti">Login Studenti</a></li>
                 <?php else : ?>
-                  <li class="list-inline-item"><a href="?controller=studenti&action=index">Area Studenti</a></li>
+                  <li class="list-inline-item"><a href="<?php echo APP_URL; ?>/studenti/">Area Studenti</a></li>
                 <?php endif; ?>
 
                 <?php if(!Session::checkSession('aziende')) : ?>
-                  <li class="list-inline-item"><a href="?controller=login&action=aziende">Login Aziende</a></li>
+                  <li class="list-inline-item"><a href="<?php echo APP_URL; ?>/login/aziende">Login Aziende</a></li>
                 <?php else : ?>
-                  <li class="list-inline-item"><a href="?controller=aziende&action=index">Area Aziende</a></li>
+                  <li class="list-inline-item"><a href="<?php echo APP_URL; ?>/aziende/">Area Aziende</a></li>
                 <?php endif; ?>
 
-                <li class="list-inline-item"><a href="?controller=registrazione&action=index">Registrazione</a></li>
+                <li class="list-inline-item"><a href="<?php echo APP_URL; ?>/registrazione/">Registrazione</a></li>
               </ul>
             </div>
             <!-- Mobile -->
@@ -96,21 +97,21 @@
               <button type="button" class="btn btn-outline-warning openbtn-sidenav"><i class="fa fa-bars" aria-hidden="true"></i></button>
               <div id="mySidenav" class="sidenav">
                 <a href="javascript:void(0)" class="closebtn-sidenav">&times;</a>
-                  <a href="?controller=pages&action=home">Homepage</a>
+                  <a href="<?php echo APP_URL; ?>">Homepage</a>
 
                   <?php if(!Session::checkSession('studenti')) : ?>
-                    <a href="?controller=login&action=studenti">Login Studenti</a>
+                    <a href="<?php echo APP_URL; ?>/login/studenti">Login Studenti</a>
                   <?php else : ?>
-                    <a href="?controller=studenti&action=index">Area Studenti</a>
+                    <a href="<?php echo APP_URL; ?>/studenti/">Area Studenti</a>
                   <?php endif; ?>
 
                   <?php if(!Session::checkSession('aziende')) : ?>
-                    <a href="?controller=login&action=aziende">Login Aziende</a>
+                    <a href="<?php echo APP_URL; ?>/login/aziende">Login Aziende</a>
                   <?php else : ?>
-                    <a href="?controller=aziende&action=index">Area Aziende</a>
+                    <a href="<?php echo APP_URL; ?>/aziende/">Area Aziende</a>
                   <?php endif; ?>
 
-                  <a href="?controller=registrazione&action=index">Registrazione</a>
+                  <a href="<?php echo APP_URL; ?>/registrazione/">Registrazione</a>
               </div>
               <div class="overlay-sidenav"></div>
             </div>
@@ -138,11 +139,11 @@
     </div>
   </footer>
 
-  <script src="assets/js/jquery-3.1.1.min.js"></script>
-  <script src="assets/js/tether.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
-  <script src="assets/js/jquery.counterup.min.js"></script>
-  <script src="assets/js/jquery.dataTables.min.js"></script>
-  <script src="assets/js/init.js"></script>
+  <script src="<?php echo APP_URL; ?>/assets/js/jquery-3.1.1.min.js"></script>
+  <script src="<?php echo APP_URL; ?>/assets/js/tether.min.js"></script>
+  <script src="<?php echo APP_URL; ?>/assets/js/bootstrap.min.js"></script>
+  <script src="<?php echo APP_URL; ?>/assets/js/jquery.counterup.min.js"></script>
+  <script src="<?php echo APP_URL; ?>/assets/js/jquery.dataTables.min.js"></script>
+  <script src="<?php echo APP_URL; ?>/assets/js/init.js"></script>
 </body>
 </html>

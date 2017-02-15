@@ -12,7 +12,7 @@
 		  <strong>Attenzione!</strong> La registrazione non è andata a buon fine. Riprova più tardi.
 		</div>
 
-		<form method="post" action="#" id="form-reg-azienda">
+		<form method="post" action="" id="form-reg-azienda">
 
 			<div class="form-group input-ragionesociale">
 				<label class="form-control-label" for="ragionesociale">Ragione sociale</label>
@@ -39,7 +39,7 @@
 				<label class="custom-control custom-checkbox privacy-check">
 				  <input type="checkbox" class="custom-control-input" name="privacy" checked="true">
 				  <span class="custom-control-indicator"></span>
-				  <span class="custom-control-description">Ho letto e accetto l'<u><a href="?controller=registrazione&action=privacy" target="blank">informativa sulla privacy</a></u>.</span>
+				  <span class="custom-control-description">Ho letto e accetto l'<u><a href="<?php echo APP_URL; ?>/registrazione/privacy" target="blank">informativa sulla privacy</a></u>.</span>
 				</label>
 				<label class="custom-control custom-checkbox">
 				  <input type="checkbox" class="custom-control-input" name="newsletter" checked="true">

@@ -1,5 +1,6 @@
 <?php
-
+// Richiedo il file con le variabili globali
+require_once('config/global.php');
 // Richiedo il file di connessione
 require_once('config/connection.php');
 // Richiedo il file per il controllo delle sessioni

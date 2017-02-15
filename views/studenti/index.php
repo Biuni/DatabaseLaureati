@@ -4,7 +4,7 @@
 		<div class="logged-menu">
 			<div class="container">
 				<div class=" float-right">
-					<i class="fa fa-graduation-cap" aria-hidden="true"></i> <a href="?controller=studenti&action=index"><strong><?php echo $students->Nome; ?> <?php echo $students->Cognome; ?></strong></a> | <a href="?controller=studenti&action=logout">Logout</a>
+					<i class="fa fa-graduation-cap" aria-hidden="true"></i> <a href="<?php echo APP_URL; ?>/studenti/"><strong><?php echo $students->Nome; ?> <?php echo $students->Cognome; ?></strong></a> | <a href="<?php echo APP_URL; ?>/studenti/logout">Logout</a>
 				</div>
 				<div class="clear"></div>
 			</div>
@@ -237,7 +237,7 @@
 				</div><br>
 
 			<div class="text-center student-button">
-				<a href="?controller=studenti&action=impostazioni" class="btn btn-warning">Modifica Dati</a>
+				<a href="<?php echo APP_URL; ?>/studenti/impostazioni" class="btn btn-warning">Modifica Dati</a>
 				<button type="button" class="btn btn-warning" id="openInviaCurriculum">Carica Curriculum</button>
 				<?php echo ($students->Tesi_download)? '<a href="'.$students->Tesi_download.'" class="btn btn-warning">Scarica Tesi</a>' : ''; ?>
 				

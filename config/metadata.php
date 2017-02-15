@@ -28,12 +28,12 @@ class Metadata {
 
     // Costruttore della classe
     public function __construct($title, $share_title, $description, $share_desc, $share_img, $share_url) {
-		$this->title = $title;
-		$this->share_title = $share_title;
-		$this->description = $description;
-		$this->share_desc = $share_desc;
-		$this->share_img = $share_img;
-		$this->share_url = $share_url;
+		$this->title 		= $title;
+		$this->share_title 	= $share_title;
+		$this->description 	= $description;
+		$this->share_desc 	= $share_desc;
+		$this->share_img 	= $share_img;
+		$this->share_url 	= $share_url;
     }
 
     // Metodo che gestisce l'inizializzazione

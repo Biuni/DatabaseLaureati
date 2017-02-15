@@ -5,7 +5,7 @@
 		<div class="logged-menu">
 			<div class="container">
 				<div class=" float-right">
-					<i class="fa fa-building-o" aria-hidden="true"></i> <a href="?controller=aziende&action=index"><strong><?php echo $username; ?></strong></a> | <a href="?controller=aziende&action=impostazioni">Impostazioni</a> | <a href="?controller=aziende&action=logout">Logout</a>
+					<i class="fa fa-building-o" aria-hidden="true"></i> <a href="<?php echo APP_URL; ?>/aziende/"><strong><?php echo $username; ?></strong></a> | <a href="<?php echo APP_URL; ?>/aziende/impostazioni">Impostazioni</a> | <a href="<?php echo APP_URL; ?>/aziende/logout">Logout</a>
 				</div>
 				<div class="clear"></div>
 			</div>
@@ -186,7 +186,7 @@
 				</div><br>
 
 			<div class="text-center student-button">
-				<a href="?controller=aziende&action=index" class="btn btn-warning">Torna Indietro</a>
+				<a href="<?php echo APP_URL; ?>/aziende/" class="btn btn-warning">Torna Indietro</a>
 			</div><br>
 
 	</main>

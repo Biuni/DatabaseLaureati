@@ -4,7 +4,7 @@
 		<div class="logged-menu">
 			<div class="container">
 				<div class=" float-right">
-					<i class="fa fa-graduation-cap" aria-hidden="true"></i> <a href="?controller=studenti&action=index"><strong><?php echo $students->Nome; ?> <?php echo $students->Cognome; ?></strong></a> | <a href="?controller=studenti&action=logout">Logout</a>
+					<i class="fa fa-graduation-cap" aria-hidden="true"></i> <a href="<?php echo APP_URL; ?>/studenti/"><strong><?php echo $students->Nome; ?> <?php echo $students->Cognome; ?></strong></a> | <a href="<?php echo APP_URL; ?>/studenti/logout">Logout</a>
 				</div>
 				<div class="clear"></div>
 			</div>

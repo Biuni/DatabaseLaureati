@@ -10,6 +10,6 @@
 	</blockquote>
 	<br>
 
-	<a href="?controller=pages&action=home" class="btn btn-warning turn-to-hp">Torna in Homepage</a><br>
+	<a href="<?php echo APP_URL; ?>" class="btn btn-warning turn-to-hp">Torna in Homepage</a><br>
 
 </div>

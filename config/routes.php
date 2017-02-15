@@ -103,6 +103,7 @@ class Routes {
 	  } else {
 	    Routes::call('pages', 'error');
 	  }
+    
   }
 
 
@@ -111,7 +112,7 @@ class Routes {
   public static function redirectTo($controller,$action) {
 
     // Compongo l'URL
-    $url = '?controller='.$controller.'&action='.$action;
+    $url = APP_URL.'/'.$controller.'/'.$action;
 
       // Controllo se l'header è già stato settato
       if (!headers_sent()) {    
