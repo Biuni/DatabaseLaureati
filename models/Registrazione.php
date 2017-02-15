@@ -22,6 +22,7 @@ class Registrazione {
       // non utilizzabili come username
       $username = str_replace(' ', '-', $ragionesociale);
       $username = str_replace('.', '', $username);
+      $username = preg_replace('/[^A-Za-z0-9\-]/', '', $username);
       $username = strtolower($username);
       
       // Controllo l'unicità dell'username

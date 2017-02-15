@@ -17,8 +17,8 @@
             'nomereferente'    	=> FILTER_SANITIZE_SPECIAL_CHARS,
             'cognomereferente'  => FILTER_SANITIZE_SPECIAL_CHARS,
             'emailreferente'    => FILTER_VALIDATE_EMAIL,
-            'privacy'    		=> 'on',
-            'newsletter' 		=> FILTER_SANITIZE_SPECIAL_CHARS
+            'privacy'    		    => 'on',
+            'newsletter' 		    => FILTER_SANITIZE_SPECIAL_CHARS
           );
           // Tramite la funzione filter_input_array pulisco
           // i dati ricevuti in caso ci fossero stati

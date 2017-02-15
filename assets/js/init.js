@@ -171,6 +171,64 @@ jQuery(document).ready(function($) {
         }
     });
 
+    // Validazione del form di update username aziende
+    $('#mod-user-azienda').submit(function(e){
+
+        var all_right = true;
+        var form = $(this).serialize();
+        var validate = deparam(form);
+
+        var new_user = validate.new_user_azienda;
+
+        if (new_user == '' || !validUsername(new_user)) {
+            all_right = false;
+            $('.input_new-user-azienda').addClass('has-danger');
+        } else {
+            $('.input_new-user-azienda').removeClass('has-danger');
+        }
+
+        if (!all_right) {
+            e.preventDefault();
+        }
+    });
+
+    // Validazione del form di update password aziende
+    $('#mod-pwd-azienda').submit(function(e){
+
+        var all_right = true;
+        var form = $(this).serialize();
+        var validate = deparam(form);
+
+        var pwd_attuale = validate.pwd_attuale;
+        var pwd_nuova = validate.pwd_nuova;
+        var pwd_nuova2 = validate.pwd_nuova2;
+
+        if (pwd_attuale == '') {
+            all_right = false;
+            $('.input_old-pwd-azienda').addClass('has-danger');
+        } else {
+            $('.input_old-pwd-azienda').removeClass('has-danger');
+        }
+
+        if (pwd_nuova == '') {
+            all_right = false;
+            $('.input_new-pwd-azienda').addClass('has-danger');
+        } else {
+            $('.input_new-pwd-azienda').removeClass('has-danger');
+        }
+
+        if (pwd_nuova2 == '') {
+            all_right = false;
+            $('.input_new2-pwd-azienda').addClass('has-danger');
+        } else {
+            $('.input_new2-pwd-azienda').removeClass('has-danger');
+        }
+
+        if (!all_right) {
+            e.preventDefault();
+        }
+    });
+
     function deparam(query) {
         var pairs, i, keyValuePair, key, value, map = {};
         if (query.slice(0, 1) === '?') {

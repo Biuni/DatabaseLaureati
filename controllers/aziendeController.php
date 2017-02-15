@@ -106,7 +106,6 @@ class AziendeController {
                 // Se le password nuove combaciano continuo
                 // con l'esecuzione
                 if ($pwd_nuova === $pwd_nuova2) {
-
                     // Faccio la chiamata al metodo del Model 
                     // passandogli i parametri per aggiornare
                     // la password
@@ -119,8 +118,7 @@ class AziendeController {
                     }
                 } else {
                     // Non è stata inserita la stessa
-                    // password
-                    // Mostro l'alert di errore
+                    // password mostro l'alert di errore
                     $hide_err_pwd = '';
                 }
 
