@@ -33,7 +33,7 @@ class StudentiController {
     // Funzione di logout
     public function logout() {
         unset($_SESSION['studente']);
-        return Routes::redirectTo('pages','home');
+        return Routes::redirectTo('login','studenti');
     }
 
 }

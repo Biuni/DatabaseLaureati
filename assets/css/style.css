@@ -35,6 +35,9 @@ a:hover {
 .has-danger .form-control {
     border-color: #d9534f !important;
 }
+.btn-warning {
+    cursor: pointer;
+}
 table.dataTable tbody td,
 table.dataTable thead th {
   vertical-align: middle !important;

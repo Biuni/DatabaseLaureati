@@ -43,11 +43,79 @@ class AziendeController {
     // Pagina impostazioni dell'account
     public function impostazioni() {
 
+        // Nascondo di default gli alert
+        $hide_ok_user = 'hide';
+        $hide_err_user = 'hide';
+        $hide_ok_pwd = 'hide';
+        $hide_err_pwd = 'hide';
+
         // Controllo la sessione
         if (Session::checkSession('aziende')) {
           $username = htmlspecialchars($_SESSION['azienda']);
         } else {
           return Routes::redirectTo('login','aziende');
+        }
+
+        // Controllo se arriva una chiamata
+        // dal form di update dei dati
+        if ($_POST) {
+            
+            // Controllo se si tratta della modifica
+            // dell'username
+            if (isset($_POST['new_user_azienda']) && $_POST['new_user_azienda'] != '') {
+
+                $new_user = $_POST['new_user_azienda'];
+                $old_user = $_POST['old_user_azienda'];
+                $new_user = str_replace(' ', '-', $new_user);
+                $new_user = str_replace('.', '', $new_user);
+                $new_user = strtolower($new_user);
+
+                // Faccio la chiamata al metodo del Model 
+                // passandogli i parametri per aggiornare
+                // l'username
+                if(Aziende::updateUser($new_user,$old_user)){
+                    // Setto il nuovo username nella sessione
+                    $_SESSION['azienda'] = $new_user;
+                    $username = htmlspecialchars($_SESSION['azienda']);
+                    // Mostro l'alert di modifica riuscita
+                    $hide_ok_user = '';
+                } else {
+                    // Mostro l'alert di errore
+                    $hide_err_user = '';
+                }
+
+            }
+            
+            // Controllo se si tratta della modifica
+            // della password
+            if (isset($_POST['pwd_nuova']) && $_POST['pwd_nuova'] != '') {
+
+                $pwd_attuale = $_POST['pwd_attuale'];
+                $pwd_nuova = $_POST['pwd_nuova'];
+                $pwd_nuova2 = $_POST['pwd_nuova2'];
+                $pwd_username = $_POST['pwd_username'];
+
+                // Se le password nuove combaciano continuo
+                // con l'esecuzione
+                if ($pwd_nuova === $pwd_nuova2) {
+
+                    // Faccio la chiamata al metodo del Model 
+                    // passandogli i parametri per aggiornare
+                    // la password
+                    if(Aziende::updatePwd($pwd_attuale,$pwd_nuova,$pwd_username)){
+                        // Mostro l'alert di conferma 
+                        $hide_ok_pwd = '';
+                    } else {
+                        // Mostro l'alert di errore
+                        $hide_err_pwd = '';
+                    }
+                } else {
+                    // Mostro l'alert di errore
+                    $hide_err_pwd = '';
+                }
+
+            }
+
         }
 
         // Layout delle impostazioni
@@ -83,7 +151,7 @@ class AziendeController {
     // Funzione di logout
     public function logout() {
         unset($_SESSION['azienda']);
-        return Routes::redirectTo('pages','home');
+        return Routes::redirectTo('login','aziende');
     }
     
 }
