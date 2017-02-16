@@ -16,6 +16,13 @@
 			<p class="lead">Lorem Ipsum Dolor Sit amet.</p>
 
 				<div class="resume" id="resume">
+
+			<div class="alert alert-success <?php echo $hide_ok_cv; ?>" role="alert">
+			  <strong>Curriculum caricato!</strong> Il tuo CV è stato caricato correttamente.
+			</div>
+			<div class="alert alert-danger <?php echo $hide_err_cv; ?>" role="alert">
+			  <strong>Errore!</strong> Curriculum non caricato. Assicurati che il file rispetti i requisiti.
+			</div>
 					<div class="timeline">
 
 						<div class="time-box">
@@ -199,7 +206,7 @@
 							</div>
 							<div class="time-description">
                 				<?php if($students->CV_download != '') : ?>
-								<?php echo '<a href="'.$students->CV_download.'" class="view-more-student btn btn-warning">Scarica Curriculum</a>'; ?>	
+								<?php echo '<a href="'.APP_URL.'/assets/files/cv/'.$students->CV_download.'" class="view-more-student btn btn-warning" target="blank">Scarica Curriculum</a>'; ?>	
 				                <?php else : ?>
 				                  <i>Non ancora caricato</i>
 				                <?php endif; ?>	
@@ -212,7 +219,7 @@
 							</div>
 							<div class="time-description">
                 				<?php if($students->Tesi_download != '') : ?>
-								<?php echo '<a href="'.$students->Tesi_download.'" class="view-more-student btn btn-warning">Scarica Tesi</a>'; ?>	
+								<?php echo '<a href="'.APP_URL.'/assets/files/tesi/'.$students->Tesi_download.'" class="view-more-student btn btn-warning" target="blank">Scarica Tesi</a>'; ?>	
 				                <?php else : ?>
 				                  <i>Tesi non presente</i>
 				                <?php endif; ?>	
@@ -256,8 +263,9 @@
 			      </div>
 			      <div class="modal-body">
 			      <!-- start form -->
-			      <form method="post" enctype="multipart/form-data">
+			      <form method="post" enctype="multipart/form-data" action="">
 					  <input type="file" id="CV_upload" name="CV_upload">
+					  <small class="form-text text-muted">Dimensione massima: <strong>3MB</strong>.<br>File permessi: <strong>PDF, PNG, JPG</strong>.</small>
 			      </div>
 			      <div class="modal-footer">
 			        <button type="submit" class="btn btn-warning">Carica</button>

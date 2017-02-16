@@ -4,12 +4,60 @@ class StudentiController {
 
     public function index() {
 
+      $hide_ok_cv = 'hide';
+      $hide_err_cv = 'hide';
+
       // Controllo la sessione
       if (Session::checkSession('studenti')) {
         $username = htmlspecialchars($_SESSION['studente']);
       } else {
         return Routes::redirectTo('login','studenti');
       }
+
+      if ($_FILES) {
+
+        require('config/upload.php');
+        $handle = new Upload($_FILES['CV_upload']);
+        $file_allowed = array('application/pdf', 'image/jpeg', 'image/png');
+
+        // Controllo se il file è di tipo PDF, JPG o PNG
+        if (in_array($_FILES['CV_upload']['type'], $file_allowed)) {
+
+          if ($handle->uploaded) {
+
+            // Dimensione massima del file: 3MB
+            $handle->file_max_size = '25165824';
+            // Aggiungo al file il numero di matricola
+            $handle->file_name_body_add = '_'.$username;
+            // Cartella dove caricare i curriculum
+            $handle->process('assets/files/cv/');
+
+            if ($handle->processed) {
+
+              if (Studenti::uploadCV($handle->file_dst_name,$username)) {
+                // Upload del file e update della
+                // tabella andato a buon fine
+                $hide_ok_cv = '';
+                
+              } else {
+                $hide_err_cv = '';
+              }
+
+            } else {
+              $hide_err_cv = '';
+            }
+
+          } else {
+            $hide_err_cv = '';
+          }
+          
+          $handle-> Clean();
+
+        } else {
+          $hide_err_cv = '';
+        }
+
+    }
 
       $students = Studenti::userData($username);
 

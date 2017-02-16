@@ -33,6 +33,37 @@ class Studenti {
       return $stmt->fetchObject();
     }
 
+    // Metodo utilizzato per l'upload del curriculum
+    public static function uploadCV($filename, $username) {
+
+      $result = FALSE;
+
+        // Entro nella sezione critica dove 
+        // effetuerò la query di update
+        // del curriculum
+        try {
+
+          // Mi collego al Database
+          $db = Db::getInstance();
+          // Compongo la query
+          $sql = "UPDATE laureati_tb SET CV_download = :cv_download WHERE username = :username";
+          // Preparo la query 
+          $stmt = $db->prepare($sql);
+          // Eseguo la query
+          $stmt->execute(array(':cv_download' => $filename, ':username' => $username));
+
+          $result = TRUE;
+
+        } catch(PDOException $ex) {
+
+          // Errore. Stampo l'eccezzione
+          die('Errore: '.$sql.' - '.$ex->getMessage());
+
+        }
+
+      return $result;
+    }
+
     // Metodo utilizzato per la modifica dei dati
     public static function updateData($value, $username) {
 

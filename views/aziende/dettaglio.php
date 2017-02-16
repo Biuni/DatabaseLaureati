@@ -168,7 +168,7 @@
 								Download Curriculum
 							</div>
 							<div class="time-description">
-								<?php echo ($details->CV_download)? '<a href="'.$details->CV_download.'" class="view-more-student btn btn-warning">Scarica Curriculum</a>' : ''; ?>
+								<?php echo ($details->CV_download)? '<a href="'.APP_URL.'/assets/files/cv/'.$details->CV_download.'" class="view-more-student btn btn-warning" target="blank">Scarica Curriculum</a>' : ''; ?>
 							</div>
 						</div>
 
