@@ -229,6 +229,103 @@ jQuery(document).ready(function($) {
         }
     });
 
+    // Validazione del form di update password studenti
+    $('#mod-pwd-studente').submit(function(e){
+
+        var all_right = true;
+        var form = $(this).serialize();
+        var validate = deparam(form);
+
+        var pwd_attuale = validate.pwd_attuale;
+        var pwd_nuova = validate.pwd_nuova;
+        var pwd_nuova2 = validate.pwd_nuova2;
+
+        if (pwd_attuale == '') {
+            all_right = false;
+            $('.input_old-pwd-studente').addClass('has-danger');
+        } else {
+            $('.input_old-pwd-studente').removeClass('has-danger');
+        }
+
+        if (pwd_nuova == '') {
+            all_right = false;
+            $('.input_new-pwd-studente').addClass('has-danger');
+        } else {
+            $('.input_new-pwd-studente').removeClass('has-danger');
+        }
+
+        if (pwd_nuova2 == '') {
+            all_right = false;
+            $('.input_new2-pwd-studente').addClass('has-danger');
+        } else {
+            $('.input_new2-pwd-studente').removeClass('has-danger');
+        }
+
+        if (!all_right) {
+            e.preventDefault();
+        }
+    });
+
+    // Validazione del form di update dei dati degli studenti
+    $('#mod-dati-studente').submit(function(e){
+
+        var all_right = true;
+        var form = $(this).serialize();
+        var validate = deparam(form);
+
+        var Data_n = validate.Data_n;
+        var CF = validate.CF;
+        var Luogo_n = validate.Luogo_n;
+        var Luogo_r = validate.Luogo_r;
+        var Telefono = validate.Telefono;
+        var e_mail = validate.e_mail;
+        var Visibility = validate.Visibility;
+
+        if (Visibility == '' || (Visibility != 1 && Visibility != 0)) {
+            all_right = false;
+        }
+        if (Data_n != '' && !validDate(Data_n)) {
+            all_right = false;
+            $('.input_data-n').addClass('has-danger');
+        } else {
+            $('.input_data-n').removeClass('has-danger');
+        }
+        if (CF != '' && !validCF(CF)) {
+            all_right = false;
+            $('.input_CF').addClass('has-danger');
+        } else {
+            $('.input_CF').removeClass('has-danger');
+        }
+        if (Luogo_n != '' && !validText(Luogo_n)) {
+            all_right = false;
+            $('.input_Luogo-n').addClass('has-danger');
+        } else {
+            $('.input_Luogo-n').removeClass('has-danger');
+        }
+        if (Luogo_r != '' && !validText(Luogo_r)) {
+            all_right = false;
+            $('.input_Luogo-r').addClass('has-danger');
+        } else {
+            $('.input_Luogo-r').removeClass('has-danger');
+        }
+        if (Telefono != '' && !validInteger(Telefono)) {
+            all_right = false;
+            $('.input_Telefono').addClass('has-danger');
+        } else {
+            $('.input_Telefono').removeClass('has-danger');
+        }
+        if (e_mail != '' && !validEmail(e_mail)) {
+            all_right = false;
+            $('.input_e_mail').addClass('has-danger');
+        } else {
+            $('.input_e_mail').removeClass('has-danger');
+        }
+
+        if (!all_right) {
+            e.preventDefault();
+        }
+    });
+
     function deparam(query) {
         var pairs, i, keyValuePair, key, value, map = {};
         if (query.slice(0, 1) === '?') {
@@ -263,6 +360,16 @@ jQuery(document).ready(function($) {
 
     function validInteger(text) {
         var pattern = /^[0-9]*$/;
+        return pattern.test(text);
+    };
+
+    function validDate(text) {
+        var pattern = /^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/;
+        return pattern.test(text);
+    };
+
+    function validCF(text) {
+        var pattern = /^(?:[B-DF-HJ-NP-TV-Z](?:[AEIOU]{2}|[AEIOU]X)|[AEIOU]{2}X|[B-DF-HJ-NP-TV-Z]{2}[A-Z]){2}[\dLMNP-V]{2}(?:[A-EHLMPR-T](?:[04LQ][1-9MNP-V]|[1256LMRS][\dLMNP-V])|[DHPS][37PT][0L]|[ACELMRT][37PT][01LM])(?:[A-MZ][1-9MNP-V][\dLMNP-V]{2}|[A-M][0L](?:[\dLMNP-V][1-9MNP-V]|[1-9MNP-V][0L]))[A-Z]$/i;
         return pattern.test(text);
     };
 

@@ -1,4 +1,5 @@
 <?php
+
 // Richiedo il file con le variabili globali
 require_once('config/global.php');
 // Richiedo il file di connessione

@@ -33,5 +33,117 @@ class Studenti {
       return $stmt->fetchObject();
     }
 
+    // Metodo utilizzato per la modifica dei dati
+    public static function updateData($value, $username) {
+
+      $result = FALSE;
+
+      // Mi assicuro che il campo visibility
+      // non sia stato manomesso o che sia 
+      // stato inserito unvalore diverso da 0 o 1
+      $visibility = ($value['Visibility'] != 0 && $value['Visibility'] != 1) ? 0 : $value['Visibility'];
+      $Prov_n = strtoupper($value['Prov_n']);
+      $Prov_r = strtoupper($value['Prov_r']);
+
+        // Entro nella sezione critica dove 
+        // effetuerò la query di update
+        // dei dati
+        try {
+
+          // Mi collego al Database
+          $db = Db::getInstance();
+          // Compongo la query
+          $sql = "UPDATE laureati_tb SET Data_n = :Data_n, Sesso = :Sesso, CF = :CF, Luogo_n = :Luogo_n, Prov_n = :Prov_n, Luogo_r = :Luogo_r, Prov_r = :Prov_r, Telefono = :Telefono, e_mail = :e_mail, Note = :Note, Visibility = :Visibility WHERE username = :username";
+          // Preparo la query 
+          $stmt = $db->prepare($sql);
+          // Eseguo la query
+          $stmt->execute(array(':Data_n' => $value['Data_n'], ':Sesso' => $value['Sesso'], ':CF' => $value['CF'], ':Luogo_n' => $value['Luogo_n'], ':Prov_n' => $Prov_n, ':Luogo_r' => $value['Luogo_r'], ':Prov_r' => $Prov_r, ':Telefono' => $value['Telefono'], ':e_mail' => $value['e_mail'], ':Note' => $value['Note'], ':Visibility' => $visibility, ':username' => $username));
+
+          $result = TRUE;
+
+        } catch(PDOException $ex) {
+
+          // Errore. Stampo l'eccezzione
+          die('Errore: '.$sql.' - '.$ex->getMessage());
+
+        }
+
+      return $result;
+    }
+
+
+    // Metodo che fa l'update della password
+    public static function updatePwd($pwd_attuale,$pwd_nuova,$username) {
+
+      $result = FALSE;
+      $value = array('username' => $username, 'password' => $pwd_attuale);
+
+      // Richiedo il modello per il login
+      require_once('models/Login.php');
+
+      // Se il login va a buon fine la password
+      // è corretta
+      if(Login::loginResult($value,'laureati_tb')){
+
+        // Il 'salt' è generato casualmente per proteggere
+        // il login contro gli attacchi brute force e gli attacchi
+        // rainbow table. La seguente istruzione genera un hexadecimal
+        // value di un salt ad 8 bit. Ciò non porta maggiore sicurezza
+        // ma è più facile da leggere per gli umani.
+        // Per maggiori informazioni:
+        // http://en.wikipedia.org/wiki/Salt_%28cryptography%29
+        // http://en.wikipedia.org/wiki/Brute-force_attack
+        // http://en.wikipedia.org/wiki/Rainbow_table
+        $salt = dechex(mt_rand(0, 2147483647)) . dechex(mt_rand(0, 2147483647));
+
+        // Creo ora una stringa di hash utilizzando la password concatenato al salt
+        // la quale verrà inserita all'interno del database. L'output di questa
+        // istruzione è un hexadecimal di 64 byte che rappresenta la stringa a 32
+        // byte dell'algoritmo sha256. La password originale è impossibile da estrarre
+        // perchè è un algoritmo one-way.
+        // Per maggiori informazioni:
+        // http://en.wikipedia.org/wiki/Cryptographic_hash_function
+        $pwd = hash('sha256', $pwd_nuova . $salt);
+
+        // Successivamente facciamo un ulteriore funzione di hash sull'hash stesso
+        // per 65536 volte. Lo scopo di questo passaggio è quello di offrire un'ulteriore
+        // protezione contro gli attacchi bruteforce. Infatti ora un'eventuale attacco
+        // deve calcolare l'hash 65536 volte per ogni hash.
+        for($round = 0; $round < 65536; $round++) {
+            $pwd = hash('sha256', $pwd . $salt);
+        }
+
+
+        // Entro nella sezione critica dove 
+        // effetuerò la query di update
+        // della password
+        try {
+
+          // Mi collego al Database
+          $db = Db::getInstance();
+
+          // PASSWORD e SALT
+          // Compongo la query
+          $sql = "UPDATE laureati_tb SET password = :new_pwd, salt = :salt WHERE username = :username";
+          // Preparo la query 
+          $stmt = $db->prepare($sql);
+          // Eseguo la query
+          $stmt->execute(array(':new_pwd' => $pwd, ':salt' => $salt, ':username' => $username));
+
+          $result = TRUE;
+
+        } catch(PDOException $ex) {
+
+          // Errore. Stampo l'eccezzione
+          die('Errore: '.$sql.' - '.$ex->getMessage());
+
+        }
+
+      }
+
+      return $result;
+
+    }
+
 }
 ?>

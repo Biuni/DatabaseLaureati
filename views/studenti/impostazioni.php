@@ -15,7 +15,15 @@
 			<h3>Aggiorna Dati</h3>
 			<p class="lead">Lorem Ipsum dolor sit amet.</p>
 
-		<form>
+		<form action="" method="post" id="mod-dati-studente">
+
+			<div class="alert alert-success <?php echo $hide_ok_user; ?>" role="alert">
+			  <strong>Dati modificati!</strong> I tuoi dati sono stati correttamente modificati.
+			</div>
+			<div class="alert alert-danger <?php echo $hide_err_user; ?>" role="alert">
+			  <strong>Attenzione!</strong> La modifica dei dati non è andata a buon fine. Riprova.
+			</div>
+
 		  <div class="form-group row">
 		    <label class="col-sm-2 col-form-label">Nome</label>
 		    <div class="col-sm-10">
@@ -34,43 +42,43 @@
 		      <p class="form-control-static"><strong><?php echo $students->Matricola; ?></strong></p>
 		    </div>
 		  </div>
-		  <div class="form-group row">
-		    <label for="inputPassword" class="col-sm-2 col-form-label">Data di Nascita</label>
+		  <div class="form-group row input_data-n">
+		    <label for="Data_n" class="col-sm-2 col-form-label">Data di Nascita</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="inputPassword" <?php echo ($students->Data_n == '0000-00-00')? 'placeholder="YYYY-MM-DD"' : 'value="'.$students->Data_n.'"';?> >
+		      <input type="text" class="form-control form-control-danger" id="Data_n" name="Data_n" <?php echo ($students->Data_n == '0000-00-00')? 'placeholder="YYYY-MM-DD"' : 'value="'.$students->Data_n.'"';?> >
 		    </div>
 		  </div>
 		  <div class="form-group row">
-		    <label for="inputPassword" class="col-sm-2 col-form-label">Sesso</label>
+		    <label for="Sesso" class="col-sm-2 col-form-label">Sesso</label>
 		    <div class="col-sm-10">
 				<label class="custom-control custom-radio">
-				  <input id="radio1" name="radio" type="radio" class="custom-control-input" <?php echo ($students->Sesso == 'M')? 'checked="true"':''; ?>>
+				  <input id="Sesso_M" name="Sesso" type="radio" class="custom-control-input" value="M" <?php echo ($students->Sesso == 'M')? 'checked="true"':''; ?>>
 				  <span class="custom-control-indicator"></span>
 				  <span class="custom-control-description">M</span>
 				</label>
 				<label class="custom-control custom-radio">
-				  <input id="radio2" name="radio" type="radio" class="custom-control-input" <?php echo ($students->Sesso == 'F')? 'checked="true"':''; ?>>
+				  <input id="Sesso_F" name="Sesso" type="radio" class="custom-control-input" value="F" <?php echo ($students->Sesso == 'F')? 'checked="true"':''; ?>>
 				  <span class="custom-control-indicator"></span>
 				  <span class="custom-control-description">F</span>
 				</label>
 		    </div>
 		  </div>
-		  <div class="form-group row">
-		    <label for="inputPassword" class="col-sm-2 col-form-label">Codice Fiscale</label>
+		  <div class="form-group row input_CF">
+		    <label for="CF" class="col-sm-2 col-form-label">Codice Fiscale</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="inputPassword" value="<?php echo $students->CF; ?>">
+		      <input type="text" class="form-control form-control-danger" id="CF" name="CF" value="<?php echo $students->CF; ?>">
+		    </div>
+		  </div>
+		  <div class="form-group row input_Luogo-n">
+		    <label for="Luogo_n" class="col-sm-2 col-form-label">Luogo di Nascita</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control form-control-danger" id="Luogo_n" name="Luogo_n" value="<?php echo $students->Luogo_n; ?>">
 		    </div>
 		  </div>
 		  <div class="form-group row">
-		    <label for="inputPassword" class="col-sm-2 col-form-label">Luogo di Nascita</label>
+		    <label for="Prov_n" class="col-sm-2 col-form-label">Provincia di Nascita</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="inputPassword" value="<?php echo $students->Luogo_n; ?>">
-		    </div>
-		  </div>
-		  <div class="form-group row">
-		    <label for="inputPassword" class="col-sm-2 col-form-label">Provincia di Nascita</label>
-		    <div class="col-sm-10">
-				<select class="form-control" id="provincia" name="provincia">
+				<select class="form-control" id="Prov_n" name="Prov_n">
 					<option <?php echo (strtolower($students->Prov_n) == '')  ?	'selected' : '' ; ?> value="">Scegli...</option>
 					<option <?php echo (strtolower($students->Prov_n) == 'ag')? 'selected' : '' ; ?> value="ag">Agrigento</option>
 					<option <?php echo (strtolower($students->Prov_n) == 'al')? 'selected' : '' ; ?> value="al">Alessandria</option>
@@ -185,16 +193,16 @@
 		    	</select>
 		    </div>
 		  </div>
-		  <div class="form-group row">
-		    <label for="inputPassword" class="col-sm-2 col-form-label">Comune di Residenza</label>
+		  <div class="form-group row input_Luogo-r">
+		    <label for="Luogo_r" class="col-sm-2 col-form-label">Comune di Residenza</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="inputPassword" value="<?php echo $students->Luogo_r; ?>">
+		      <input type="text" class="form-control form-control-danger" id="Luogo_r" name="Luogo_r" value="<?php echo $students->Luogo_r; ?>">
 		    </div>
 		  </div>
 		  <div class="form-group row">
-		    <label for="inputPassword" class="col-sm-2 col-form-label">Provincia di Residenza</label>
+		    <label for="Prov_r" class="col-sm-2 col-form-label">Provincia di Residenza</label>
 		    <div class="col-sm-10">
-		      <select class="form-control">
+		      <select class="form-control" id="Prov_r" name="Prov_r">
 					<option <?php echo (strtolower($students->Prov_r) == '')  ?	'selected' : '' ; ?> value="">Scegli...</option>
 					<option <?php echo (strtolower($students->Prov_r) == 'ag')? 'selected' : '' ; ?> value="ag">Agrigento</option>
 					<option <?php echo (strtolower($students->Prov_r) == 'al')? 'selected' : '' ; ?> value="al">Alessandria</option>
@@ -309,16 +317,16 @@
 		      </select>
 		    </div>
 		  </div>
-		  <div class="form-group row">
-		    <label for="inputPassword" class="col-sm-2 col-form-label">Telefono</label>
+		  <div class="form-group row input_Telefono">
+		    <label for="Telefono" class="col-sm-2 col-form-label">Telefono</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="inputPassword" value="<?php echo $students->Telefono; ?>">
+		      <input type="text" class="form-control form-control-danger" id="Telefono" name="Telefono" value="<?php echo $students->Telefono; ?>">
 		    </div>
 		  </div>
-		  <div class="form-group row">
-		    <label for="inputPassword" class="col-sm-2 col-form-label">Email</label>
+		  <div class="form-group row input_e_mail">
+		    <label for="e_mail" class="col-sm-2 col-form-label">Email</label>
 		    <div class="col-sm-10">
-		      <input type="email" class="form-control" id="inputPassword" value="<?php echo $students->e_mail; ?>">
+		      <input type="email" class="form-control form-control-danger" id="e_mail" name="e_mail" value="<?php echo $students->e_mail; ?>">
 		    </div>
 		  </div>
 		  <div class="form-group row">
@@ -358,21 +366,21 @@
 		    </div>
 		  </div>
 		  <div class="form-group row">
-		    <label for="inputPassword" class="col-sm-2 col-form-label">Note</label>
+		    <label for="Note" class="col-sm-2 col-form-label">Note</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="inputPassword" value="<?php echo $students->Note; ?>">
+		      <input type="text" class="form-control form-control-danger" id="Note" name="Note" value="<?php echo $students->Note; ?>">
 		    </div>
 		  </div>
 		  <div class="form-group row">
-		    <label for="inputPassword" class="col-sm-2 col-form-label">Visibilità</label>
+		    <label for="Visibility" class="col-sm-2 col-form-label">Visibilità</label>
 		    <div class="col-sm-10">
 				<label class="custom-control custom-radio">
-				  <input id="radio1" name="radio2" type="radio" class="custom-control-input" <?php echo ($students->Visibility == 1)? 'checked="true"':''; ?>>
+				  <input id="Visibility" name="Visibility" type="radio" class="custom-control-input" value="1" <?php echo ($students->Visibility == 1)? 'checked="true"':''; ?>>
 				  <span class="custom-control-indicator"></span>
 				  <span class="custom-control-description">Visibile <i class="fa fa-check" aria-hidden="true"></i></span>
 				</label>
 				<label class="custom-control custom-radio">
-				  <input id="radio2" name="radio2" type="radio" class="custom-control-input" <?php echo ($students->Visibility == 0)? 'checked="true"':''; ?>>
+				  <input id="Visibility2" name="Visibility" type="radio" class="custom-control-input" value="0" <?php echo ($students->Visibility == 0)? 'checked="true"':''; ?>>
 				  <span class="custom-control-indicator"></span>
 				  <span class="custom-control-description">Nascosto <i class="fa fa-times" aria-hidden="true"></i></span>
 				</label>
@@ -385,26 +393,36 @@
 		</form>
 
 		  <hr />
+		  
+		<a name="mod_pwd"></a>
+		<form action="<?php echo APP_URL; ?>/studenti/impostazioni#mod_pwd" method="post" id="mod-pwd-studente">
 
-		<form>
-		  <div class="form-group row">
+			<div class="alert alert-success <?php echo $hide_ok_pwd; ?>" role="alert">
+			  <strong>Password modificata!</strong> Dal prossimo login utilizzerai questa nuova password per accedere all'area riservata.
+			</div>
+			<div class="alert alert-danger <?php echo $hide_err_pwd; ?>" role="alert">
+			  <strong>Attenzione!</strong> La modifica della password non è andata a buon fine. Assicurati di aver inserito i dati correttamente.
+			</div>
+
+		  <div class="form-group row input_old-pwd-studente">
 		    <label class="col-sm-2 col-form-label">Password attuale</label>
 		    <div class="col-sm-10">
-		      <input type="password" class="form-control" id="inputPassword">
+		      <input type="password" class="form-control form-control-danger" id="pwd_attuale" name="pwd_attuale">
+		      <input type="hidden" id="pwd_username" name="pwd_username" value="<?php echo $username; ?>">
 			  <small class="form-text text-muted">Inserisci qui la password attuale.</small>
 		    </div>
 		  </div>
-		  <div class="form-group row">
+		  <div class="form-group row input_new-pwd-studente">
 		    <label class="col-sm-2 col-form-label">Nuova password</label>
 		    <div class="col-sm-10">
-		      <input type="password" class="form-control" id="inputPassword">
+		      <input type="password" class="form-control form-control-danger" id="pwd_nuova" name="pwd_nuova">
 			  <small class="form-text text-muted">Inserisci la nuova password.</small>
 		    </div>
 		  </div>
-		  <div class="form-group row">
+		  <div class="form-group row input_new2-pwd-studente">
 		    <label class="col-sm-2 col-form-label">Ripeti password</label>
 		    <div class="col-sm-10">
-		      <input type="password" class="form-control" id="inputPassword">
+		      <input type="password" class="form-control form-control-danger" id="pwd_nuova2" name="pwd_nuova2">
 			  <small class="form-text text-muted">Ripeti la nuova password.</small>
 		    </div>
 		  </div>
