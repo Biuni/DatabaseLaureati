@@ -35,11 +35,19 @@ class Login {
         Login::updatePassword($user,$password,$table);
         // Login RIUSCITO.
         $result = TRUE;
+        // Inserisco un record nella tabella
+        // last login avendo effettuato il login
+        // correttamente
+        Login::lastLogin($user,$table);
 
       // Provo a fare il login con la nuova modalità
       } else if (Login::newLogin($user,$password,$table)) {
         // Login RIUSCITO.
         $result = TRUE;
+        // Inserisco un record nella tabella
+        // last login avendo effettuato il login
+        // correttamente
+        Login::lastLogin($user,$table);
 
       // Il login è fallito con entrambe le modalità
       } else {
@@ -140,8 +148,7 @@ class Login {
       // Il 'salt' è generato casualmente per proteggere
       // il login contro gli attacchi brute force e gli attacchi
       // rainbow table. La seguente istruzione genera un hexadecimal
-      // value di un salt ad 8 bit. Ciò non porta maggiore sicurezza
-      // ma è più facile da leggere per gli umani.
+      // value di un salt ad 8 bit.
       // Per maggiori informazioni:
       // http://en.wikipedia.org/wiki/Salt_%28cryptography%29
       // http://en.wikipedia.org/wiki/Brute-force_attack
@@ -186,6 +193,59 @@ class Login {
         // Errore. Stampo l'eccezzione
         die('Errore: '.$sql.' - '.$ex->getMessage());
 
+      }
+
+    }
+
+    // Metodo che gestisce l'insert nella tabella
+    // last_login dove sono presenti tutti i dati sulle 
+    // ultime attività dell'utente
+    private static function lastLogin($user,$table) {
+
+      // Se è un'azienda ad aver fatto il login
+      // allora setto la variabile 'type'
+      // ad 1. Se invece si tratta di uno studente
+      // allora la variabile type sarà 0
+      $type = ($table == 'aziende')? 1 : 0;
+
+      // Entro nella sezione critica dove 
+      // effetuerò la query di
+      // insert per segnare l'ultimo login
+      try {
+
+        // Mi collego al Database
+        $db = Db::getInstance();
+        // Compongo la query
+        $sql = "INSERT INTO last_login (user_id, ip, last_time, type) VALUES (:user_id, :ip, :last_time, :type)";
+        // Preparo la query 
+        $stmt = $db->prepare($sql);
+        // Eseguo la query
+        $stmt->execute(array(':user_id' => $user, ':ip' => Login::getUserIP(), ':last_time' => date("Y-m-d H:i:s"), ':type' => $type));
+
+      } catch(PDOException $ex) {
+
+        // Errore. Stampo l'eccezzione
+        die('Errore: '.$sql.' - '.$ex->getMessage());
+
+      }
+
+    }
+
+    // Metodo che restiuisce l'indirizzo IP
+    // del'utente che sta effettuando il login
+    private static function getUserIP() {
+
+      if(array_key_exists('HTTP_X_FORWARDED_FOR', $_SERVER) && !empty($_SERVER['HTTP_X_FORWARDED_FOR']) ) {
+
+          if (strpos($_SERVER['HTTP_X_FORWARDED_FOR'], ',') > 0) {
+              $addr = explode(",",$_SERVER['HTTP_X_FORWARDED_FOR']);
+              return trim($addr[0]);
+          } else {
+              return $_SERVER['HTTP_X_FORWARDED_FOR'];
+          }
+
+      } else {
+          return $_SERVER['REMOTE_ADDR'];
       }
 
     }

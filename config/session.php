@@ -35,7 +35,7 @@ class Session {
 
 		// Controllo sessione azienda
 		if ($controller == 'aziende') {
-			if(isset($_SESSION['azienda']) && $_SESSION['aziende'] != '') {
+			if(isset($_SESSION['azienda']) && $_SESSION['azienda'] != '') {
 				// OK. La sessione esiste
 				$checkedSession = true;
 			} else {
