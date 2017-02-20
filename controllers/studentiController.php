@@ -154,7 +154,7 @@ class StudentiController {
     
     // Funzione di logout
     public function logout() {
-        unset($_SESSION['studente']);
+        Session::destroySession();
         return Routes::redirectTo('login','studenti');
     }
 

@@ -158,7 +158,7 @@ class AziendeController {
     
     // Funzione di logout
     public function logout() {
-        unset($_SESSION['azienda']);
+        Session::destroySession();
         return Routes::redirectTo('login','aziende');
     }
     

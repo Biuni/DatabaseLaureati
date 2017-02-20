@@ -26,18 +26,18 @@ class Login {
       $result   = FALSE;
 
       // Provo a fare il login con la vecchia modalità
-      if (Login::oldLogin($user, $password,$table)) {
+      if (Login::oldLogin($user,$password,$table)) {
         // Se sono qui l'utente ha inserito delle 
         // credenziali valide ma del vecchio tipo.
         // Per questo motivo faccio una chiamata al
         // metodo che mi aggiorna la password
         // con un nuovo algoritmo di hash.
-        Login::updatePassword($user, $password,$table);
+        Login::updatePassword($user,$password,$table);
         // Login RIUSCITO.
         $result = TRUE;
 
       // Provo a fare il login con la nuova modalità
-      } else if (Login::newLogin($user, $password,$table)) {
+      } else if (Login::newLogin($user,$password,$table)) {
         // Login RIUSCITO.
         $result = TRUE;
 

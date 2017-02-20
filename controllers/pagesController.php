@@ -2,6 +2,7 @@
   class PagesController {
     public function home() {
       $info = Pages::getInfoLaurea();
+      
       require_once('views/pages/home.php');
     }
 
