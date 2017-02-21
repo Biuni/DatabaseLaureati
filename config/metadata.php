@@ -193,6 +193,18 @@ class Metadata {
 					'share_img'		=> 'assets/img/urbino.jpg',
 					'share_url'		=> 'http://laureati.sti.uniurb.it'
 				]
+			],
+
+			// Aree riservate Gestore
+			'admin' => [
+				'index' => [
+					'title' 		=> 'Area Riservata - Database Laureati Informatica Urbino',
+					'share_title' 	=> 'Database Laureati - Informatica Urbino',
+					'description'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
+					'share_desc'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
+					'share_img'		=> 'assets/img/urbino.jpg',
+					'share_url'		=> 'http://laureati.sti.uniurb.it'
+				]
 			]
 			
 		);

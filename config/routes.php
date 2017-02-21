@@ -52,6 +52,10 @@ class Routes {
         require_once('models/Studenti.php');
         $controller = new StudentiController();
       break;
+      case 'admin':
+        require_once('models/Admin.php');
+        $controller = new AdminController();
+      break;
     }
 
     // Chiamo il metodo (action)
@@ -66,11 +70,12 @@ class Routes {
   private function routeList(){
 
   	return array(
-	    'pages'         => ['home', 'error'],
-	    'login'         => ['studenti', 'aziende', 'riservata'],
+	    'pages'         => ['home','error'],
+	    'login'         => ['studenti','aziende','riservata'],
 	    'registrazione' => ['index','privacy'],
-	    'aziende'       => ['index','impostazioni', 'dettaglio','logout'],
-	    'studenti'      => ['index','impostazioni','logout']
+	    'aziende'       => ['index','impostazioni','dettaglio','logout'],
+	    'studenti'      => ['index','impostazioni','logout'],
+      'admin'         => ['index']
 	  );
 
   }

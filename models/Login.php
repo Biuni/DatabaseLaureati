@@ -231,6 +231,112 @@ class Login {
 
     }
 
+    // Metodo che gestisce il login all'area riservata
+    public static function adminLogin($value) {
+      // Valore che deve tornare come 
+      // risultato del metodo
+      $result = FALSE;
+
+      $username = $value['username'];
+      $password = $value['password'];
+
+      try {
+          // Mi collego al Database
+          $db = Db::getInstance();
+          // Compongo la query
+          $sql = "SELECT id, salt, password FROM admin WHERE username = :username";
+          // Preparo la query
+          $stmt = $db->prepare($sql);
+          // Eseguo la query
+          $rows = $stmt->execute(array(':username' => $username));
+
+      } catch(PDOException $ex) {
+
+        // Errore. Stampo l'eccezzione
+        die('Errore: '. $ex->getMessage());
+
+      }
+
+      // Faccio il fetch dei dati estratti
+      // dalla query. Se $row è FALSE vuol dire
+      // che non c'è nessun utente con questo username
+      $row = $stmt->fetch();
+      if($row) {
+          // Utilizzando la password inviata dall'utente
+          // e il salt che si trova nel database possiamo 
+          // ora controllare se entrambi combaciano con l'hash
+          // che abbiamo registrato nel campo password del DB
+          $check_password = hash('sha256', $password . $row['salt']);
+          for($round = 0; $round < 65536; $round++) {
+              $check_password = hash('sha256', $check_password . $row['salt']);
+          }
+          
+          if($check_password === $row['password']) {
+              //Login RIUSCITO.
+              $result = TRUE;
+              // Aggiorno i dati sui campi
+              // last_login e last_update
+              Login::updateAdminLogin();
+          }
+      }
+
+      return $result;
+    }
+
+    // Metodo che gestisce il login all'area riservata
+    private static function updateAdminLogin() {
+
+      // Aggiorno l'ultimo login con il
+      // datetime di adesso
+      $last_login = date("Y-m-d H:i:s"); 
+
+      // Mi collego al Database
+      $db = Db::getInstance();
+
+      // Entro nella sezione critica dove 
+      // effetuerò la query di select
+      // dei due campi datetime 
+      try {
+          // Compongo la query
+          $sql = "SELECT last_login FROM admin WHERE username = 'admin'";
+          // Preparo la query
+          $stmt = $db->prepare($sql);
+          // Eseguo la query
+          $rows = $stmt->execute();
+          // Fetch dei risultati
+          $row = $stmt->fetch();
+          // Metto al campo last update il valore
+          // di last login che sarà a breve aggiornato
+          $last_update = $row['last_login'];
+
+      } catch(PDOException $ex) {
+
+        // Errore. Stampo l'eccezzione
+        die('Errore: '. $ex->getMessage());
+
+      }
+
+      // Entro nella sezione critica dove 
+      // effetuerò la query di update
+      // dei tentativi di accesso
+      try {
+
+        // Compongo la query
+        $sql = "UPDATE admin SET last_login = :last_login, last_update = :last_update, ip = :ip WHERE username = 'admin'";
+        // Preparo la query 
+        $stmt = $db->prepare($sql);
+        // Eseguo la query
+        $stmt->execute(array(':last_login' => $last_login, ':last_update' => $last_update, ':ip' => Login::getUserIP()));
+
+      } catch(PDOException $ex) {
+
+        // Errore. Stampo l'eccezzione
+        die('Errore: '.$sql.' - '.$ex->getMessage());
+
+      }
+
+    }
+
     // Metodo che restiuisce l'indirizzo IP
     // del'utente che sta effettuando il login
     private static function getUserIP() {

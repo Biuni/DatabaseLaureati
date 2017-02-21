@@ -54,6 +54,17 @@ class Session {
 				$checkedSession = false;
 			}
 		}
+		
+		// Controllo sessione studente
+		if ($controller == 'admin') {
+			if(isset($_SESSION['gestore']) && $_SESSION['gestore'] != '') {
+				// OK. La sessione esiste
+				$checkedSession = true;
+			} else {
+				// ERRORE. La sessione non esiste
+				$checkedSession = false;
+			}
+		}
 
 		// Ritorno il valore booleano
 		return $checkedSession;

@@ -246,7 +246,6 @@
 			<div class="text-center student-button">
 				<a href="<?php echo APP_URL; ?>/studenti/impostazioni" class="btn btn-warning">Modifica Dati</a>
 				<button type="button" class="btn btn-warning" id="openInviaCurriculum">Carica Curriculum</button>
-				<?php echo ($students->Tesi_download)? '<a href="'.$students->Tesi_download.'" class="btn btn-warning">Scarica Tesi</a>' : ''; ?>
 				
 			</div><br>
 

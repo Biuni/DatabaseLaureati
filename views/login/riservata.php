@@ -12,13 +12,17 @@
 
 			<form method="post" action="" id="form-log-aziende">
 
-				<div class="form-group">
+			<div class="alert alert-danger <?php echo $hide; ?>" role="alert">
+			  <strong>Login non riuscito!</strong><br>Username o password non corretti.
+			</div>
+
+				<div class="form-group input-user_aziende">
 				<i class="fa fa-user-o"></i>
-					<input type="text" class="form-control" id="formGroupExampleInput" placeholder="Username">
+					<input type="text" class="form-control form-control-danger" id="user_aziende" name="username" placeholder="Username">
 				</div>
-				<div class="form-group">
+				<div class="form-group input-pwd_aziende">
 				<i class="fa fa-lock"></i>
-					<input type="password" class="form-control" id="formGroupExampleInput2" name="pass" placeholder="Password">
+					<input type="password" class="form-control form-control-danger" id="pwd_aziende" name="password" placeholder="Password">
 				</div>
 
 				<div class="form-group button-log">

@@ -1,3 +1,7 @@
+# 404 Redirect
+ErrorDocument 404 http://localhost/DatabaseLaureati/pages/error
+
+# Url Rewrite
 <IfModule mod_rewrite.c>
 
     Options +FollowSymLinks

@@ -93,6 +93,44 @@ class LoginController {
     }
 
     public function riservata() {
+
+        // Se sono già loggato vado all'area riservata
+        if (Session::checkSession('admin')) {
+          return Routes::redirectTo('admin','index');
+        }
+
+        // Di default nascondo l'alert di errore
+        $hide = 'hide';
+
+        // Controllo se sono arrivati valori
+        // in post compilati dal form
+        if ($_POST) {
+
+          // Creo un array per il sanitize dei valori
+          // ricevuti in $_POST
+          $args = array(
+            'username'   => FILTER_SANITIZE_SPECIAL_CHARS,
+            'password'   => FILTER_SANITIZE_SPECIAL_CHARS
+          );
+          // Tramite la funzione filter_input_array pulisco
+          // i dati ricevuti in caso ci fossero stati
+          // tentativi di manomissione
+          $clean_value = filter_input_array(INPUT_POST, $args);
+
+          if (Login::adminLogin($clean_value)) {
+            // Login RIUSCITO 
+            // Redirect all'area riservata delle aziende
+            $_SESSION['gestore'] = $clean_value['username'];
+
+            // Redirect all'area riservata 
+            return Routes::redirectTo('admin','index');
+
+          } else {
+            $hide = '';
+          }
+          
+        }
+
       require_once('views/login/riservata.php');
     }
 
