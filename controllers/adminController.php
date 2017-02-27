@@ -10,6 +10,20 @@
           return Routes::redirectTo('login','riservata');
         }
 
+        $info = Admin::lastLogin();
+        $last_seven = [
+          date('Y-m-d', strtotime('-6 days')),
+          date('Y-m-d', strtotime('-5 days')),
+          date('Y-m-d', strtotime('-4 days')),
+          date('Y-m-d', strtotime('-3 days')),
+          date('Y-m-d', strtotime('-2 days')),
+          date('Y-m-d', strtotime('-1 days')),
+          date('Y-m-d')
+        ];
+        $lastLoginAziende = Admin::lastLoginAziende($last_seven);
+        $lastLoginStudenti = Admin::lastLoginStudenti($last_seven);
+        $votoLaurea = Admin::votoLaurea();
+
         require_once('views/admin/index.php');
     }
 
@@ -117,6 +131,55 @@
             require_once('views/admin/aziende.php');
 
           }
+    }
+
+
+
+    public function curriculum() {
+
+      // Controllo la sessione
+      if (Session::checkSession('admin')) {
+        $username = htmlspecialchars($_SESSION['gestore']);
+      } else {
+        return Routes::redirectTo('login','riservata');
+      }
+
+      require_once('views/admin/curriculum.php');
+    }
+
+
+
+    public function impostazioni() {
+
+      // Controllo la sessione
+      if (Session::checkSession('admin')) {
+        $username = htmlspecialchars($_SESSION['gestore']);
+      } else {
+        return Routes::redirectTo('login','riservata');
+      }
+
+      require_once('views/admin/impostazioni.php');
+    }
+
+
+
+    public function newsletter() {
+
+      // Controllo la sessione
+      if (Session::checkSession('admin')) {
+        $username = htmlspecialchars($_SESSION['gestore']);
+      } else {
+        return Routes::redirectTo('login','riservata');
+      }
+
+      require_once('views/admin/newsletter.php');
+    }
+
+
+
+    public function logout() {
+      Session::destroySession();
+      return Routes::redirectTo('login','riservata');
     }
 
 

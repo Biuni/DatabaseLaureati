@@ -171,6 +171,34 @@ jQuery(document).ready(function($) {
         }
     });
 
+    // Validazione del form di login delle aziende
+    $('#form-log-admin').submit(function(e){
+
+        var all_right = true;
+        var form = $(this).serialize();
+        var validate = deparam(form);
+
+        var pwd_admin = validate.password;
+        var user_admin = validate.username;
+
+        if (user_admin == '' || !validUsername(user_admin)) {
+            all_right = false;
+            $('.input-user_admin').addClass('has-danger');
+        } else {
+            $('.input-user_admin').removeClass('has-danger');
+        }
+        if (pwd_admin == '') {
+            all_right = false;
+            $('.input-pwd_admin').addClass('has-danger');
+        } else {
+            $('.input-pwd_admin').removeClass('has-danger');
+        }
+
+        if (!all_right) {
+            e.preventDefault();
+        }
+    });
+
     // Validazione del form di update username aziende
     $('#mod-user-azienda').submit(function(e){
 

@@ -145,5 +145,12 @@
   <script src="<?php echo APP_URL; ?>/assets/js/jquery.counterup.min.js"></script>
   <script src="<?php echo APP_URL; ?>/assets/js/jquery.dataTables.min.js"></script>
   <script src="<?php echo APP_URL; ?>/assets/js/init.js"></script>
+
+  <?php
+  if ($controller == 'admin' && ($action == 'index' || $action == '')) {
+    echo '<script src="'.APP_URL.'/assets/js/Chart.min.js"></script>';
+    echo '<script src="'.APP_URL.'/assets/js/Chart.draw.js"></script>';
+  }
+  ?>
 </body>
 </html>

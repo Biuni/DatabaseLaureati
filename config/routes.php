@@ -75,7 +75,7 @@ class Routes {
 	    'registrazione' => ['index','privacy'],
 	    'aziende'       => ['index','impostazioni','dettaglio','logout'],
 	    'studenti'      => ['index','impostazioni','logout'],
-      'admin'         => ['index','laureati','aziende','curriculum','newsletter','impostazioni']
+      'admin'         => ['index','laureati','aziende','curriculum','newsletter','impostazioni','logout']
 	  );
 
   }

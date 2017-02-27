@@ -371,6 +371,64 @@ header nav .col-sm-9 {
     z-index: 1;
 }
 
+/* Main Login Area Riservata */
+#loginadmin .log-admin {
+    font-family: 'Montserrat', sans-serif;
+    margin: 40px 0 20px 0;
+}
+#loginadmin .lead {
+    font-size: 16px;
+    margin: 0 0 20px 0;
+}
+#loginadmin #form-log-admin {
+    max-width: 350px;
+    margin: 30px auto;
+}
+#loginadmin .form-title {
+    text-align: center;
+    max-width: 400px;
+    margin: 0 auto;
+    border-bottom: 5px solid #e79800;
+    font-size: 70px;
+    padding-bottom: 10px;
+}
+#loginadmin #form-log-admin .button-log {
+    text-align: center;
+    margin-bottom: 30px;
+}
+#loginadmin .btn-warning {
+    background: #e79800;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+#loginadmin #form-log-admin input {
+    padding: 6px 20px 6px 40px;
+    font-size: 15px;
+    color: #66727f;
+    background-color: #f9f9f9;
+    box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.05) inset;
+    -moz-box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.05) inset;
+    -webkit-box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.05) inset;
+    height: 48px;
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid #d6d9dd;
+}
+#loginadmin #form-log-admin .form-group {
+    position: relative;
+}
+#loginadmin #form-log-admin .form-group i {
+    position: absolute;
+    width: 16px;
+    height: 18px;
+    left: 18px;
+    top: 16px;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    color: #a8b6c3;
+    z-index: 1;
+}
+
 /* Main Area Aziende */
 #areaaziende .logged-menu {
 	padding: 11px 0;
@@ -487,6 +545,19 @@ header nav .col-sm-9 {
 #areastudenti .student-button .btn {
     color: #ffffff;
     cursor: pointer;
+}
+
+/* Main Area Riservata */
+#areariservata .logged-menu {
+    padding: 11px 0;
+    background: #eceeef;
+}
+#areariservata h3 {
+    font-family: 'Montserrat', sans-serif;
+    margin: 40px 0 0 0;
+}
+#areariservata .lead {
+    font-size: 16px;
 }
 
 /* 404 */
