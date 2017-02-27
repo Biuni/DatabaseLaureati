@@ -9,6 +9,7 @@ ErrorDocument 404 http://localhost/DatabaseLaureati/pages/error
 
 	RewriteRule ^([^/]*)/$ ?controller=$1&action=index [L]
 	RewriteRule ^([^/]*)/([^/]*)$ ?controller=$1&action=$2 [L]
-	RewriteRule ^([^/]*)/([^/]*)/([^/]*)/$ ?controller=$1&action=$2&id=$3 [L]
+	RewriteRule ^([^/]*)/([^/]*)/([^/]*)/$ ?controller=$1&action=$2&pagina=$3 [L]
+	RewriteRule ^([^/]*)/([^/]*)/([^/]*)/([^/]*)/$ ?controller=$1&action=$2&pagina=$3&query=$4 [L]
 
 </IfModule>

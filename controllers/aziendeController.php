@@ -140,17 +140,17 @@ class AziendeController {
           return Routes::redirectTo('login','aziende');
         }
         
-        // Se non viene passato l'id come GET
+        // Se non viene passato l'id dello studente come GET
         // o se non è un valore intero
         // faccio il redirect alla pagina di errore
-        $id = isset($_GET['id']) ? (int) $_GET['id'] : null;
+        $id = isset($_GET['pagina']) ? (int) $_GET['pagina'] : null;
         // Controllo e in caso stampo errore
         if (!$id)
             return Routes::redirectTo('pages', 'error');
         // Passo come parametri del metodo
         // l'id ricevuto trasformandolo
         // in intero
-        $details = Aziende::showDetails(intval($_GET['id']));
+        $details = Aziende::showDetails(intval($_GET['pagina']));
 
         // Layout del dettaglio del laureato
         require_once('views/aziende/dettaglio.php');
