@@ -15,6 +15,10 @@ class AziendeController {
     	// e stampo la lista di tutti i laureati
         $students = Aziende::getList();
 
+        // Faccio la chiamata al metodo del Model
+        // e stampo la lista di tutti i curriculum
+        $curriculum = Aziende::getCv();
+
         // Controllo se arriva una chiamata
         // dal form di ricerca
         if ($_POST) {

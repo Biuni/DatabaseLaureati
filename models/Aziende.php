@@ -38,6 +38,44 @@ class Aziende {
       return $list;
     }
 
+
+    // Metodo che restiuisce la lista
+    // di Curriculum del CdL
+    public static function getCv() {
+
+      // Inizializzo un array vuoto
+      $list = [];
+
+      // Entro nella sezione critica dove 
+      // effetuerò la query di selezione
+      try {
+
+        // Mi collego al Database
+        $db = Db::getInstance();
+        // Compongo la query esludendo i campi
+        // non visualizzati sulla tabella
+        $sql = "SELECT id, nome FROM curriculum";
+        // Eseguo la query
+        $stmt = $db->query($sql);
+        // Per ogni risultato della query
+        // vado ad inserire nell'array
+        // $list i dati di ogni studente
+        foreach($stmt->fetchAll() as $cv) {
+          $list[] = $cv;
+        }
+
+      } catch(PDOException $ex) {
+
+        // Errore. Stampo l'eccezzione
+        die('Errore: '.$sql.' - '.$ex->getMessage());
+
+      }
+
+      // Ritorno l'array con tutti
+      // i dati degli studenti
+      return $list;
+    }
+
     // Metodo che restiuisce la lista dei laureati
     // basata sulla ricerca
     public static function advancedSearch($clean_value) {

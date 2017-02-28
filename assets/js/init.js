@@ -47,7 +47,52 @@ jQuery(document).ready(function($) {
         ]
     });
     var count_row = table.rows().count();
-    $('.dataTables_length').prepend('<p class="lead text-warning"><strong>'+count_row+' laureati trovati</strong></p>');
+    $('#student-list_wrapper').prepend('<p class="lead text-warning"><strong>'+count_row+' laureati trovati</strong></p>');
+
+    var table2 = $('#student-list-admin').DataTable({
+        "order": [[ 3, "desc" ]],
+        "autoWidth": false,
+        "searching": false,
+        "language": {
+            "lengthMenu": "Mostra _MENU_ laureati per pagina.",
+            "zeroRecords": "Nessun laureato trovato.",
+            "info": "Pagina _PAGE_ di _PAGES_",
+            "sInfoEmpty":      "",
+            "sInfoFiltered":   "(filtrati da _MAX_ elementi totali)",
+            "oPaginate": {
+                "sFirst":      "Inizio",
+                "sPrevious":   '<i class="fa fa-arrow-circle-left" aria-hidden="true"></i>',
+                "sNext":       '<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>',
+                "sLast":       "Fine"
+            },
+            "sLoadingRecords": "Caricamento...",
+            "sProcessing":     "Elaborazione..."
+        }
+    });
+    var count_row2 = table2.rows().count();
+    $('#student-list-admin_wrapper').prepend('<p class="lead text-warning"><strong>'+count_row2+' laureati trovati</strong></p>');
+
+    var table3 = $('#aziende-list-admin').DataTable({
+        "autoWidth": false,
+        "searching": true,
+        "language": {
+            "lengthMenu": "Mostra _MENU_ laureati per pagina.",
+            "zeroRecords": "Nessun laureato trovato.",
+            "info": "Pagina _PAGE_ di _PAGES_",
+            "sInfoEmpty":      "",
+            "sInfoFiltered":   "(filtrati da _MAX_ elementi totali)",
+            "oPaginate": {
+                "sFirst":      "Inizio",
+                "sPrevious":   '<i class="fa fa-arrow-circle-left" aria-hidden="true"></i>',
+                "sNext":       '<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>',
+                "sLast":       "Fine"
+            },
+            "sLoadingRecords": "Caricamento...",
+            "sProcessing":     "Elaborazione..."
+        }
+    });
+    var count_row3 = table3.rows().count();
+    $('#aziende-list-admin_wrapper').prepend('<p class="lead text-warning"><strong>'+count_row3+' aziende trovate</strong></p>');
 
     // Validazione del form di registrazione delle aziende
     $('#form-reg-azienda').submit(function(e){

@@ -186,17 +186,11 @@
 							  <label class="form-control-label" for="curriculum">Per curriculum</label>
 							  <select class="form-control" id="curriculum" name="curriculum">
 								<option value="">Scegli...</option>
-								<option value="indefinito">Indefinito</option>
-								<option value="Sistemi integrati hardware/software">Sistemi integrati hardware/software</option>
-								<option value="Sistemi multimediali integrati">Sistemi multimediali integrati</option>
-								<option value="Domotica e informatica aziendale">Domotica e informatica aziendale</option>
-								<option value="Indirizzo comune">Indirizzo comune</option>
-								<option value="Elaborazione delle informazioni">Elaborazione delle informazioni</option>
-								<option value="Gestione digitale del territorio">Gestione digitale del territorio</option>
-								<option value="Logico-cognitivo">Logico-cognitivo</option>
-								<option value="Impresa">Impresa</option>
-								<option value="Nuovi media">Nuovi media</option>
-								<option value="Politiche sociali">Politiche sociali</option>
+								<?php 
+									foreach($curriculum as $cv) {
+										echo '<option value="'.$cv['nome'].'">'.$cv['nome'].'</option>';
+									}
+								?>
 							  </select>
 							  <small class="form-text text-muted">Indirizzo di studio.</small>
 							</div>
