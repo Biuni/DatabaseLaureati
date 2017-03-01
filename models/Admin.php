@@ -442,5 +442,74 @@ class Admin {
 
     }
 
+    // Metodo utilizzato per la modifica dei dati dello studente
+    public static function updateDataStudente($value, $id) {
+
+      $result = FALSE;
+
+      // Mi assicuro che il campo visibility
+      // non sia stato manomesso o che sia 
+      // stato inserito unvalore diverso da 0 o 1
+      $visibility = ($value['Visibility'] != 0 && $value['Visibility'] != 1) ? 0 : $value['Visibility'];
+      $Prov_n = strtoupper($value['Prov_n']);
+      $Prov_r = strtoupper($value['Prov_r']);
+
+        // Entro nella sezione critica dove 
+        // effetuerò la query di update
+        // dei dati
+        try {
+
+          // Mi collego al Database
+          $db = Db::getInstance();
+          // Compongo la query
+          $sql = "UPDATE laureati_tb SET Nome = :Nome, Cognome = :Cognome, Matricola = :Matricola, Data_n = :Data_n, Sesso = :Sesso, CF = :CF, Luogo_n = :Luogo_n, Prov_n = :Prov_n, Luogo_r = :Luogo_r, Prov_r = :Prov_r, Telefono = :Telefono, e_mail = :e_mail, curriculum = :curriculum, Titolo_tesi = :Titolo_tesi, tipologia = :tipologia, relatore = :relatore, Voto_laurea = :Voto_laurea, cum_laude = :cum_laude, Data_Laurea = :Data_Laurea, Note = :Note, Visibility = :Visibility WHERE ID = :id";
+          // Preparo la query 
+          $stmt = $db->prepare($sql);
+          // Eseguo la query
+          $stmt->execute(array(':Nome' => $value['Nome'], ':Cognome' => $value['Cognome'], ':Matricola' => $value['Matricola'], ':Data_n' => $value['Data_n'], ':Sesso' => $value['Sesso'], ':CF' => $value['CF'], ':Luogo_n' => $value['Luogo_n'], ':Prov_n' => $Prov_n, ':Luogo_r' => $value['Luogo_r'], ':Prov_r' => $Prov_r, ':Telefono' => $value['Telefono'], ':e_mail' => $value['e_mail'], ':curriculum' => $value['curriculum'], ':Titolo_tesi' => $value['Titolo_tesi'], ':tipologia' => $value['tipologia'], ':relatore' => $value['relatore'], ':Voto_laurea' => $value['Voto_laurea'], ':cum_laude' => $value['cum_laude'], ':Data_Laurea' => $value['Data_Laurea'], ':Note' => $value['Note'], ':Visibility' => $visibility, ':id' => $id));
+
+          $result = TRUE;
+
+        } catch(PDOException $ex) {
+
+          // Errore. Stampo l'eccezzione
+          die('Errore: '.$sql.' - '.$ex->getMessage());
+
+        }
+
+      return $result;
+    }
+
+    // Metodo utilizzato per l'upload della tesi
+    public static function uploadTesi($filename, $id) {
+
+      $result = FALSE;
+
+        // Entro nella sezione critica dove 
+        // effetuerò la query di update
+        // del curriculum
+        try {
+
+          // Mi collego al Database
+          $db = Db::getInstance();
+          // Compongo la query
+          $sql = "UPDATE laureati_tb SET Tesi_download = :tesi_download WHERE ID = :id";
+          // Preparo la query 
+          $stmt = $db->prepare($sql);
+          // Eseguo la query
+          $stmt->execute(array(':tesi_download' => $filename, ':id' => $id));
+
+          $result = TRUE;
+
+        } catch(PDOException $ex) {
+
+          // Errore. Stampo l'eccezzione
+          die('Errore: '.$sql.' - '.$ex->getMessage());
+
+        }
+
+      return $result;
+    }
+
 }
 ?>

@@ -5,6 +5,9 @@ jQuery(document).ready(function($) {
     $('#openInviaCurriculum').click(function(){
         $('#inviaCurriculum').modal('show');
     });
+    $('#openInviaTesi').click(function(){
+        $('#inviaTesi').modal('show');
+    });
 
     var sidenav = $('#mySidenav');
     var overlay = $('.overlay-sidenav');

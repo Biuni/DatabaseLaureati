@@ -23,6 +23,7 @@
 			</div>
 
 			<h3>Dettaglio Studente</h3>
+			<p class="lead">Dettaglio dello studente laureato.</p>
 
 					<div class="timeline">
 
