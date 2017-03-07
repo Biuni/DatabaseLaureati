@@ -382,6 +382,24 @@
         return Routes::redirectTo('login','riservata');
       }
 
+      $hide_ok_pwd = 'hide';
+      $hide_err_pwd = 'hide';
+
+      if ($_POST) {
+        if ($_POST['pwd_nuova'] === $_POST['pwd_nuova2']) {
+          if (Admin::updatePwdAdmin($_POST)) {
+            $hide_ok_pwd = '';
+            $info_pwd = 'hide';
+          } else {
+            $hide_err_pwd = '';
+            $info_pwd = 'hide';
+          }
+        } else {
+          $hide_err_pwd = '';
+          $info_pwd = 'hide';
+        }
+      }
+
       require_once('views/admin/impostazioni.php');
     }
 
