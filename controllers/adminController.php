@@ -201,6 +201,52 @@
                 }
               }
 
+              if ($pagina == 'inserimento') {
+
+                $hide_ok_insert = 'hide';
+                $hide_err_insert = 'hide';
+
+                if ($_POST) {
+                  // Array per il sanitize del $_POST
+                  $args = array(
+                    'Nome'        => FILTER_SANITIZE_SPECIAL_CHARS,
+                    'Cognome'     => FILTER_SANITIZE_SPECIAL_CHARS,
+                    'Matricola'   => FILTER_SANITIZE_SPECIAL_CHARS,
+                    'Sesso'       => FILTER_SANITIZE_SPECIAL_CHARS,
+                    'e_mail'      => FILTER_VALIDATE_EMAIL,
+                    'curriculum'  => FILTER_SANITIZE_SPECIAL_CHARS,
+                    'Titolo_tesi' => FILTER_SANITIZE_SPECIAL_CHARS,
+                    'tipologia'   => FILTER_SANITIZE_SPECIAL_CHARS,
+                    'relatore'    => FILTER_SANITIZE_SPECIAL_CHARS,
+                    'Voto_laurea' => FILTER_VALIDATE_INT,
+                    'cum_laude'   => FILTER_SANITIZE_SPECIAL_CHARS,
+                    'Data_Laurea' => FILTER_SANITIZE_SPECIAL_CHARS,
+                    'Visibility'  => FILTER_VALIDATE_INT,
+                    'Password'    => FILTER_SANITIZE_SPECIAL_CHARS,
+                    'Password2'    => FILTER_SANITIZE_SPECIAL_CHARS
+                  );
+                  // Tramite la funzione filter_input_array pulisco
+                  // i dati ricevuti in caso ci fossero stati
+                  // tentativi di manomissione
+                  $clean_value = filter_input_array(INPUT_POST, $args);
+
+                  // Se le password corrispondono
+                  if ($clean_value['Password'] === $clean_value['Password2']) {
+                    // Faccio la chiamata al metodo del Model 
+                    // passandogli i parametri appena puliti
+                    if(Admin::insertNewLaureato($clean_value)){
+                      $hide_ok_insert = '';
+                    } else {
+                      $hide_err_insert = '';
+                    }
+                  } else {
+                    $hide_err_insert = '';
+                  }
+                }
+                
+                $curriculum = Admin::getCv();
+              }
+
               require_once('views/admin/laureati/'.$pagina.'.php');
 
             }
@@ -248,6 +294,37 @@
               if ($query) {
 
                 $query = $_GET['query'];
+
+                    $hide_ok_azienda = 'hide';
+                    $hide_err_azienda = 'hide';
+
+                    // Entro se sto modificando i dati dal form
+                    if ($_POST) {
+                      // Array per il sanitize del $_POST
+                      $args = array(
+                        'r_sociale'   => FILTER_SANITIZE_SPECIAL_CHARS,
+                        'nome'        => FILTER_SANITIZE_SPECIAL_CHARS,
+                        'cognome'     => FILTER_SANITIZE_SPECIAL_CHARS,
+                        'email'      => FILTER_VALIDATE_EMAIL,
+                        'newsletter'  => FILTER_SANITIZE_SPECIAL_CHARS,
+                        'username'    => FILTER_SANITIZE_SPECIAL_CHARS,
+                      );
+                      // Tramite la funzione filter_input_array pulisco
+                      // i dati ricevuti in caso ci fossero stati
+                      // tentativi di manomissione
+                      $clean_value = filter_input_array(INPUT_POST, $args);
+                      // Richiamo la funzione dentro il Model
+                      // per fare l'update dei dati
+                      if(Admin::updateDataAzienda($clean_value,$query)){
+                        // Mostro l'alert di conferma 
+                        $hide_ok_azienda = '';
+                      } else {
+                        // Mostro l'alert di errore
+                        $hide_err_azienda = '';
+                      }
+                    }
+
+                    $azienda = Admin::getAzienda($query);
                 
                 require_once('views/admin/aziende/'.$pagina.'.php');
 

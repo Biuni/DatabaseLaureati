@@ -371,6 +371,37 @@ class Admin {
       return $list;
     }
 
+    // Funzione che restituisce i dettagli di un'azienda
+    public static function getAzienda($id) {
+
+      // Entro nella sezione critica dove 
+      // effetuerò la query di selezione
+      try {
+
+        // Mi collego al Database
+        $db = Db::getInstance();
+        // Compongo la query esludendo la password
+        // in quanto non utile
+        $sql = "SELECT r_sociale, nome, cognome, email, newsletter, username FROM aziende WHERE ID = :id";
+        // Preparo la query
+        $stmt = $db->prepare($sql);
+        // Una volta preparata la query sostituisco
+        // :username con il valore dell'username
+        // ricevuto come parametro e la eseguo
+        $rows = $stmt->execute(array(':id' => $id));
+
+      } catch(PDOException $ex) {
+
+        // Errore. Stampo l'eccezzione
+        die('Errore: '.$sql.' - '.$ex->getMessage());
+
+      }
+
+      // Prendo il risultato della query
+      // e lo ritorno come oggetto
+      return $stmt->fetchObject();
+    }
+
 
     // Metodo che restiuisce la lista
     // di Curriculum del CdL
@@ -505,6 +536,129 @@ class Admin {
 
           // Errore. Stampo l'eccezzione
           die('Errore: '.$sql.' - '.$ex->getMessage());
+
+        }
+
+      return $result;
+    }
+
+    // Metodo utilizzato per l'inserimento dei dati di un nuovo laureato
+    public static function insertNewLaureato($value) {
+
+      $result = FALSE;
+
+      // Genero il salt
+      $salt = dechex(mt_rand(0, 2147483647)) . dechex(mt_rand(0, 2147483647));
+
+      // Creo ora una stringa di hash utilizzando la password concatenata al salt
+      // la quale verrà inserita all'interno del database.
+      $pwd = hash('sha256', $value['Password'] . $salt);
+
+      // Successivamente facciamo un ulteriore funzione di hash sull'hash stesso
+      // per 65536 volte.
+      for($round = 0; $round < 65536; $round++) {
+          $pwd = hash('sha256', $pwd . $salt);
+      }
+
+      // Mi assicuro che il campo visibility
+      // non sia stato manomesso o che sia 
+      // stato inserito unvalore diverso da 0 o 1
+      $visibility = ($value['Visibility'] != 0 && $value['Visibility'] != 1) ? 0 : $value['Visibility'];      
+
+        // Entro nella sezione critica dove 
+        // effetuerò la query di insert
+        // dei dati
+        try {
+
+          // Mi collego al Database
+          $db = Db::getInstance();
+          // Compongo la query
+          $sql = "INSERT INTO laureati_tb (Nome, Cognome, Matricola, Sesso, Username, Password, e_mail, curriculum, Titolo_tesi, tipologia, relatore, Voto_laurea, cum_laude, Data_Laurea, Visibility, salt) VALUES (:Nome, :Cognome, :Matricola, :Sesso, :Username, :Password, :e_mail, :curriculum, :Titolo_tesi, :tipologia, :relatore, :Voto_laurea, :cum_laude, :Data_Laurea, :Visibility, :salt)";
+          // Preparo la query 
+          $stmt = $db->prepare($sql);
+          // Eseguo la query
+          $stmt->execute(array(':Nome' => $value['Nome'], ':Cognome' => $value['Cognome'], ':Matricola' => $value['Matricola'], ':Sesso' => $value['Sesso'], ':Username' => $value['Matricola'], ':Password' => $pwd, ':e_mail' => $value['e_mail'], ':curriculum' => $value['curriculum'], ':Titolo_tesi' => $value['Titolo_tesi'], ':tipologia' => $value['tipologia'], ':relatore' => $value['relatore'], ':Voto_laurea' => $value['Voto_laurea'], ':cum_laude' => $value['cum_laude'], ':Data_Laurea' => $value['Data_Laurea'], ':Visibility' => $visibility, ':salt' => $salt));
+
+          $result = TRUE;
+
+        } catch(PDOException $ex) {
+
+          // Errore. Stampo l'eccezzione
+          die('Errore: '.$sql.' - '.$ex->getMessage());
+
+        }
+
+      return $result;
+    }
+
+    // Metodo utilizzato per la modifica dei dati dello studente
+    public static function updateDataAzienda($value, $id) {
+
+      $result = FALSE;
+      $old = Admin::getAzienda($id);
+
+      // Se l'username non è cambiato procedo
+      if ($old->username === $value['username'] ) {
+
+        $used = FALSE;
+
+      // Se l'username è cambiato faccio il controllo
+      } else {
+
+        // Entro nella sezione critica dove 
+        // effetuerò la query per controllare
+        // che l'username non è già in uso
+        try {
+
+          // Mi collego al Database
+          $db = Db::getInstance();
+          // Compongo la query
+          $sql = "SELECT ID FROM aziende WHERE username = :username";
+          // Preparo la query 
+          $stmt = $db->prepare($sql);
+          // Eseguo la query
+          $stmt->execute(array(':username' => $value['username']));
+          // Eseguo un fetch per contare le righe
+          // del risultato della query.
+          $rows = $stmt->fetch(PDO::FETCH_NUM);
+          // Se esiste almeno una riga vuol dire che le 
+          // username è già utilizzato
+          $used = ($rows > 0) ? TRUE : FALSE;
+
+        } catch(PDOException $ex) {
+
+          // Errore. Stampo l'eccezzione
+          die('Errore: '.$sql.' - '.$ex->getMessage());
+
+        }
+      }
+
+        // Se l'username è cambiato ed è già utilizzato
+        // esco senza fare l'update
+        if (!$used) {
+
+          // Entro nella sezione critica dove 
+          // effetuerò la query di update
+          // dei dati
+          try {
+
+            // Mi collego al Database
+            $db = Db::getInstance();
+            // Compongo la query
+            $sql = "UPDATE aziende SET r_sociale = :r_sociale, nome = :nome, cognome = :cognome, email = :email, newsletter = :newsletter, username = :username WHERE ID = :id";
+            // Preparo la query 
+            $stmt = $db->prepare($sql);
+            // Eseguo la query
+            $stmt->execute(array(':r_sociale' => $value['r_sociale'], ':nome' => $value['nome'], ':cognome' => $value['cognome'], ':email' => $value['email'], ':newsletter' => $value['newsletter'], ':username' => $value['username'], ':id' => $id));
+
+            $result = TRUE;
+
+          } catch(PDOException $ex) {
+
+            // Errore. Stampo l'eccezzione
+            die('Errore: '.$sql.' - '.$ex->getMessage());
+
+          }
 
         }
 
