@@ -184,12 +184,15 @@
                 if ($_POST) {
                   // Array per il sanitize del $_POST
                   $args = array(
-                    'voto_laurea'   => FILTER_SANITIZE_ENCODED,
-                    'anno_laurea' => FILTER_SANITIZE_ENCODED,
+                    'voto_laurea1'   => FILTER_SANITIZE_ENCODED,
+                    'voto_laurea2'   => FILTER_SANITIZE_ENCODED,
+                    'anno_laurea1' => FILTER_SANITIZE_ENCODED,
+                    'anno_laurea2' => FILTER_SANITIZE_ENCODED,
                     'anno_nascita'  => FILTER_SANITIZE_ENCODED,
                     'provincia'   => FILTER_SANITIZE_ENCODED,
                     'curriculum'  => FILTER_SANITIZE_SPECIAL_CHARS,
-                    'cognome'   => FILTER_SANITIZE_ENCODED
+                    'cognome'   => FILTER_SANITIZE_ENCODED,
+                    'relatore'   => FILTER_SANITIZE_ENCODED
                   );
                   // Tramite la funzione filter_input_array pulisco
                   // i dati ricevuti in caso ci fossero stati
@@ -199,6 +202,7 @@
                   // passandogli i parametri appena puliti
                   $students = Admin::advancedSearchStudenti($clean_value);
                 }
+                $curriculum = Admin::getCv();
               }
 
               if ($pagina == 'inserimento') {

@@ -33,28 +33,56 @@
 						<div class="col-md-6">
 							<div class="form-group">
 							  <label class="form-control-label" for="voto_laurea">Per voto di laurea</label>
-							  <select class="form-control" id="voto_laurea" name="voto_laurea">
-							    <option value="">Scegli...</option>
-								  <?php
-									  foreach ( range( 110, 66 ) as $i ) {
-									    echo '<option value="'.$i.'">'.$i.'</option>';
-									  }
-								   ?>
-							  </select>
-							  <small class="form-text text-muted">Su 110.</small>
+							  <div class="row">
+								<div class="col-sm-6">
+									<select class="form-control" id="voto_laurea1" name="voto_laurea1">
+										<option value="">Da...</option>
+										  <?php
+											  foreach ( range( 110, 66 ) as $i ) {
+											    echo '<option value="'.$i.'">'.$i.'</option>';
+											  }
+										   ?>
+									</select>
+								</div>
+								<div class="col-sm-6">
+									<select class="form-control" id="voto_laurea2" name="voto_laurea2">
+										<option value="">A...</option>
+										  <?php
+											  foreach ( range( 110, 66 ) as $i ) {
+											    echo '<option value="'.$i.'">'.$i.'</option>';
+											  }
+										   ?>
+									</select>
+								</div>
+							  </div>
+							  <small class="form-text text-muted">Votazione finale della laurea.</small>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-							  <label class="form-control-label" for="anno_laurea">A partire dall'anno di laurea</label>
-							  <select class="form-control" id="anno_laurea" name="anno_laurea">
-							    <option value="">Scegli...</option>
-								  <?php
-									  foreach ( range( date('Y'), 2005 ) as $i ) {
-									    echo '<option value="'.$i.'-01-01">'.$i.'</option>';
-									  }
-								   ?>
-							  </select>
+							  <label class="form-control-label" for="anno_laurea">Anno di laurea</label>
+							  <div class="row">
+								<div class="col-sm-6">
+								  <select class="form-control" id="anno_laurea1" name="anno_laurea1">
+								    <option value="">Da...</option>
+									  <?php
+										  foreach ( range( date('Y'), 2005 ) as $i ) {
+										    echo '<option value="'.$i.'-01-01">'.$i.'</option>';
+										  }
+									   ?>
+								  </select>
+								</div>
+								<div class="col-sm-6">
+								  <select class="form-control" id="anno_laurea2" name="anno_laurea2">
+								    <option value="">A...</option>
+									  <?php
+										  foreach ( range( date('Y'), 2005 ) as $i ) {
+										    echo '<option value="'.$i.'-12-31">'.$i.'</option>';
+										  }
+									   ?>
+								  </select>
+								</div>
+							  </div>
 							  <small class="form-text text-muted">Anno d'inizio del corso di laurea 2005.</small>
 							</div>
 						</div>
@@ -196,17 +224,11 @@
 							  <label class="form-control-label" for="curriculum">Per curriculum</label>
 							  <select class="form-control" id="curriculum" name="curriculum">
 								<option value="">Scegli...</option>
-								<option value="indefinito">Indefinito</option>
-								<option value="Sistemi integrati hardware/software">Sistemi integrati hardware/software</option>
-								<option value="Sistemi multimediali integrati">Sistemi multimediali integrati</option>
-								<option value="Domotica e informatica aziendale">Domotica e informatica aziendale</option>
-								<option value="Indirizzo comune">Indirizzo comune</option>
-								<option value="Elaborazione delle informazioni">Elaborazione delle informazioni</option>
-								<option value="Gestione digitale del territorio">Gestione digitale del territorio</option>
-								<option value="Logico-cognitivo">Logico-cognitivo</option>
-								<option value="Impresa">Impresa</option>
-								<option value="Nuovi media">Nuovi media</option>
-								<option value="Politiche sociali">Politiche sociali</option>
+								<?php 
+									foreach($curriculum as $cv) {
+										echo '<option value="'.$cv['nome'].'">'.$cv['nome'].'</option>';
+									}
+								?>
 							  </select>
 							  <small class="form-text text-muted">Indirizzo di studio.</small>
 							</div>
@@ -216,6 +238,13 @@
 							  <label class="form-control-label" for="cognome">Per cognome</label>
 							  <input type="text" class="form-control" id="cognome" name="cognome">
 							  <small class="form-text text-muted">Basata sul cognome del candidato.</small>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+							  <label class="form-control-label" for="relatore">Per relatore</label>
+							  <input type="text" class="form-control" id="relatore" name="relatore">
+							  <small class="form-text text-muted">Basata sul cognome del relatore.</small>
 							</div>
 						</div>
 
@@ -230,6 +259,8 @@
 
 					<?php
 						if(isset($students)){
+
+							echo '<p class="text-warning">'.count($students).' laureati trovati</p>';
 
 							echo '<ul class="list-group">';
 							foreach($students as $student) { 

@@ -235,12 +235,16 @@ class Admin {
       $list = [];
       $params = [];
 
-      $voto_laurea = $clean_value['voto_laurea'];
-      $anno_laurea = $clean_value['anno_laurea'];
+      $voto_laurea1 = $clean_value['voto_laurea1'];
+      $voto_laurea2 = $clean_value['voto_laurea2'];
+      $anno_laurea1 = $clean_value['anno_laurea1'];
+      $anno_laurea2 = $clean_value['anno_laurea2'];
+
       $anno_nascita = $clean_value['anno_nascita'];
       $provincia = strtoupper($clean_value['provincia']);
       $curriculum = $clean_value['curriculum'];
       $cognome = $clean_value['cognome'];
+      $relatore = $clean_value['relatore'];
 
       // Entro nella sezione critica dove 
       // effetuerò la query di selezione
@@ -250,15 +254,23 @@ class Admin {
         $db = Db::getInstance();
         // Compongo la query esludendo i campi
         // a seconda dei valori ricevuti in $_POST
-        $sql = "SELECT ID, Nome, Cognome, Titolo_tesi, Voto_laurea, Data_Laurea, cum_laude FROM laureati_tb WHERE Username <> 'admin'";
+        $sql = "SELECT ID, Nome, Cognome FROM laureati_tb WHERE Username <> 'admin'";
 
-        if ($voto_laurea != '') {
-          $sql .= " AND Voto_laurea >= :voto_laurea";
-          $params[':voto_laurea'] = $voto_laurea;
+        if ($voto_laurea1 != '') {
+          $sql .= " AND Voto_laurea >= :voto_laurea1";
+          $params[':voto_laurea1'] = $voto_laurea1;
         }
-        if ($anno_laurea != '') {
-          $sql .= " AND Data_laurea >= :anno_laurea";
-          $params[':anno_laurea'] = $anno_laurea;
+        if ($voto_laurea2 != '') {
+          $sql .= " AND Voto_laurea <= :voto_laurea2";
+          $params[':voto_laurea2'] = $voto_laurea2;
+        }
+        if ($anno_laurea1 != '') {
+          $sql .= " AND Data_laurea >= :anno_laurea1";
+          $params[':anno_laurea1'] = $anno_laurea1;
+        }
+        if ($anno_laurea2 != '') {
+          $sql .= " AND Data_laurea <= :anno_laurea2";
+          $params[':anno_laurea2'] = $anno_laurea2;
         }
         if ($anno_nascita != '') {
           $sql .= " AND Data_n >= :anno_nascita";
@@ -275,6 +287,10 @@ class Admin {
         if ($cognome != '') {
           $sql .= " AND cognome LIKE :cognome";
           $params[':cognome'] = '%'.$cognome.'%';
+        }
+        if ($relatore != '') {
+          $sql .= " AND relatore LIKE :relatore";
+          $params[':relatore'] = '%'.$relatore.'%';
         }
 
         // Preparo la query
