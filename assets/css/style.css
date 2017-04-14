@@ -35,9 +35,54 @@ a:hover {
 .has-danger .form-control {
     border-color: #d9534f !important;
 }
+
 .btn-warning {
     cursor: pointer;
+    background-color: #009d5c !important;
+    border-color: #009d5c !important;
 }
+.btn-warning.active, .btn-warning:active, .show>.btn-warning.dropdown-toggle {
+    color: #fff;
+    background-color: #009d5c !important;
+    background-image: none;
+    border-color: #009d5c !important;
+}
+.btn-warning.focus, .btn-warning:focus {
+    -webkit-box-shadow: 0 0 0 2px rgba(240,173,78,.5);
+    box-shadow: 0 0 0 2px rgba(240,173,78,.5);
+}
+.btn-warning:hover {
+    color: #fff;
+    background-color: #009d5c !important;
+    border-color: #009d5c !important;
+}
+.btn-outline-warning {
+    color: #009d5c;
+    background-image: none;
+    background-color: transparent;
+    border-color: #009d5c !important;
+}
+.btn-outline-warning:hover {
+    color: #fff;
+    background-color: #009d5c !important;
+    border-color: #009d5c !important;
+}
+.btn-outline-warning.active, .btn-outline-warning:active, .show>.btn-outline-warning.dropdown-toggle {
+    color: #fff;
+    background-color: #009d5c !important;
+    border-color: #009d5c !important;
+}
+.btn-outline-warning.focus, .btn-outline-warning:focus {
+    -webkit-box-shadow: 0 0 0 2px rgba(240,173,78,.5);
+    box-shadow: 0 0 0 2px rgba(240,173,78,.5);
+}
+.text-warning {
+    color: #009d5c !important;
+}
+.badge-warning {
+    background-color: #009d5c !important;
+}
+
 table.dataTable tbody td,
 table.dataTable thead th {
   vertical-align: middle !important;
@@ -51,7 +96,7 @@ header {
 }
 header .general-info {
     width: 100%;
-    background: #e79800;
+    background: #009d5c;
 }
 header .info-small {
     color: #fff;
@@ -71,12 +116,12 @@ header nav .col-sm-9 {
     padding: 10px;
 }
 .menu-navigation ul li a {
-    color: #e79800;
+    color: #009d5c;
 }
 .menu-navigation ul li a:hover {
     text-decoration: none;
     padding-bottom: 3px;
-    border-bottom: 2px solid #e79800;
+    border-bottom: 2px solid #009d5c;
 }
 .menu-navigation-mobile {
     display: none;
@@ -165,7 +210,7 @@ header nav .col-sm-9 {
 #homepage .about-db-cdl blockquote {
     background: #eceeef;
     font-size: 14px;
-    border-color: #e79800;
+    border-color: #009d5c;
     min-height: 160px;
 }
 #homepage .about-db-cdl .blockquote-reverse {
@@ -224,7 +269,7 @@ header nav .col-sm-9 {
 }
 #homepage .numbers-grow h4 {
     font-size: 30px;
-    color: #e79800;
+    color: #009d5c;
 }
 #homepage .numbers-grow h4.percent:after {
     content: ' %';
@@ -249,7 +294,7 @@ header nav .col-sm-9 {
     margin: 30px auto;
 }
 #registrazione .btn-warning {
-    background: #e79800;
+    background: #009d5c;
     cursor: pointer;
     margin-bottom: 30px;
 }
@@ -271,7 +316,7 @@ header nav .col-sm-9 {
     text-align: center;
     max-width: 400px;
     margin: 0 auto;
-    border-bottom: 5px solid #e79800;
+    border-bottom: 5px solid #009d5c;
     font-size: 70px;
     padding-bottom: 10px;
 }
@@ -308,7 +353,7 @@ header nav .col-sm-9 {
 }
 
 #loginstudenti .btn-warning {
-    background: #e79800;
+    background: #009d5c;
     cursor: pointer;
     margin-bottom: 30px;
 }
@@ -330,7 +375,7 @@ header nav .col-sm-9 {
     text-align: center;
     max-width: 400px;
     margin: 0 auto;
-    border-bottom: 5px solid #e79800;
+    border-bottom: 5px solid #009d5c;
     font-size: 70px;
     padding-bottom: 10px;
 }
@@ -339,7 +384,7 @@ header nav .col-sm-9 {
     margin-bottom: 30px;
 }
 #loginaziende .btn-warning {
-    background: #e79800;
+    background: #009d5c;
     cursor: pointer;
     margin-bottom: 30px;
 }
@@ -388,7 +433,7 @@ header nav .col-sm-9 {
     text-align: center;
     max-width: 400px;
     margin: 0 auto;
-    border-bottom: 5px solid #e79800;
+    border-bottom: 5px solid #009d5c;
     font-size: 70px;
     padding-bottom: 10px;
 }
@@ -397,7 +442,7 @@ header nav .col-sm-9 {
     margin-bottom: 30px;
 }
 #loginadmin .btn-warning {
-    background: #e79800;
+    background: #009d5c;
     cursor: pointer;
     margin-bottom: 30px;
 }
@@ -540,7 +585,7 @@ header nav .col-sm-9 {
 }
 
 .time-box .time-data:after {
-    background-color: #e79800;
+    background-color: #009d5c;
 }
 #areastudenti .student-button .btn {
     color: #ffffff;

@@ -15,7 +15,7 @@ return [
 
 	define('APP_LANG', 'it'),
 
-	define('APP_COLOR', '#e79800'),
+	define('APP_COLOR', '#009d5c'),
 
 	define('APP_MAIL', 'info@campus.uniurb.it'),
 

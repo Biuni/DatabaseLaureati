@@ -43,7 +43,7 @@
           <!-- Colonna Sinistra -->
           <div class="col-sm-5">
             <div class="float-left info-small">
-              <i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:#"><?php echo APP_MAIL; ?></a>
+              <i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:<?php echo APP_MAIL; ?>"><?php echo APP_MAIL; ?></a>
             </div>
           </div>
           <!-- Colonna Destra -->
@@ -67,7 +67,7 @@
           <!-- Logo -->
           <div class="col-sm-3">
             <div class="float-left">
-              <img src="<?php echo APP_URL; ?>/assets/img/logo_sti.png" alt="Logo Uniurb" title="Logo Uniurb" class="logo">
+              <a href="<?php echo APP_URL; ?>"><img src="<?php echo APP_URL; ?>/assets/img/logo_sti.png" alt="Logo Uniurb" title="Logo Uniurb" class="logo"></a>
             </div>
           </div>
           <!-- Menu -->

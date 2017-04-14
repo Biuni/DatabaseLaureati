@@ -10,6 +10,6 @@
 	</blockquote>
 	<br>
 
-	<a href="<?php echo APP_URL; ?>" class="btn btn-warning turn-to-hp">Torna in Homepage</a><br>
+	<a href="<?php echo APP_URL; ?>" class="btn btn-warning turn-to-hp">Torna in Homepage</a><br><br>
 
 </div>
