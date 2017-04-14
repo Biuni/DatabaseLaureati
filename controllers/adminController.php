@@ -414,6 +414,61 @@
         return Routes::redirectTo('login','riservata');
       }
 
+      $hide_ok_view = 'hide';
+      $hide_ok_dw = 'hide';
+      
+      if ($_POST) {
+
+        // Estraggo solo le mail di tutti i laureati
+        if ($_POST['tipo_query'] == '0') {
+          $hide_ok_view = '';
+          $email_data = Admin::extractEmail($_POST['tipo_query']);
+
+        // Query con scelta dei laureati
+        } else if ($_POST['tipo_query'] == '1') {
+          $hide_ok_dw = '';
+          $student_data = Admin::extractLaureati($_POST);
+
+          $path_csv = __DIR__ . '/../assets/files/newsletter.csv';
+
+          if (DIRECTORY_SEPARATOR == '\\') {
+              $path_csv = str_replace('/', '\\', $path_csv);
+          }
+
+          // Scrivo il file CSV
+          $fp = fopen($path_csv, 'w');
+          foreach ($student_data as $fields => $value) {
+              fputcsv($fp, $value);
+          }
+          fclose($fp);
+
+
+        // Estraggo solo le mail di tutte le aziende
+        } else if ($_POST['tipo_query'] == '2') {
+          $hide_ok_view = ''; 
+          $email_data = Admin::extractEmail($_POST['tipo_query']);
+
+        // Query con scelta delle aziende
+        } else if ($_POST['tipo_query'] == '3') {
+          $hide_ok_dw = '';
+          $company_data = Admin::extractAziende($_POST);
+
+          $path_csv = __DIR__ . '/../assets/files/newsletter.csv';
+
+          if (DIRECTORY_SEPARATOR == '\\') {
+              $path_csv = str_replace('/', '\\', $path_csv);
+          }
+
+          // Scrivo il file CSV
+          $fp = fopen($path_csv, 'w');
+          foreach ($company_data as $fields => $value) {
+              fputcsv($fp, $value);
+          }
+          fclose($fp);
+        }
+
+      }
+
       require_once('views/admin/newsletter.php');
     }
 

@@ -742,5 +742,216 @@ class Admin {
 
     }
 
+    // Metodo utilizzato per l'estrazione della newsletter
+    public static function extractEmail($type) {
+
+
+      // Inizializzo un array vuoto
+      $list = [];
+
+      // Entro nella sezione critica dove 
+      // effetuerò la query di selezione
+      try {
+
+        // Mi collego al Database
+        $db = Db::getInstance();
+        // Compongo la query
+        // A seconda del tipo faccio la query
+        // di selezione dalla giusta tabella
+        if ($type == '0') {
+          $sql = "SELECT e_mail FROM laureati_tb WHERE e_mail <> ''";
+        } else {
+          $sql = "SELECT email FROM aziende WHERE email <> '' AND newsletter = 'Si'";
+        }
+        // Eseguo la query
+        $stmt = $db->query($sql);
+        // Per ogni risultato della query
+        // vado ad inserire nell'array
+        // $list l'email di ogni studente
+        foreach($stmt->fetchAll() as $user) {
+          $list[] = $user;
+        }
+
+      } catch(PDOException $ex) {
+
+        // Errore. Stampo l'eccezzione
+        die('Errore: '.$sql.' - '.$ex->getMessage());
+
+      }
+
+      // Ritorno l'array con tutti
+      // i dati degli studenti
+      return $list;
+    }
+
+    // Metodo utilizzato per l'estrazione della newsletter
+    public static function extractLaureati($dataToExtract) {
+
+      // Inizializzo un array vuoto
+      $list = [];
+
+      // Entro nella sezione critica dove 
+      // effetuerò la query di selezione
+      try {
+
+        // Mi collego al Database
+        $db = Db::getInstance();
+        // Compongo la query
+        // A seconda del tipo faccio la query
+        // di selezione dalla giusta tabella
+        // Compongo la query esludendo i campi
+        // a seconda dei valori ricevuti in $_POST
+        $sql = "SELECT ";
+
+        if ($dataToExtract['Nome'] == 'Si'){
+          $sql .= "Nome,";
+        }
+        if ($dataToExtract['Cognome'] == 'Si'){
+          $sql .= "Cognome,";
+        }
+        if ($dataToExtract['Matricola'] == 'Si'){
+          $sql .= "Matricola,";
+        }
+        if ($dataToExtract['CF'] == 'Si'){
+          $sql .= "CF,";
+        }
+        if ($dataToExtract['Sesso'] == 'Si'){
+          $sql .= "Sesso,";
+        }
+        if ($dataToExtract['Data_n'] == 'Si'){
+          $sql .= "Data_n,";
+        }
+        if ($dataToExtract['Luogo_n'] == 'Si'){
+          $sql .= "Luogo_n,";
+        }
+        if ($dataToExtract['Prov_n'] == 'Si'){
+          $sql .= "Prov_n,";
+        }
+        if ($dataToExtract['Luogo_r'] == 'Si'){
+          $sql .= "Luogo_r,";
+        }
+        if ($dataToExtract['Prov_r'] == 'Si'){
+          $sql .= "Prov_r,";
+        }
+        if ($dataToExtract['Telefono'] == 'Si'){
+          $sql .= "Telefono,";
+        }
+        if ($dataToExtract['e_mail'] == 'Si'){
+          $sql .= "e_mail,";
+        }
+        if ($dataToExtract['Titolo_tesi'] == 'Si'){
+          $sql .= "Titolo_tesi,";
+        }
+        if ($dataToExtract['tipologia'] == 'Si'){
+          $sql .= "tipologia,";
+        }
+        if ($dataToExtract['Voto_laurea'] == 'Si'){
+          $sql .= "Voto_laurea,";
+        }
+        if ($dataToExtract['cum_laude'] == 'Si'){
+          $sql .= "cum_laude,";
+        }
+        if ($dataToExtract['Data_Laurea'] == 'Si'){
+          $sql .= "Data_Laurea,";
+        }
+        if ($dataToExtract['Visibility'] == 'Si'){
+          $sql .= "Visibility,";
+        }
+        if ($dataToExtract['Note'] == 'Si'){
+          $sql .= "Note,";
+        }
+        if ($dataToExtract['relatore'] == 'Si'){
+          $sql .= "relatore,";
+        }
+        if ($dataToExtract['curriculum'] == 'Si'){
+          $sql .= "curriculum,";
+        }
+        if ($dataToExtract['CV_download'] == 'Si'){
+          $sql .= "CV_download,";
+        }
+        if ($dataToExtract['Tesi_download'] == 'Si'){
+          $sql .= "Tesi_download,";
+        }
+
+        $sql = substr($sql, 0, -1);
+        $sql .= " FROM laureati_tb WHERE ID <> 1";
+
+        // Eseguo la query
+        $stmt = $db->query($sql);
+        // Per ogni risultato della query
+        // vado ad inserire nell'array
+        // $list l'email di ogni studente
+        foreach($stmt->fetchAll(PDO::FETCH_ASSOC) as $user) {
+          $list[] = $user;
+        }
+
+      } catch(PDOException $ex) {
+
+        // Errore. Stampo l'eccezzione
+        die('Errore: '.$sql.' - '.$ex->getMessage());
+
+      }
+
+      // Ritorno l'array con tutti
+      // i dati degli studenti
+      return $list;
+    }
+
+    // Metodo utilizzato per l'estrazione della newsletter
+    public static function extractAziende($dataToExtract) {
+
+      // Inizializzo un array vuoto
+      $list = [];
+
+      // Entro nella sezione critica dove 
+      // effetuerò la query di selezione
+      try {
+
+        // Mi collego al Database
+        $db = Db::getInstance();
+        // Compongo la query
+        // A seconda del tipo faccio la query
+        // di selezione dalla giusta tabella
+        // Compongo la query esludendo i campi
+        // a seconda dei valori ricevuti in $_POST
+        $sql = "SELECT ";
+
+        if ($dataToExtract['r_sociale'] == 'Si'){
+          $sql .= "r_sociale,";
+        }
+        if ($dataToExtract['nome'] == 'Si'){
+          $sql .= "nome,";
+        }
+        if ($dataToExtract['cognome'] == 'Si'){
+          $sql .= "cognome,";
+        }
+        if ($dataToExtract['email'] == 'Si'){
+          $sql .= "email,";
+        }
+
+        $sql = substr($sql, 0, -1);
+        $sql .= " FROM aziende WHERE newsletter = 'Si'";
+
+        // Eseguo la query
+        $stmt = $db->query($sql);
+        // Per ogni risultato della query
+        // vado ad inserire nell'array
+        // $list l'email di ogni studente
+        foreach($stmt->fetchAll(PDO::FETCH_ASSOC) as $user) {
+          $list[] = $user;
+        }
+
+      } catch(PDOException $ex) {
+
+        // Errore. Stampo l'eccezzione
+        die('Errore: '.$sql.' - '.$ex->getMessage());
+
+      }
+
+      // Ritorno l'array con tutti
+      // i dati degli studenti
+      return $list;
+    }
+
 }
 ?>
