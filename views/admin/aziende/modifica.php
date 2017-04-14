@@ -85,8 +85,45 @@
 				    </div>
 				  </div>
 
+				  <input type="hidden" name="type_query" value="0">
+
 				<div class="form-group button-log">
 					<button type="submit" class="btn btn-warning">Aggiorna Dati</button>
+				</div>
+			</form>
+
+			<hr>
+
+			<form action="<?php echo APP_URL; ?>/admin/aziende/modifica/<?php echo $query; ?>/" method="post">
+
+				<div class="form-group row">
+					<label for="username" class="col-sm-2 col-form-label">Nuova Password</label>
+					<div class="col-sm-10">
+						<input type="password" class="form-control form-control-danger" id="password" name="password">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="username" class="col-sm-2 col-form-label">Ripeti Password</label>
+					<div class="col-sm-10">
+						<input type="password" class="form-control form-control-danger" id="password2" name="password2">
+					</div>
+				</div>
+
+				<input type="hidden" name="type_query" value="1">
+
+				<div class="form-group button-log">
+					<button type="submit" class="btn btn-warning">Modifica Password</button>
+				</div>
+			</form>
+
+			<hr>
+
+			<form action="<?php echo APP_URL; ?>/admin/aziende/modifica/<?php echo $query; ?>/" method="post">
+
+				<input type="hidden" name="type_query" value="2">
+
+				<div class="form-group button-log text-right">
+					<button type="submit" class="btn btn-danger" style="cursor: pointer;" onclick="return confirm('Sei sicuro di voler cancellare l\'azienda?')">Cancella Azienda</button>
 				</div>
 			</form><br>
 

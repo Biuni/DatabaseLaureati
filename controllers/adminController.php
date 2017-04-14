@@ -304,31 +304,68 @@
 
                     // Entro se sto modificando i dati dal form
                     if ($_POST) {
-                      // Array per il sanitize del $_POST
-                      $args = array(
-                        'r_sociale'   => FILTER_SANITIZE_SPECIAL_CHARS,
-                        'nome'        => FILTER_SANITIZE_SPECIAL_CHARS,
-                        'cognome'     => FILTER_SANITIZE_SPECIAL_CHARS,
-                        'email'      => FILTER_VALIDATE_EMAIL,
-                        'newsletter'  => FILTER_SANITIZE_SPECIAL_CHARS,
-                        'username'    => FILTER_SANITIZE_SPECIAL_CHARS,
-                      );
-                      // Tramite la funzione filter_input_array pulisco
-                      // i dati ricevuti in caso ci fossero stati
-                      // tentativi di manomissione
-                      $clean_value = filter_input_array(INPUT_POST, $args);
-                      // Richiamo la funzione dentro il Model
-                      // per fare l'update dei dati
-                      if(Admin::updateDataAzienda($clean_value,$query)){
-                        // Mostro l'alert di conferma 
-                        $hide_ok_azienda = '';
-                      } else {
-                        // Mostro l'alert di errore
-                        $hide_err_azienda = '';
+
+                      // Modifica dei dati dell'azienda
+                      if ($_POST['type_query'] == '0') {
+                        // Array per il sanitize del $_POST
+                        $args = array(
+                          'r_sociale'   => FILTER_SANITIZE_SPECIAL_CHARS,
+                          'nome'        => FILTER_SANITIZE_SPECIAL_CHARS,
+                          'cognome'     => FILTER_SANITIZE_SPECIAL_CHARS,
+                          'email'      => FILTER_VALIDATE_EMAIL,
+                          'newsletter'  => FILTER_SANITIZE_SPECIAL_CHARS,
+                          'username'    => FILTER_SANITIZE_SPECIAL_CHARS,
+                        );
+                        // Tramite la funzione filter_input_array pulisco
+                        // i dati ricevuti in caso ci fossero stati
+                        // tentativi di manomissione
+                        $clean_value = filter_input_array(INPUT_POST, $args);
+                        // Richiamo la funzione dentro il Model
+                        // per fare l'update dei dati
+                        if(Admin::updateDataAzienda($clean_value,$query)){
+                          // Mostro l'alert di conferma 
+                          $hide_ok_azienda = '';
+                        } else {
+                          // Mostro l'alert di errore
+                          $hide_err_azienda = '';
+                        }
                       }
+
+                      // Modifica della password dell'azienda
+                      if ($_POST['type_query'] == '1') {
+
+                        if ($_POST['password'] === $_POST['password2']) {
+                          // Richiamo la funzione dentro il Model
+                          // per fare l'update dei dati
+                          if(Admin::updatePwdAzienda($_POST['password'],$query)){
+                            // Mostro l'alert di conferma 
+                            $hide_ok_azienda = '';
+                          } else {
+                            // Mostro l'alert di errore
+                            $hide_err_azienda = '';
+                          }
+                        } else {
+                          // Mostro l'alert di errore
+                          $hide_err_azienda = '';
+                        }
+
+                      }
+
+                      // Cancellazione dell'azienda
+                      if ($_POST['type_query'] == '2') {
+                          if(Admin::deleteAzienda($query)){
+                            return Routes::redirectTo('admin','aziende');
+                          } else {
+                            // Mostro l'alert di errore
+                            $hide_err_azienda = '';
+                          }
+                      }
+
                     }
 
-                    $azienda = Admin::getAzienda($query);
+
+                  }
+                  $azienda = Admin::getAzienda($query);
                 
                 require_once('views/admin/aziende/'.$pagina.'.php');
 
@@ -337,8 +374,6 @@
                 return Routes::redirectTo('admin','aziende');
 
               }
-
-            }
 
           } else {
 
