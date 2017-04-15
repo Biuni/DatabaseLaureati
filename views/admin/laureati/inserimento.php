@@ -96,7 +96,11 @@
 			  <div class="form-group row">
 			    <label class="col-sm-2 col-form-label">Tipologia</label>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control form-control-danger" id="tipologia" name="tipologia" placeholder="Tipologia">
+			      <select class="form-control" id="tipologia" name="tipologia">
+			      	<option value="">Scegli...</option>
+			      	<option value="di ricerca/sperimentale">di ricerca/sperimentale</option>
+			      	<option value="compilativa/descrittiva">compilativa/descrittiva</option>
+			      </select>
 			    </div>
 			  </div>
 			  <div class="form-group row">

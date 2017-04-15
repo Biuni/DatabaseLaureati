@@ -147,10 +147,11 @@
   <script src="<?php echo APP_URL; ?>/assets/js/init.js"></script>
 
   <?php
-  if ($controller == 'admin' && ($action == 'index' || $action == '')) {
+  if ($controller == 'admin') {
     echo '<script src="'.APP_URL.'/assets/js/Chart.min.js"></script>';
     echo '<script src="'.APP_URL.'/assets/js/Chart.draw.js"></script>';
   }
   ?>
+  
 </body>
 </html>

@@ -28,6 +28,10 @@
         $lastLoginStudenti = Admin::lastLoginStudenti($last_seven);
         // Media voto di laurea
         $votoLaurea = Admin::votoLaurea();
+        // Numero di laureati per ogni anno del CdL
+        $laureatiAnnuali = Admin::laureatiPerAnno();
+        // Media voto di laurea per ogni anno del CdL
+        $avgVoto = Admin::mediaVotoAnno();
 
         require_once('views/admin/index.php');
     }

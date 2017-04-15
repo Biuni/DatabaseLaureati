@@ -188,6 +188,70 @@ class Admin {
       // e lo ritorno come oggetto
       return $list;
     }
+        
+    // Metodo che restituisce le informazioni
+    // sul numero dei laureati per ogni anno del CdL
+    public static function laureatiPerAnno() {
+
+      $list = [];
+
+      // Entro nella sezione critica dove 
+      // effetuerò la query di selezione
+      try {
+
+        // Mi collego al Database
+        $db = Db::getInstance();
+        // Compongo la query
+        $years = range(2005, date('Y'));
+        foreach($years as $year){
+          $sql = "SELECT COUNT(ID) AS numero FROM laureati_tb WHERE YEAR(Data_laurea) = $year";
+          $count = $db->query($sql)->fetchObject();
+          $list[] = $count->numero;
+        }
+
+      } catch(PDOException $ex) {
+
+        // Errore. Stampo l'eccezzione
+        die('Errore: '.$sql.' - '.$ex->getMessage());
+
+      }
+
+      // Prendo il risultato della query
+      // e lo ritorno come oggetto
+      return $list;
+    }
+        
+    // Metodo che restituisce le informazioni
+    // sulla media del voto di laurea per ogni anno del CdL
+    public static function mediaVotoAnno() {
+
+      $list = [];
+
+      // Entro nella sezione critica dove 
+      // effetuerò la query di selezione
+      try {
+
+        // Mi collego al Database
+        $db = Db::getInstance();
+        // Compongo la query
+        $years = range(2005, date('Y'));
+        foreach($years as $year){
+          $sql = "SELECT AVG(Voto_laurea) AS numero FROM laureati_tb WHERE Voto_laurea <> 0 AND YEAR(Data_laurea) = $year";
+          $count = $db->query($sql)->fetchObject();
+          $list[] = $count->numero;
+        }
+
+      } catch(PDOException $ex) {
+
+        // Errore. Stampo l'eccezzione
+        die('Errore: '.$sql.' - '.$ex->getMessage());
+
+      }
+
+      // Prendo il risultato della query
+      // e lo ritorno come oggetto
+      return $list;
+    }
 
 
     // Metodo che restiuisce l'intera
@@ -254,7 +318,7 @@ class Admin {
         $db = Db::getInstance();
         // Compongo la query esludendo i campi
         // a seconda dei valori ricevuti in $_POST
-        $sql = "SELECT ID, Nome, Cognome FROM laureati_tb WHERE Username <> 'admin'";
+        $sql = "SELECT ID, Nome, Cognome, Voto_laurea, cum_laude FROM laureati_tb WHERE Username <> 'admin'";
 
         if ($voto_laurea1 != '') {
           $sql .= " AND Voto_laurea >= :voto_laurea1";

@@ -30,6 +30,14 @@
 			<p class="lead">Nel grafico sottostante è possibile visualizzare l'andamento dei voti di laurea.</p>
 			<canvas id="vote-chart" class="mt-5 mb-5"></canvas>
 
+			<h3>Numero di laureati per anno</h3>
+			<p class="lead">Nel grafico sottostante è possibile visualizzare il numero dei laureati per ogni anno del CdL.</p>
+			<canvas id="year-chart" class="mt-5 mb-5"></canvas>
+
+			<h3>Media voto dei laureati per anno</h3>
+			<p class="lead">Nel grafico sottostante è possibile visualizzare la media del voto di laurea per ogni anno del CdL.</p>
+			<canvas id="avg-chart" class="mt-5 mb-5"></canvas>
+
 			<div class="text-right pb-2"><small>Ultimo accesso effettuato il <strong><?php echo substr($info->last_update,0,10); ?></strong> alle <strong><?php echo substr($info->last_update,11); ?></strong> con l'indirizzo ip <strong><?php echo $info->ip; ?></strong></small></div>
 		</div>
 
@@ -60,6 +68,28 @@
 		        borderColor: "rgba(73, 105, 124,1)",
 		        data: <?php echo json_encode($votoLaurea); ?>,
 		        label: "Numero di studenti"
+		    }
+	      ]
+		};
+		var data3 = {
+	      labels: <?php echo json_encode(range(2005, date("Y"))); ?>,
+	      datasets: [
+		    {
+		        backgroundColor: "rgba(214, 175, 102, 0.5)",
+		        borderColor: "rgba(214, 175, 102, 1)",
+		        data: <?php echo json_encode($laureatiAnnuali); ?>,
+		        label: "Numero di laureati"
+		    }
+	      ]
+		};
+		var data4 = {
+	      labels: <?php echo json_encode(range(2005, date("Y"))); ?>,
+	      datasets: [
+		    {
+		        backgroundColor: "rgba(28, 135, 150, 0.5)",
+		        borderColor: "rgba(28, 135, 150, 1)",
+		        data: <?php echo json_encode($avgVoto); ?>,
+		        label: "Media Voto"
 		    }
 	      ]
 		};

@@ -258,6 +258,8 @@
 			</div><br>
 
 					<?php
+						$first = 0;$second = 0;$third = 0;$fourth = 0;$fifth = 0;
+
 						if(isset($students)){
 
 							echo '<p class="text-warning">'.count($students).' laureati trovati</p>';
@@ -267,12 +269,46 @@
 
 			            		echo '<li class="list-group-item justify-content-between">'.$student['Nome'].' '.$student['Cognome'].'<a href="'.APP_URL.'/admin/laureati/dettaglio/'.$student['ID'].'/" target="blank" class="badge badge-warning badge-pill view-more-student">Visualizza Dati</a></li>';
 
+			            		$voto = $student['Voto_laurea'];
+			            		$laude = strtolower($student['cum_laude']);
+			            		($voto >= 66 && $voto <= 80) ? $first++ : $first;
+			            		($voto >= 81 && $voto <= 90) ? $second++ : $second;
+			            		($voto >= 91 && $voto <= 100) ? $third++ : $third;
+			            		($voto >= 101 && $voto <= 110) ? $fourth++ : $fourth;
+			            		($voto == 110 && $laude == 'si') ? $fifth++ : $fifth;
+
 					 		}
 					 		echo "</ul>";
+					 		
+					 		if (count($students) > 0) {
+								echo "<h3>Media voto di laurea</h3>";
+								echo'<p class="lead">Nel grafico sottostante è possibile visualizzare l\'andamento dei voti di laurea basati sulla ricerca.</p>';
+						 		echo '<canvas id="vote-chart" class="mt-5 mb-5"></canvas>';
+					 		}
 
+					 		$votoLaurea[] = $first;
+					 		$votoLaurea[] = $second;
+					 		$votoLaurea[] = $third;
+					 		$votoLaurea[] = $fourth;
+					 		$votoLaurea[] = $fifth;
 					 	}
 					?>
+
 
 		</div><br>
 
 	</main>
+
+	<script>
+		var data2 = {
+	      labels: ["66-80","81-90","91-100","100-110","110 e lode"],
+	      datasets: [
+		    {
+		        backgroundColor: "rgba(73, 105, 124,0.5)",
+		        borderColor: "rgba(73, 105, 124,1)",
+		        data: <?php echo json_encode($votoLaurea); ?>,
+		        label: "Numero di studenti"
+		    }
+	      ]
+		};
+	</script>
