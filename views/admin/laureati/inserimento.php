@@ -25,7 +25,7 @@
 			<h3>Inserisci Laureato</h3>
 			<p class="lead">Form per l'inserimento di un nuovo studente laureato.</p><br>
 
-			<form action="<?php echo APP_URL; ?>/admin/laureati/inserimento/" method="post" id="inserisci-studente">
+			<form action="<?php echo APP_URL; ?>/admin/laureati/inserimento/" method="post" id="inserisci-studente" enctype="multipart/form-data">
 
 				<div class="alert alert-success <?php echo $hide_ok_insert; ?>" role="alert">
 				  <strong>Laureato inserito!</strong> I dati del nuovo laureato sono stati correttamente inseriti.
@@ -133,7 +133,7 @@
 			  <div class="form-group row">
 			    <label class="col-sm-2 col-form-label">Data di Laurea</label>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control form-control-danger" id="Data_Laurea" name="Data_Laurea" placeholder="Data di Laurea">
+			      <input type="text" class="form-control form-control-danger" id="Data_Laurea" name="Data_Laurea" placeholder="YYYY-MM-DD">
 			    </div>
 			  </div>
 			  <div class="form-group row">
@@ -151,7 +151,19 @@
 					</label>
 			    </div>
 			  </div>
+
 			  <hr>
+
+			  <div class="form-group row">
+			    <label for="Tesi" class="col-sm-2 col-form-label">Tesi</label>
+			    <div class="col-sm-10">
+			    	<input type="file" id="Tesi_upload" name="Tesi_upload">
+					<small class="form-text text-muted">Dimensione massima: <strong>6MB</strong>. File permessi: <strong>PDF, PNG, JPG</strong>.</small>
+			    </div>
+			  </div>
+
+			  <hr>
+
 			  <div class="form-group row">
 			    <label class="col-sm-2 col-form-label">Password</label>
 			    <div class="col-sm-10">

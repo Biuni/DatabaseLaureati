@@ -274,7 +274,7 @@
 			            		($voto >= 66 && $voto <= 80) ? $first++ : $first;
 			            		($voto >= 81 && $voto <= 90) ? $second++ : $second;
 			            		($voto >= 91 && $voto <= 100) ? $third++ : $third;
-			            		($voto >= 101 && $voto <= 110) ? $fourth++ : $fourth;
+			            		(($voto >= 101 && $voto <= 110) && $laude == 'no') ? $fourth++ : $fourth;
 			            		($voto == 110 && $laude == 'si') ? $fifth++ : $fifth;
 
 					 		}

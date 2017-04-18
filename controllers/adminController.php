@@ -240,13 +240,58 @@
 
                   // Se le password corrispondono
                   if ($clean_value['Password'] === $clean_value['Password2']) {
-                    // Faccio la chiamata al metodo del Model 
-                    // passandogli i parametri appena puliti
-                    if(Admin::insertNewLaureato($clean_value)){
-                      $hide_ok_insert = '';
+
+
+                    if ($_FILES) {
+
+                        require('config/upload.php');
+                        $handle = new Upload($_FILES['Tesi_upload']);
+                        $file_allowed = array('application/pdf', 'image/jpeg', 'image/png');
+
+                        // Controllo se il file è di tipo PDF, JPG o PNG
+                        if (in_array($_FILES['Tesi_upload']['type'], $file_allowed)) {
+
+                          if ($handle->uploaded) {
+
+                            // Dimensione massima del file: 6MB
+                            $handle->file_max_size = '50331648';
+                            // Scrivo il nome del file
+                            $handle->file_new_name_body = $clean_value['Matricola'].$clean_value['Nome'].$clean_value['Cognome'];
+                            // Cartella dove caricare i curriculum
+                            $handle->process('assets/files/tesi/');
+
+                            if ($handle->processed) {
+
+                                // Upload del file e update della
+                                // tabella andato a buon fine
+                                $clean_value['Tesi_download'] = $handle->file_dst_name;
+
+                                // Faccio la chiamata al metodo del Model 
+                                // passandogli i parametri appena puliti
+                                if(Admin::insertNewLaureato($clean_value)){
+                                  $hide_ok_insert = '';
+                                } else {
+                                  $hide_err_insert = '';
+                                }
+
+                            } else {
+                              $hide_err_insert = '';
+                            }
+
+                          } else {
+                            $hide_err_insert = '';
+                          }
+                          
+                          $handle->Clean();
+
+                        } else {
+                          $hide_err_insert = '';
+                        }
+
                     } else {
-                      $hide_err_insert = '';
+                      print_r('No Files');
                     }
+
                   } else {
                     $hide_err_insert = '';
                   }
