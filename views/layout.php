@@ -67,7 +67,7 @@
           <!-- Logo -->
           <div class="col-sm-3">
             <div class="float-left">
-              <a href="<?php echo APP_URL; ?>"><img src="<?php echo APP_URL; ?>/assets/img/logo_sti.png" alt="Logo Uniurb" title="Logo Uniurb" class="logo"></a>
+              <a href="<?php echo APP_URL; ?>"><img src="<?php echo APP_URL; ?>/assets/img/logo.png" alt="Logo Uniurb" title="Logo Uniurb" class="logo"></a>
             </div>
           </div>
           <!-- Menu -->
