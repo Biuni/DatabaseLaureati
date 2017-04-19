@@ -1,4 +1,19 @@
 <?php
+
+/**
+ * Aziende
+ * Gestione dell'area riservata
+ * alle aziende
+ *
+ * Classe per effettuare richieste al database
+ * da parte del controller che gestisce
+ * l'area riservata alle aziende registrate
+ *
+ * @author     Gianluca Bonifazi
+ * @category   models 
+ * @copyright  STI Uniurb (c) 2017
+ */
+
 class Aziende {
 
     // Metodo che restiuisce l'intera
@@ -52,14 +67,13 @@ class Aziende {
 
         // Mi collego al Database
         $db = Db::getInstance();
-        // Compongo la query esludendo i campi
-        // non visualizzati sulla tabella
+        // Compongo la query
         $sql = "SELECT id, nome FROM curriculum";
         // Eseguo la query
         $stmt = $db->query($sql);
         // Per ogni risultato della query
         // vado ad inserire nell'array
-        // $list i dati di ogni studente
+        // $list il nome e l'id del curriculum
         foreach($stmt->fetchAll() as $cv) {
           $list[] = $cv;
         }
@@ -72,16 +86,19 @@ class Aziende {
       }
 
       // Ritorno l'array con tutti
-      // i dati degli studenti
+      // i curriculum del CdL
       return $list;
     }
 
     // Metodo che restiuisce la lista dei laureati
-    // basata sulla ricerca
+    // basata sulla ricerca avanzata
     public static function advancedSearch($clean_value) {
 
       // Inizializzo un array vuoto
+      // per stampare i risultati
       $list = [];
+      // Inizializzo un array vuoto 
+      // per gestire i parametri richiesti
       $params = [];
 
       $voto_laurea = $clean_value['voto_laurea'];
@@ -151,7 +168,7 @@ class Aziende {
       return $list;
     }
 
-    // Funzione che restituisce i dettagli di uno studente
+    // Metodo che restituisce i dettagli di uno studente
     public static function showDetails($id) {
 
       // Entro nella sezione critica dove 
@@ -182,20 +199,18 @@ class Aziende {
       return $stmt->fetchObject();
     }
 
-    // Funzione che fa l'update dell'username
+    // Metodo che fa l'update dell'username
     public static function updateUser($new,$old) {
 
       $result = FALSE;
 
       // Entro nella sezione critica dove 
       // effetuerò la query di update
-      // della password
+      // dell'username dell'azienda
       try {
 
         // Mi collego al Database
         $db = Db::getInstance();
-
-        // PASSWORD e SALT
         // Compongo la query
         $sql = "UPDATE aziende SET username = :new_user WHERE username = :old_user";
         // Preparo la query 
@@ -262,13 +277,15 @@ class Aziende {
     public static function updatePwd($pwd_attuale,$pwd_nuova,$username) {
 
       $result = FALSE;
+      // Compongo un array con l'username
+      // e la password attuale dell'azienda
       $value = array('username' => $username, 'password' => $pwd_attuale);
 
       // Richiedo il modello per il login
       require_once('models/Login.php');
 
       // Se il login va a buon fine la password
-      // è corretta
+      // è corretta e quindi posso modificarla
       if(Login::loginResult($value,'aziende')){
 
         // Il 'salt' è generato casualmente per proteggere
@@ -299,7 +316,6 @@ class Aziende {
             $pwd = hash('sha256', $pwd . $salt);
         }
 
-
         // Entro nella sezione critica dove 
         // effetuerò la query di update
         // della password
@@ -307,8 +323,6 @@ class Aziende {
 
           // Mi collego al Database
           $db = Db::getInstance();
-
-          // PASSWORD e SALT
           // Compongo la query
           $sql = "UPDATE aziende SET password = :new_pwd, salt = :salt WHERE username = :username";
           // Preparo la query 

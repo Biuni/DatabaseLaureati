@@ -17,7 +17,7 @@
 
 class Login {
 
-    // Metodo che gestisce i login
+    // Metodo pubblico che gestisce i login
     // di tutta l'applicazione
     public static function loginResult($value,$table) {
 
@@ -27,14 +27,14 @@ class Login {
 
       // Provo a fare il login con la vecchia modalità
       if (Login::oldLogin($user,$password,$table)) {
+        // Login RIUSCITO.
+        $result = TRUE;
         // Se sono qui l'utente ha inserito delle 
         // credenziali valide ma del vecchio tipo.
         // Per questo motivo faccio una chiamata al
         // metodo che mi aggiorna la password
-        // con un nuovo algoritmo di hash.
+        // con il nuovo algoritmo di hash.
         Login::updatePassword($user,$password,$table);
-        // Login RIUSCITO.
-        $result = TRUE;
         // Inserisco un record nella tabella
         // last login avendo effettuato il login
         // correttamente
@@ -58,7 +58,7 @@ class Login {
       return $result;
     }
 
-    // Metodo che gestisce il vecchio login
+    // Metodo privato che gestisce il vecchio login
     private static function oldLogin($user,$password,$table) {
       // Valore che deve tornare come 
       // risultato del metodo
@@ -94,12 +94,15 @@ class Login {
       return $result;
     }
 
-    // Metodo che gestisce il nuovo login
+    // Metodo privato che gestisce il nuovo login
     private static function newLogin($user,$password,$table) {
       // Valore che deve tornare come 
       // risultato del metodo
       $result = FALSE;
 
+      // Entro nella sezione critica dove 
+      // effetuerò la query di selezione
+      // per controllare l'esistenza dell'utente
       try {
 
           // Mi collego al Database
@@ -179,8 +182,6 @@ class Login {
 
         // Mi collego al Database
         $db = Db::getInstance();
-
-        // PASSWORD e SALT
         // Compongo la query
         $sql = "UPDATE $table SET password = :password, salt = :salt WHERE username = :username";
         // Preparo la query 
@@ -283,10 +284,11 @@ class Login {
       return $result;
     }
 
-    // Metodo che gestisce il login all'area riservata
+    // Metodo che gestisce l'update dei dati 
+    // sull'ultimo login effettauto dall'aministratore
     private static function updateAdminLogin() {
 
-      // Aggiorno l'ultimo login con il
+      // Setto la variabile last_login con il
       // datetime di adesso
       $last_login = date("Y-m-d H:i:s"); 
 
@@ -295,7 +297,7 @@ class Login {
 
       // Entro nella sezione critica dove 
       // effetuerò la query di select
-      // dei due campi datetime 
+      // dell'ultimo login
       try {
           // Compongo la query
           $sql = "SELECT last_login FROM admin WHERE username = 'admin'";
@@ -318,7 +320,7 @@ class Login {
 
       // Entro nella sezione critica dove 
       // effetuerò la query di update
-      // dei tentativi di accesso
+      // degli ultimi accessi
       try {
 
         // Compongo la query

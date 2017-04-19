@@ -1,7 +1,22 @@
 <?php
+
+/**
+ * Admin
+ * Gestione dell'area riservata
+ * al gestore del portale
+ *
+ * Classe per effettuare richieste al database
+ * da parte del controller che gestisce
+ * l'area riservata all'amministratore
+ *
+ * @author     Gianluca Bonifazi
+ * @category   models 
+ * @copyright  STI Uniurb (c) 2017
+ */
+
 class Admin {
         
-    // Funzione che restituisce le informazioni
+    // Metodo che restituisce le informazioni
     // sull'ultimo login dell'amministratore
     public static function lastLogin() {
 
@@ -30,7 +45,7 @@ class Admin {
       return $stmt->fetchObject();
     }
         
-    // Funzione che restituisce le informazioni
+    // Metodo che restituisce le informazioni
     // sui login delle aziende negli ultimi 7 giorni
     public static function lastLoginAziende($last) {
 
@@ -53,29 +68,30 @@ class Admin {
         // Per ogni valore estratto dal database
         // mi leggo la data e lo inserisco un array
         // che mi servirà per fare il confronto
-	    foreach ($stmt->fetchAll() as $value) {
-	    	$data = substr($value['last_time'],0,10);
-			$date[] = $data;
-	    }
+  	    foreach ($stmt->fetchAll() as $value) {
+    	    $data = substr($value['last_time'],0,10);
+    			$date[] = $data;
+  	    }
 
-	    // Conto quante volte la data si ripete,
-	    // cioè quanti login sono stati effettuati
-	    // nello stesso giorno
+  	    // Conto quante volte la data si ripete,
+  	    // cioè quanti login sono stati effettuati
+  	    // nello stesso giorno
         $occurences = array_count_values($date);
 
-        // Ciclo l'array degli ultimi sette giorni
-		for ($i=0; $i < count($last); $i++) { 
+        // Ciclo l'array contenente i login
+        // degli ultimi sette giorni
+    		for ($i=0; $i < count($last); $i++) { 
 
-			// Se esiste una data con il valore uguale a quello
-			// del giorno inserito nell'array $last scrivo
-			// il numero altrimenti è zero e cioè non ci sono stati login
-			if (array_key_exists($last[$i], $occurences)) {
-			    $list[] = $occurences[$last[$i]];
-			} else {
-				$list[] = 0;
-			}
+    			// Se esiste una data con il valore uguale a quello
+    			// del giorno inserito nell'array $last scrivo
+    			// il numero altrimenti è zero e cioè non ci sono stati login
+    			if (array_key_exists($last[$i], $occurences)) {
+            $list[] = $occurences[$last[$i]];
+    			} else {
+            $list[] = 0;
+    			}
 
-		}
+    		}
 
       } catch(PDOException $ex) {
 
@@ -85,12 +101,12 @@ class Admin {
       }
 
       // Prendo il risultato della query
-      // e lo ritorno come oggetto
+      // e lo ritorno come array
       return $list;
     }
         
-    // Funzione che restituisce le informazioni
-    // sull'ultimo login dell'amministratore
+    // Metodo che restituisce le informazioni
+    // sui login delgli studenti negli ultimi 7 giorni
     public static function lastLoginStudenti($last) {
 
       $list = [];
@@ -112,29 +128,29 @@ class Admin {
         // Per ogni valore estratto dal database
         // mi leggo la data e lo inserisco un array
         // che mi servirà per fare il confronto
-	    foreach ($stmt->fetchAll() as $value) {
-	    	$data = substr($value['last_time'],0,10);
-			$date[] = $data;
-	    }
+  	    foreach ($stmt->fetchAll() as $value) {
+    	    $data = substr($value['last_time'],0,10);
+    			$date[] = $data;
+  	    }
 
-	    // Conto quante volte la data si ripete,
-	    // cioè quanti login sono stati effettuati
-	    // nello stesso giorno
+  	    // Conto quante volte la data si ripete,
+  	    // cioè quanti login sono stati effettuati
+  	    // nello stesso giorno
         $occurences = array_count_values($date);
 
         // Ciclo l'array degli ultimi sette giorni
-		for ($i=0; $i < count($last); $i++) { 
+    		for ($i=0; $i < count($last); $i++) { 
 
-			// Se esiste una data con il valore uguale a quello
-			// del giorno inserito nell'array $last scrivo
-			// il numero altrimenti è zero e cioè non ci sono stati login
-			if (array_key_exists($last[$i], $occurences)) {
-			    $list[] = $occurences[$last[$i]];
-			} else {
-				$list[] = 0;
-			}
+    			// Se esiste una data con il valore uguale a quello
+    			// del giorno inserito nell'array $last scrivo
+    			// il numero altrimenti è zero e cioè non ci sono stati login
+    			if (array_key_exists($last[$i], $occurences)) {
+            $list[] = $occurences[$last[$i]];
+    			} else {
+    				$list[] = 0;
+    			}
 
-		}
+    		}
 
       } catch(PDOException $ex) {
 
@@ -144,11 +160,11 @@ class Admin {
       }
 
       // Prendo il risultato della query
-      // e lo ritorno come oggetto
+      // e lo ritorno come array
       return $list;
     }
         
-    // Funzione che restituisce le informazioni
+    // Metodo che restituisce le informazioni
     // sull'andamento generale dei voti di laurea
     public static function votoLaurea() {
 
@@ -185,7 +201,7 @@ class Admin {
       }
 
       // Prendo il risultato della query
-      // e lo ritorno come oggetto
+      // e lo ritorno come array
       return $list;
     }
         
@@ -201,7 +217,7 @@ class Admin {
 
         // Mi collego al Database
         $db = Db::getInstance();
-        // Compongo la query
+        // Compongo le query
         $years = range(2005, date('Y'));
         foreach($years as $year){
           $sql = "SELECT COUNT(ID) AS numero FROM laureati_tb WHERE YEAR(Data_laurea) = $year";
@@ -292,7 +308,7 @@ class Admin {
     }
 
     // Metodo che restiuisce la lista dei laureati
-    // basata sulla ricerca
+    // basata sulla ricerca avanzata
     public static function advancedSearchStudenti($clean_value) {
 
       // Inizializzo un array vuoto
@@ -382,7 +398,7 @@ class Admin {
       return $list;
     }
 
-    // Funzione che restituisce i dettagli di uno studente
+    // Metodo che restituisce i dettagli di uno studente
     public static function userData($id) {
 
       // Entro nella sezione critica dove 
@@ -397,7 +413,7 @@ class Admin {
         // Preparo la query
         $stmt = $db->prepare($sql);
         // Una volta preparata la query sostituisco
-        // :username con il valore dell'username
+        // :id con il valore dell'id
         // ricevuto come parametro e la eseguo
         $rows = $stmt->execute(array(':id' => $id));
 
@@ -447,11 +463,11 @@ class Admin {
       }
 
       // Ritorno l'array con tutti
-      // i dati degli studenti
+      // i dati delle aziende
       return $list;
     }
 
-    // Funzione che restituisce i dettagli di un'azienda
+    // Metodo che restituisce i dettagli di un'azienda
     public static function getAzienda($id) {
 
       // Entro nella sezione critica dove 
@@ -466,7 +482,7 @@ class Admin {
         // Preparo la query
         $stmt = $db->prepare($sql);
         // Una volta preparata la query sostituisco
-        // :username con il valore dell'username
+        // :id con il valore dell'id
         // ricevuto come parametro e la eseguo
         $rows = $stmt->execute(array(':id' => $id));
 
@@ -488,18 +504,17 @@ class Admin {
       $result = FALSE;
 
       // Entro nella sezione critica dove 
-      // effetuerò la query di selezione
+      // effetuerò la query di delete
       try {
 
         // Mi collego al Database
         $db = Db::getInstance();
-        // Compongo la query esludendo la password
-        // in quanto non utile
+        // Compongo la query
         $sql = "DELETE FROM aziende WHERE ID = :id";
         // Preparo la query
         $stmt = $db->prepare($sql);
         // Una volta preparata la query sostituisco
-        // :username con il valore dell'username
+        // :id con il valore dell'id
         // ricevuto come parametro e la eseguo
         $rows = $stmt->execute(array(':id' => $id));
 
@@ -516,7 +531,7 @@ class Admin {
       return $result;
     }
 
-    // Metodo che elimina l'azienda
+    // Metodo che fa l'upload della password di un'azienda
     public static function updatePwdAzienda($password, $id) {
 
         $result = FALSE;
@@ -549,7 +564,6 @@ class Admin {
             $pwd = hash('sha256', $pwd . $salt);
         }
 
-
         // Entro nella sezione critica dove 
         // effetuerò la query di update
         // della password
@@ -557,8 +571,6 @@ class Admin {
 
           // Mi collego al Database
           $db = Db::getInstance();
-
-          // PASSWORD e SALT
           // Compongo la query
           $sql = "UPDATE aziende SET password = :new_pwd, salt = :salt WHERE ID = :id";
           // Preparo la query 
@@ -592,14 +604,13 @@ class Admin {
 
         // Mi collego al Database
         $db = Db::getInstance();
-        // Compongo la query esludendo i campi
-        // non visualizzati sulla tabella
+        // Compongo la query
         $sql = "SELECT id, nome FROM curriculum";
         // Eseguo la query
         $stmt = $db->query($sql);
         // Per ogni risultato della query
         // vado ad inserire nell'array
-        // $list i dati di ogni studente
+        // $list i dati di ogni curriculum
         foreach($stmt->fetchAll() as $cv) {
           $list[] = $cv;
         }
@@ -612,7 +623,7 @@ class Admin {
       }
 
       // Ritorno l'array con tutti
-      // i dati degli studenti
+      // i dati di ogni curriculum
       return $list;
     }
 
@@ -694,7 +705,7 @@ class Admin {
 
         // Entro nella sezione critica dove 
         // effetuerò la query di update
-        // del curriculum
+        // della tesi
         try {
 
           // Mi collego al Database
@@ -718,7 +729,8 @@ class Admin {
       return $result;
     }
 
-    // Metodo utilizzato per l'inserimento dei dati di un nuovo laureato
+    // Metodo utilizzato per l'inserimento
+    // dei dati di un nuovo laureato
     public static function insertNewLaureato($value) {
 
       $result = FALSE;
@@ -737,7 +749,7 @@ class Admin {
       }
 
       // Mi assicuro che il campo visibility
-      // non sia stato manomesso o che sia 
+      // non sia stato manomesso o che non sia 
       // stato inserito unvalore diverso da 0 o 1
       $visibility = ($value['Visibility'] != 0 && $value['Visibility'] != 1) ? 0 : $value['Visibility'];      
 
@@ -767,7 +779,7 @@ class Admin {
       return $result;
     }
 
-    // Metodo utilizzato per la modifica dei dati dello studente
+    // Metodo utilizzato per la modifica dei dati dell'azienda
     public static function updateDataAzienda($value, $id) {
 
       $result = FALSE;
@@ -842,7 +854,7 @@ class Admin {
     }
 
 
-    // Metodo che fa l'update della password
+    // Metodo che fa l'update della password dell'admin
     public static function updatePwdAdmin($new_value) {
 
       $pwd_attuale = $new_value['pwd_attuale'];
@@ -855,7 +867,7 @@ class Admin {
       require_once('models/Login.php');
 
       // Se il login va a buon fine la password
-      // è corretta
+      // è corretta quindi posso modificarla
       if(Login::adminLogin($value)){
 
         // Il 'salt' è generato casualmente per proteggere
@@ -886,7 +898,6 @@ class Admin {
             $pwd = hash('sha256', $pwd . $salt);
         }
 
-
         // Entro nella sezione critica dove 
         // effetuerò la query di update
         // della password
@@ -894,8 +905,6 @@ class Admin {
 
           // Mi collego al Database
           $db = Db::getInstance();
-
-          // PASSWORD e SALT
           // Compongo la query
           $sql = "UPDATE admin SET password = :new_pwd, salt = :salt WHERE username = :username";
           // Preparo la query 
@@ -921,7 +930,6 @@ class Admin {
     // Metodo utilizzato per l'estrazione della newsletter
     public static function extractEmail($type) {
 
-
       // Inizializzo un array vuoto
       $list = [];
 
@@ -943,7 +951,7 @@ class Admin {
         $stmt = $db->query($sql);
         // Per ogni risultato della query
         // vado ad inserire nell'array
-        // $list l'email di ogni studente
+        // $list l'email di ogni studente/azienda
         foreach($stmt->fetchAll() as $user) {
           $list[] = $user;
         }
@@ -955,12 +963,13 @@ class Admin {
 
       }
 
-      // Ritorno l'array con tutti
-      // i dati degli studenti
+      // Ritorno l'array con tutte le
+      // email degli studenti o delle aziende
       return $list;
     }
 
-    // Metodo utilizzato per l'estrazione della newsletter
+    // Metodo utilizzato per l'estrazione dei dati degli studenti
+    // per poi creare il file CSV
     public static function extractLaureati($dataToExtract) {
 
       // Inizializzo un array vuoto
@@ -972,9 +981,6 @@ class Admin {
 
         // Mi collego al Database
         $db = Db::getInstance();
-        // Compongo la query
-        // A seconda del tipo faccio la query
-        // di selezione dalla giusta tabella
         // Compongo la query esludendo i campi
         // a seconda dei valori ricevuti in $_POST
         $sql = "SELECT ";
@@ -1056,7 +1062,7 @@ class Admin {
         $stmt = $db->query($sql);
         // Per ogni risultato della query
         // vado ad inserire nell'array
-        // $list l'email di ogni studente
+        // $list i dati di ogni studente
         foreach($stmt->fetchAll(PDO::FETCH_ASSOC) as $user) {
           $list[] = $user;
         }
@@ -1073,7 +1079,8 @@ class Admin {
       return $list;
     }
 
-    // Metodo utilizzato per l'estrazione della newsletter
+    // Metodo utilizzato per l'estrazione dei dati delle aziende
+    // per poi creare il file CSV
     public static function extractAziende($dataToExtract) {
 
       // Inizializzo un array vuoto
@@ -1085,9 +1092,6 @@ class Admin {
 
         // Mi collego al Database
         $db = Db::getInstance();
-        // Compongo la query
-        // A seconda del tipo faccio la query
-        // di selezione dalla giusta tabella
         // Compongo la query esludendo i campi
         // a seconda dei valori ricevuti in $_POST
         $sql = "SELECT ";
@@ -1112,7 +1116,7 @@ class Admin {
         $stmt = $db->query($sql);
         // Per ogni risultato della query
         // vado ad inserire nell'array
-        // $list l'email di ogni studente
+        // $list i dati di ogni azienda
         foreach($stmt->fetchAll(PDO::FETCH_ASSOC) as $user) {
           $list[] = $user;
         }
@@ -1125,7 +1129,7 @@ class Admin {
       }
 
       // Ritorno l'array con tutti
-      // i dati degli studenti
+      // i dati delle aziende
       return $list;
     }
 

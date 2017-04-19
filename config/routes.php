@@ -5,7 +5,7 @@
  * Gestione delle rotte
  *
  * Classe per la gestione delle 
- * rotte (routes) dell'applicazione.
+ * rotte (routes) del sito.
  * L'applicazione gira all'interno del
  * metodo call il quale gestisce 
  * l'invocazione di modelli, viste e
@@ -29,6 +29,7 @@ class Routes {
 
     // Creo una nuova istanza del
     // controllore richiesto
+    // e richiedo il Model associato
     switch($controller) {
       case 'pages':
         require_once('models/Pages.php');
@@ -70,11 +71,11 @@ class Routes {
   private function routeList(){
 
   	return array(
-	    'pages'         => ['home','error'],
-	    'login'         => ['studenti','aziende','riservata'],
-	    'registrazione' => ['index','privacy'],
-	    'aziende'       => ['index','impostazioni','dettaglio','logout'],
-	    'studenti'      => ['index','impostazioni','logout'],
+      'pages'         => ['home','error'],
+      'login'         => ['studenti','aziende','riservata'],
+      'registrazione' => ['index','privacy'],
+      'aziende'       => ['index','impostazioni','dettaglio','logout'],
+      'studenti'      => ['index','impostazioni','logout'],
       'admin'         => ['index','laureati','aziende','curriculum','newsletter','impostazioni','logout']
 	  );
 
@@ -86,10 +87,10 @@ class Routes {
   // valori arrivati in $_GET
   public function existsRoute($controller,$action){
 
-  	  // Inizializzo una variabile con l'array
-  	  // contenente la lista delle rotte
-  	  $controllers = new Routes();
-  	  $controllers = $controllers->routeList();
+  	// Inizializzo una variabile con l'array
+  	// contenente la lista delle rotte
+  	$controllers = new Routes();
+  	$controllers = $controllers->routeList();
 
 	  // Mi assicuro che il controller e il
 	  // metodo passati siano entrambi validi
@@ -112,8 +113,9 @@ class Routes {
   }
 
 
-  // Metodo utilizzato per il redirect che
-  // funziona anche con javascript disabilitato
+  // Metodo utilizzato per il redirect che comprende
+  // anche la possibilità di un utente che naviga
+  // con javascript disabilitato
   public static function redirectTo($controller,$action) {
 
     // Compongo l'URL

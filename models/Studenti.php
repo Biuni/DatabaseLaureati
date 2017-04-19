@@ -1,8 +1,21 @@
 <?php
 
+/**
+ * Studenti
+ * Model dell'area riservata agli studenti
+ *
+ * Classe per effettuare richieste al database
+ * da parte del controller che gestisce
+ * l'area riservata agli studenti laureati
+ *
+ * @author     Gianluca Bonifazi
+ * @category   models 
+ * @copyright  STI Uniurb (c) 2017
+ */
+
 class Studenti {
 
-    // Funzione che restituisce i dettagli di uno studente
+    // Metodo che restituisce i dettagli di uno studente
     public static function userData($username) {
 
       // Entro nella sezione critica dove 
@@ -11,8 +24,8 @@ class Studenti {
 
         // Mi collego al Database
         $db = Db::getInstance();
-        // Compongo la query esludendo la password
-        // in quanto non utile
+        // Compongo la query esludendo
+        // la password in quanto non utile
         $sql = "SELECT ID, Nome, Cognome, Matricola, CF, Sesso, Data_n, Luogo_n, Prov_n, Luogo_r, Prov_r, Telefono, e_mail, Titolo_tesi, tipologia, Voto_laurea, cum_laude, Data_Laurea, Visibility, Note, relatore, curriculum, CV_download, Tesi_download FROM laureati_tb WHERE username = :username";
         // Preparo la query
         $stmt = $db->prepare($sql);
@@ -71,8 +84,9 @@ class Studenti {
 
       // Mi assicuro che il campo visibility
       // non sia stato manomesso o che sia 
-      // stato inserito unvalore diverso da 0 o 1
+      // stato inserito un valore diverso da 0 o 1
       $visibility = ($value['Visibility'] != 0 && $value['Visibility'] != 1) ? 0 : $value['Visibility'];
+      // Metto la provincia in maiuscolo
       $Prov_n = strtoupper($value['Prov_n']);
       $Prov_r = strtoupper($value['Prov_r']);
 
@@ -107,13 +121,15 @@ class Studenti {
     public static function updatePwd($pwd_attuale,$pwd_nuova,$username) {
 
       $result = FALSE;
+      // Compongo un array con l'username
+      // e la password attuale dello studente
       $value = array('username' => $username, 'password' => $pwd_attuale);
 
       // Richiedo il modello per il login
       require_once('models/Login.php');
 
       // Se il login va a buon fine la password
-      // è corretta
+      // è corretta e quindi posso modificarla
       if(Login::loginResult($value,'laureati_tb')){
 
         // Il 'salt' è generato casualmente per proteggere
@@ -144,7 +160,6 @@ class Studenti {
             $pwd = hash('sha256', $pwd . $salt);
         }
 
-
         // Entro nella sezione critica dove 
         // effetuerò la query di update
         // della password
@@ -152,8 +167,6 @@ class Studenti {
 
           // Mi collego al Database
           $db = Db::getInstance();
-
-          // PASSWORD e SALT
           // Compongo la query
           $sql = "UPDATE laureati_tb SET password = :new_pwd, salt = :salt WHERE username = :username";
           // Preparo la query 

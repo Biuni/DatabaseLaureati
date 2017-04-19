@@ -1,12 +1,26 @@
 <?php
 
+/**
+ * Registrazione
+ * Model della pagina per la registrazione
+ * delle aziende
+ *
+ * Classe per effettuare richieste al database
+ * da parte del controller che gestisce
+ * la registrazione di un'azienda al database
+ *
+ * @author     Gianluca Bonifazi
+ * @category   models 
+ * @copyright  STI Uniurb (c) 2017
+ */
+
 class Registrazione {
 
     // Metodo che gestisce la 
     // registrazione dell'azienda
     public static function joinAzienda($value) {
 
-      $result           = FALSE;
+      $result = FALSE;
 
       $ragionesociale   = $value['ragionesociale'];
       $nomereferente    = $value['nomereferente'];
@@ -25,7 +39,9 @@ class Registrazione {
       $username = preg_replace('/[^A-Za-z0-9\-]/', '', $username);
       $username = strtolower($username);
       
-      // Controllo l'unicità dell'username
+      // Faccio un ciclo per controllare
+      // l'unicità dell'username dato che 
+      // dovrà essere utilizzato per il login
       do {
 
         // Entro nella sezione critica dove 
@@ -93,7 +109,6 @@ class Registrazione {
       for($round = 0; $round < 65536; $round++) {
           $pwd = hash('sha256', $pwd . $salt);
       }
-
 
       // Entro nella sezione critica dove 
       // effetuerò la query di insert

@@ -1,14 +1,18 @@
 jQuery(document).ready(function($) {
 
+    // Counter homepage
     $('.counter').counterUp();
     
+    // Apertura del modal per inviare il curriculum
     $('#openInviaCurriculum').click(function(){
         $('#inviaCurriculum').modal('show');
     });
+    // Apertura del modal per inviare la tesi
     $('#openInviaTesi').click(function(){
         $('#inviaTesi').modal('show');
     });
 
+    // Apertura e chiusura del menu per mobile
     var sidenav = $('#mySidenav');
     var overlay = $('.overlay-sidenav');
 
@@ -21,6 +25,8 @@ jQuery(document).ready(function($) {
     	overlay.hide();
     });
 
+    // Tabella per la lista degli studenti
+    // all'interno degli account azienda
     var table = $('#student-list').DataTable({
         "order": [[ 4, "desc" ]],
         "autoWidth": false,
@@ -52,6 +58,8 @@ jQuery(document).ready(function($) {
     var count_row = table.rows().count();
     $('#student-list_wrapper').prepend('<p class="lead text-warning"><strong>'+count_row+' laureati trovati</strong></p>');
 
+    // Tabella per la lista degli studenti
+    // all'interno dell'amministrazione
     var table2 = $('#student-list-admin').DataTable({
         "order": [[ 3, "desc" ]],
         "autoWidth": false,
@@ -75,6 +83,8 @@ jQuery(document).ready(function($) {
     var count_row2 = table2.rows().count();
     $('#student-list-admin_wrapper').prepend('<p class="lead text-warning"><strong>'+count_row2+' laureati trovati</strong></p>');
 
+    // Tabella per la lista delle aziende 
+    // all'interno dell'amministrazione
     var table3 = $('#aziende-list-admin').DataTable({
         "autoWidth": false,
         "searching": true,
@@ -402,6 +412,8 @@ jQuery(document).ready(function($) {
         }
     });
 
+    // Funzione che deparametrizza la funzione
+    // serialize() della libreria jQuery
     function deparam(query) {
         var pairs, i, keyValuePair, key, value, map = {};
         if (query.slice(0, 1) === '?') {
@@ -419,31 +431,43 @@ jQuery(document).ready(function($) {
         return map;
     };
 
+    // Funzione che controlla tramite regex
+    // la validità della email inserita
     function validEmail(emailAddress) {
         var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
         return pattern.test(emailAddress);
     };
 
+    // Funzione che controlla tramite regex
+    // la validità del testo inserito
     function validText(text) {
         var pattern = /^[a-zA-Z]*$/;
         return pattern.test(text);
     };
 
+    // Funzione che controlla tramite regex
+    // la validità del'username inserito
     function validUsername(text) {
         var pattern = /^[^<>&]*(?:&(?!(?:[a-z\d]+|#\d+|#x[a-f\d]+);)[^<>&]*)*$/i;
         return pattern.test(text);
     };
 
+    // Funzione che controlla tramite regex
+    // la validità del numero inserito
     function validInteger(text) {
         var pattern = /^[0-9]*$/;
         return pattern.test(text);
     };
 
+    // Funzione che controlla tramite regex
+    // la validità della data inserita
     function validDate(text) {
         var pattern = /^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/;
         return pattern.test(text);
     };
 
+    // Funzione che controlla tramite regex
+    // la validità del codice fiscale inserito
     function validCF(text) {
         var pattern = /^(?:[B-DF-HJ-NP-TV-Z](?:[AEIOU]{2}|[AEIOU]X)|[AEIOU]{2}X|[B-DF-HJ-NP-TV-Z]{2}[A-Z]){2}[\dLMNP-V]{2}(?:[A-EHLMPR-T](?:[04LQ][1-9MNP-V]|[1256LMRS][\dLMNP-V])|[DHPS][37PT][0L]|[ACELMRT][37PT][01LM])(?:[A-MZ][1-9MNP-V][\dLMNP-V]{2}|[A-M][0L](?:[\dLMNP-V][1-9MNP-V]|[1-9MNP-V][0L]))[A-Z]$/i;
         return pattern.test(text);

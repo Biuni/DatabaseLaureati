@@ -139,6 +139,7 @@
     </div>
   </footer>
 
+  <!-- Javascript -->
   <script src="<?php echo APP_URL; ?>/assets/js/jquery-3.1.1.min.js"></script>
   <script src="<?php echo APP_URL; ?>/assets/js/tether.min.js"></script>
   <script src="<?php echo APP_URL; ?>/assets/js/bootstrap.min.js"></script>
@@ -147,6 +148,8 @@
   <script src="<?php echo APP_URL; ?>/assets/js/init.js"></script>
 
   <?php
+  // Inserisco gli script per i grafici solo se sono all'interno
+  // dell'area riservata all'amministratore
   if ($controller == 'admin') {
     echo '<script src="'.APP_URL.'/assets/js/Chart.min.js"></script>';
     echo '<script src="'.APP_URL.'/assets/js/Chart.draw.js"></script>';

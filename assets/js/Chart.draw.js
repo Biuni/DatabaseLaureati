@@ -1,6 +1,7 @@
 window.onload = function() {
 
     if (typeof data !== 'undefined') {
+        // Stampa il grafico dei login
         var ctx = document.getElementById("login-chart");
         var lastLogin = new Chart(ctx, {
             type: 'line',
@@ -23,6 +24,7 @@ window.onload = function() {
     }
 
     if (typeof data2 !== 'undefined') {
+        // Stampa il grafico della media voti
         var ctx2 = document.getElementById("vote-chart");
         var averageVote = new Chart(ctx2, {
             type: 'bar',
@@ -45,6 +47,7 @@ window.onload = function() {
     }
 
     if (typeof data3 !== 'undefined') {
+        // Stampa il grafico dei laureati per anno
         var ctx2 = document.getElementById("year-chart");
         var yearVote = new Chart(ctx2, {
             type: 'bar',
@@ -67,6 +70,7 @@ window.onload = function() {
     }
 
     if (typeof data4 !== 'undefined') {
+        // Stampa il grafico della media voto per anno
         var ctx2 = document.getElementById("avg-chart");
         var avgVote = new Chart(ctx2, {
             type: 'bar',

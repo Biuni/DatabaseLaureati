@@ -1,4 +1,18 @@
 <?php
+
+/**
+ * Pages
+ * Model delle pagine principali
+ *
+ * Classe per effettuare richieste al database
+ * da parte del controller che gestisce
+ * le pagine di homepage e di errore 404
+ *
+ * @author     Gianluca Bonifazi
+ * @category   models 
+ * @copyright  STI Uniurb (c) 2017
+ */
+
 class Pages {
     
     // Definisco 2 attributi di tipo pubblico
