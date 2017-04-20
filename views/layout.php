@@ -134,7 +134,7 @@
   <footer>
     <div class="container">
       <div class="float-left">&copy; <?php echo date("Y"); ?> STI Footer</div>
-      <div class="float-right">Developed by <strong>Gianluca Bonifazi</strong></div>
+      <div class="float-right">Developed by <strong><a href="http://www.biuni.it">Gianluca Bonifazi</a></strong></div>
       <div class="clear"></div>
     </div>
   </footer>
