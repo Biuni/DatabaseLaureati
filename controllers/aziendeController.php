@@ -1,10 +1,26 @@
 <?php
+
+/**
+* AziendeController
+* Controller dell'area riservata
+* alle aziende registrate
+*
+* @author     Gianluca Bonifazi
+* @category   controllers 
+* @copyright  STI Uniurb (c) 2017
+*/
+
 class AziendeController {
 
-	// Pagina principale
+
+    // Action della pagina con le info
+    // collegate agli studenti che hanno
+    // scelto di essere visibili
     public function index() {
 
-        // Controllo la sessione
+        // Controllo se esiste la sessione
+        // che permette la navigazione dell'area riservata
+        // altrimenti faccio il redirect alla login
         if (Session::checkSession('aziende')) {
           $username = htmlspecialchars($_SESSION['azienda']);
         } else {
@@ -40,11 +56,15 @@ class AziendeController {
         	$students = Aziende::advancedSearch($clean_value);
         }
 
- 		// Layout dell'area riservata all'azienda
+        // Richiedo la vista collegata alla
+        // pagina principale dell'area riservata
+        // alle aziende registrate
         require_once('views/aziende/index.php');
     }
     
-    // Pagina impostazioni dell'account
+
+    // Action della pagina per la modifica
+    // delle impostazioni dell'azienda loggata
     public function impostazioni() {
 
         // Nascondo di default gli alert
@@ -53,7 +73,9 @@ class AziendeController {
         $hide_ok_pwd = 'hide';
         $hide_err_pwd = 'hide';
 
-        // Controllo la sessione
+        // Controllo se esiste la sessione
+        // che permette la navigazione dell'area riservata
+        // altrimenti faccio il redirect alla login
         if (Session::checkSession('aziende')) {
           $username = htmlspecialchars($_SESSION['azienda']);
         } else {
@@ -74,7 +96,8 @@ class AziendeController {
                 $new_user = str_replace('.', '', $new_user);
                 $new_user = strtolower($new_user);
 
-                // Controllo se l'username esiste già
+                // Faccio la chiamata al metodo del Model
+                // e controllo se l'username esiste già
                 if(Aziende::checkIfExist($new_user)){
                     // Faccio la chiamata al metodo del Model 
                     // passandogli i parametri per aggiornare
@@ -95,7 +118,6 @@ class AziendeController {
                     // Mostro l'alert di errore
                     $hide_err_user = '';
                 }
-
             }
             
             // Controllo se si tratta della modifica
@@ -130,14 +152,20 @@ class AziendeController {
 
         }
 
-        // Layout delle impostazioni
+        // Richiedo la vista collegata alla
+        // pagina di impostazioni
+        // dell'azienda loggata
         require_once('views/aziende/impostazioni.php');
     }
+
     
-    // Pagina dettaglio laureato
+    // Action della pagina per la visualizzazione
+    // dei dettagli di uno studente laureato
     public function dettaglio() {
 
-        // Controllo la sessione
+        // Controllo se esiste la sessione
+        // che permette la navigazione dell'area riservata
+        // altrimenti faccio il redirect alla login
         if (Session::checkSession('aziende')) {
           $username = htmlspecialchars($_SESSION['azienda']);
         } else {
@@ -160,7 +188,8 @@ class AziendeController {
         require_once('views/aziende/dettaglio.php');
     }
     
-    // Funzione di logout
+    
+    // Action per il logout dall'area riservata
     public function logout() {
         Session::destroySession();
         return Routes::redirectTo('login','aziende');

@@ -1,19 +1,47 @@
 <?php
-  class PagesController {
+
+/**
+ * PagesController
+ * Controller della homepage
+ * e della pagina di errore
+ *
+ * @author     Gianluca Bonifazi
+ * @category   controllers 
+ * @copyright  STI Uniurb (c) 2017
+ */
+
+class PagesController {
+
+
+    // Action della pagina Home
     public function home() {
-      $info = Pages::getInfoLaurea();
-      
-      require_once('views/pages/home.php');
+        // Variabile contenente le informazioni
+        // generali sul numero di laureati e la media
+        // del voto di laurea
+        $info = Pages::getInfoLaurea();
+        // Richiedo la vista collegata alla homepage
+        require_once('views/pages/home.php');
     }
 
+
+    // Action della pagina 404
     public function error() {
 
-      $quotes = PagesController::getQuotes();
-      $rnd = rand(0, count($quotes)-1);
-      $quote = $quotes[$rnd][0];
-      $author = $quotes[$rnd][1];
+        // Inizializzo una variabile
+        // con tutte le citazioni
+        $quotes = PagesController::getQuotes();
+        // Seleziono un numero random
+        $rnd = rand(0, count($quotes)-1);
+        // Estraggo la citazione corrispondente
+        // al numero random
+        $quote = $quotes[$rnd][0];
+        // Estraggo l'autore corrispondente
+        // al numero random
+        $author = $quotes[$rnd][1];
 
-      require_once('views/pages/error.php');
+        // Richiedo la vista collegata alla
+        // pagina di errore 404
+        require_once('views/pages/error.php');
     }
 
 

@@ -1,10 +1,26 @@
 <?php
 
+/**
+* LoginController
+* Controller delle pagine di 
+* login degli studenti, delle
+* aziende e del gestore
+*
+* @author     Gianluca Bonifazi
+* @category   controllers 
+* @copyright  STI Uniurb (c) 2017
+*/
+
 class LoginController {
 
+
+    // Action della pagina di login
+    // degli studenti laureati
     public function studenti() {
 
-        // Se sono già loggato vado all'area riservata
+        // Controllo se esiste la sessione
+        // e se risulta vero faccio il redirect
+        // all'area riservata
         if (Session::checkSession('studenti')) {
           return Routes::redirectTo('studenti','index');
         }
@@ -30,7 +46,8 @@ class LoginController {
           // e la tabella al quale fare interrogazioni
           if (Login::loginResult($clean_value,'laureati_tb')) {
             // Login RIUSCITO 
-            // Redirect all'area riservata degli studenti
+            // Creo la sessione con la matricola
+            // dello studente
             $_SESSION['studente'] = $clean_value['username'];
 
             // Redirect all'area riservata dello studente
@@ -44,13 +61,19 @@ class LoginController {
           }
         }
 
+      // Richiedo la vista collegata alla
+      // pagina di login degli studenti
       require_once('views/login/studenti.php');
     }
 
 
+    // Action della pagina di login
+    // delle aziende registrate
     public function aziende() {
 
-        // Se sono già loggato vado all'area riservata
+        // Controllo se esiste la sessione
+        // e se risulta vero faccio il redirect
+        // all'area riservata
         if (Session::checkSession('aziende')) {
           return Routes::redirectTo('aziende','index');
         }
@@ -75,7 +98,8 @@ class LoginController {
           // passandogli i parametri appena puliti
           if (Login::loginResult($clean_value,'aziende')) {
             // Login RIUSCITO 
-            // Redirect all'area riservata delle aziende
+            // Creo la sessione con l'username
+            // dell'azienda
             $_SESSION['azienda'] = $clean_value['username'];
 
             // Redirect all'area riservata delle aziende
@@ -89,12 +113,19 @@ class LoginController {
           }
         }
 
+      // Richiedo la vista collegata alla
+      // pagina di login delle aziende
       require_once('views/login/aziende.php');
     }
 
+
+    // Action della pagina di login
+    // all'area riservata al gestore
     public function riservata() {
 
-        // Se sono già loggato vado all'area riservata
+        // Controllo se esiste la sessione
+        // e se risulta vero faccio il redirect
+        // all'area riservata
         if (Session::checkSession('admin')) {
           return Routes::redirectTo('admin','index');
         }
@@ -119,20 +150,26 @@ class LoginController {
 
           if (Login::adminLogin($clean_value)) {
             // Login RIUSCITO 
-            // Redirect all'area riservata delle aziende
+            // Creo la sessione con l'username
+            // dell'admin
             $_SESSION['gestore'] = $clean_value['username'];
 
             // Redirect all'area riservata 
             return Routes::redirectTo('admin','index');
 
           } else {
+            // Login FALLITO 
+            // C'è stato un errore. Tolgo la calsse hide
+            // dall'alert cosi che viene mostrato
             $hide = '';
           }
           
         }
 
+      // Richiedo la vista collegata alla
+      // pagina di login del gestore
       require_once('views/login/riservata.php');
     }
 
-  }
+}
 ?>

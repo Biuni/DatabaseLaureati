@@ -1,9 +1,23 @@
 <?php
-  class RegistrazioneController {
 
+/**
+* RegistrazioneController
+* Controller della pagina di
+* registrazione delle aziende
+*
+* @author     Gianluca Bonifazi
+* @category   controllers 
+* @copyright  STI Uniurb (c) 2017
+*/
+
+class RegistrazioneController {
+
+
+    // Action della pagina registrazione
     public function index() {
 
         // Di default nascondo gli alert
+        // dove sarà stampato il risultato
         $hide_err = 'hide';
         $hide_ok = 'hide';
 
@@ -25,6 +39,10 @@
           // tentativi di manomissione
           $clean_value = filter_input_array(INPUT_POST, $args);
 
+          // Richiamo il Model collegato alla pagina di 
+          // registrazione e passo al suo metodo joinAzienda
+          // utile alla registrazione nel database dell'azienda
+          // i valori riecvuti dal form e puliti con il sanitize
           if(Registrazione::joinAzienda($clean_value)) {
           	// Mostro l'alert di successo
           	$hide_ok = '';
@@ -35,12 +53,18 @@
 
         }
 
+      // Richiedo la vista collegata alla
+      // pagina di registrazione
       require_once('views/registrazione/index.php');
     }
 
+
+    // Action della pagina privacy policy
     public function privacy() {
+      // Richiedo la vista collegata alla
+      // pagina della privacy policy
       require_once('views/registrazione/privacy.php');
     }
-    
-  }
+  
+}
 ?>

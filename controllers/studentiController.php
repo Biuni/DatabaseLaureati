@@ -1,23 +1,48 @@
 <?php
 
+/**
+* StudentiController
+* Controller dell'area riservata
+* agli studenti laureati
+*
+* @author     Gianluca Bonifazi
+* @category   controllers 
+* @copyright  STI Uniurb (c) 2017
+*/
+
 class StudentiController {
 
+
+    // Action della pagina con le info
+    // collegate allo studente che ha 
+    // fatto il login
     public function index() {
 
+      // Di default nascondo gli alert
+      // dove sarà stampato il risultato
+      // dell'avvenuto (o meno) upload del cv
       $hide_ok_cv = 'hide';
       $hide_err_cv = 'hide';
 
-      // Controllo la sessione
+      // Controllo se esiste la sessione
+      // che permette la navigazione dell'area riservata
+      // altrimenti faccio il redirect alla login
       if (Session::checkSession('studenti')) {
         $username = htmlspecialchars($_SESSION['studente']);
       } else {
         return Routes::redirectTo('login','studenti');
       }
 
+      // Controllo se è stato inviato un file
+      // alla variabile globale default del PHP
       if ($_FILES) {
 
+        // Richiedo la classe per fare l'upload
         require('config/upload.php');
+        // Inizializzo un oggetto di tipo Upload
+        // passandogli il file ricevuto come parametro
         $handle = new Upload($_FILES['CV_upload']);
+        // Array contenente i MIME type permessi
         $file_allowed = array('application/pdf', 'image/jpeg', 'image/png');
 
         // Controllo se il file è di tipo PDF, JPG o PNG
@@ -34,39 +59,52 @@ class StudentiController {
 
             if ($handle->processed) {
 
+              // Richiamo il meotodo all'interno del Model
+              // per aggiornare il database con il nuovo file
               if (Studenti::uploadCV($handle->file_dst_name,$username)) {
                 // Upload del file e update della
                 // tabella andato a buon fine
                 $hide_ok_cv = '';
-                
               } else {
+                // Stampo l'errore
                 $hide_err_cv = '';
               }
-
             } else {
+              // Stampo l'errore
               $hide_err_cv = '';
             }
-
           } else {
+            // Stampo l'errore
             $hide_err_cv = '';
           }
-          
-          $handle-> Clean();
-
+          // Pulisco l'handle
+          // della classe upload
+          $handle->Clean();
         } else {
+          // Stampo l'errore
           $hide_err_cv = '';
         }
 
     }
-
+      // Richiamo il metodo all'interno del Model
+      // che mi estrae dal database tutti i valori
+      // correlati all'utente
       $students = Studenti::userData($username);
 
+      // Richiedo la vista collegata alla
+      // pagina principale dell'area riservata
+      // agli studenti laureati
       require_once('views/studenti/index.php');
     }
 
+
+    // Action della pagina per la modifica
+    // dei dati dello studente laureato
     public function impostazioni() {
 
-      // Controllo la sessione
+      // Controllo se esiste la sessione
+      // che permette la navigazione dell'area riservata
+      // altrimenti faccio il redirect alla login
       if (Session::checkSession('studenti')) {
         $username = htmlspecialchars($_SESSION['studente']);
       } else {
@@ -133,8 +171,8 @@ class StudentiController {
             // i dati ricevuti in caso ci fossero stati
             // tentativi di manomissione
             $clean_value = filter_input_array(INPUT_POST, $args);
-            // Richiamo la funzione dentro il Model
-            // per fare l'update dei dati
+            // Richiamo il metodo dentro il Model
+            // per fare l'update dei dati nel database
             if(Studenti::updateData($clean_value,$username)){
               // Mostro l'alert di conferma 
               $hide_ok_user = '';
@@ -142,17 +180,23 @@ class StudentiController {
               // Mostro l'alert di errore
               $hide_err_user = '';
             }
-
           }
 
       }
 
+      // Richiamo il metodo all'interno del Model
+      // che mi estrae dal database tutti i valori
+      // correlati all'utente
       $students = Studenti::userData($username);
 
+      // Richiedo la vista collegata alla
+      // pagina di modifica dei dati
+      // dello studenti laureato loggato
       require_once('views/studenti/impostazioni.php');
     }
     
-    // Funzione di logout
+
+    // Action per il logout dall'area riservata
     public function logout() {
         Session::destroySession();
         return Routes::redirectTo('login','studenti');
