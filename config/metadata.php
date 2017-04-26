@@ -86,16 +86,16 @@ class Metadata {
 					'share_title' 	=> 'Database Laureati - Informatica Urbino',
 					'description'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
 					'share_desc'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
-					'share_img'		=> 'assets/img/urbino.jpg',
-					'share_url'		=> 'http://laureati.sti.uniurb.it'
+					'share_img'		=> 'https://laureati.sti.uniurb.it/assets/img/urbino_facebook.jpg',
+					'share_url'		=> 'https://laureati.sti.uniurb.it'
 				],
 				'error' => [
 					'title' 		=> '404 Not Found - Informatica Urbino',
-					'share_title' 	=> 'Database Laureati - Informatica Urbino',
-					'description'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
-					'share_desc'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
-					'share_img'		=> 'assets/img/urbino.jpg',
-					'share_url'		=> 'http://laureati.sti.uniurb.it'
+					'share_title' 	=> '404 Not Found - Informatica Urbino',
+					'description'	=> 'Errore. Pagina non trovata.',
+					'share_desc'	=> 'Errore. Pagina non trovata.',
+					'share_img'		=> 'https://laureati.sti.uniurb.it/assets/img/urbino_facebook.jpg',
+					'share_url'		=> 'https://laureati.sti.uniurb.it'
 				]
 			],
 
@@ -103,27 +103,27 @@ class Metadata {
 			'login' => [
 				'studenti' => [
 					'title' 		=> 'Login Studenti - Database Laureati Informatica Urbino',
-					'share_title' 	=> 'Database Laureati - Informatica Urbino',
-					'description'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
-					'share_desc'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
-					'share_img'		=> 'assets/img/urbino.jpg',
-					'share_url'		=> 'http://laureati.sti.uniurb.it'
+					'share_title' 	=> 'Login Studenti - Database Laureati Informatica Urbino',
+					'description'	=> 'Login dell\'area riservata agli studenti laureati.',
+					'share_desc'	=> 'Login dell\'area riservata agli studenti laureati.',
+					'share_img'		=> 'https://laureati.sti.uniurb.it/assets/img/urbino_facebook.jpg',
+					'share_url'		=> 'https://laureati.sti.uniurb.it'
 				],
 				'aziende' => [
 					'title' 		=> 'Login Aziende - Database Laureati Informatica Urbino',
-					'share_title' 	=> 'Database Laureati - Informatica Urbino',
-					'description'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
-					'share_desc'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
-					'share_img'		=> 'assets/img/urbino.jpg',
-					'share_url'		=> 'http://laureati.sti.uniurb.it'
+					'share_title' 	=> 'Login Aziende - Database Laureati Informatica Urbino',
+					'description'	=> 'Login dell\'area riservata alle aziende registrate al database dei laureati.',
+					'share_desc'	=> 'Login dell\'area riservata alle aziende registrate al database dei laureati.',
+					'share_img'		=> 'https://laureati.sti.uniurb.it/assets/img/urbino_facebook.jpg',
+					'share_url'		=> 'https://laureati.sti.uniurb.it'
 				],
 				'riservata' => [
 					'title' 		=> 'Area Riservata - Database Laureati Informatica Urbino',
-					'share_title' 	=> 'Database Laureati - Informatica Urbino',
-					'description'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
-					'share_desc'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
-					'share_img'		=> 'assets/img/urbino.jpg',
-					'share_url'		=> 'http://laureati.sti.uniurb.it'
+					'share_title' 	=> 'Area Riservata - Database Laureati Informatica Urbino',
+					'description'	=> 'Login dell\'area riservata al gestore del database dei laureati.',
+					'share_desc'	=> 'Login dell\'area riservata al gestore del database dei laureati.',
+					'share_img'		=> 'https://laureati.sti.uniurb.it/assets/img/urbino_facebook.jpg',
+					'share_url'		=> 'https://laureati.sti.uniurb.it'
 				]
 			],
 
@@ -131,19 +131,19 @@ class Metadata {
 			'registrazione' => [
 				'index' => [
 					'title' 		=> 'Registrazione Aziende - Database Laureati Informatica Urbino',
-					'share_title' 	=> 'Database Laureati - Informatica Urbino',
-					'description'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
-					'share_desc'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
-					'share_img'		=> 'assets/img/urbino.jpg',
-					'share_url'		=> 'http://laureati.sti.uniurb.it'
+					'share_title' 	=> 'Registrazione Aziende - Database Laureati Informatica Urbino',
+					'description'	=> 'Pagina di registrazione delle aziende che voglio accedere al database dei laureati in informatica applicata.',
+					'share_desc'	=> 'Pagina di registrazione delle aziende che voglio accedere al database dei laureati in informatica applicata.',
+					'share_img'		=> 'https://laureati.sti.uniurb.it/assets/img/urbino_facebook.jpg',
+					'share_url'		=> 'https://laureati.sti.uniurb.it'
 				],
 				'privacy' => [
 					'title' 		=> 'Informativa sulla Privacy - Informatica Applicata Urbino',
-					'share_title' 	=> 'Database Laureati - Informatica Urbino',
-					'description'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
-					'share_desc'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
-					'share_img'		=> 'assets/img/urbino.jpg',
-					'share_url'		=> 'http://laureati.sti.uniurb.it'
+					'share_title' 	=> 'Informativa sulla Privacy - Informatica Applicata Urbino',
+					'description'	=> 'Informativa sulla privacy per il database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
+					'share_desc'	=> 'Informativa sulla privacy per il database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
+					'share_img'		=> 'https://laureati.sti.uniurb.it/assets/img/urbino_facebook.jpg',
+					'share_url'		=> 'https://laureati.sti.uniurb.it'
 				]
 			],
 
@@ -154,24 +154,24 @@ class Metadata {
 					'share_title' 	=> 'Database Laureati - Informatica Urbino',
 					'description'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
 					'share_desc'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
-					'share_img'		=> 'assets/img/urbino.jpg',
-					'share_url'		=> 'http://laureati.sti.uniurb.it'
+					'share_img'		=> 'https://laureati.sti.uniurb.it/assets/img/urbino_facebook.jpg',
+					'share_url'		=> 'https://laureati.sti.uniurb.it'
 				],
 				'impostazioni' => [
 					'title' 		=> 'Impostazioni Azienda - Database Laureati Informatica Urbino',
 					'share_title' 	=> 'Database Laureati - Informatica Urbino',
 					'description'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
 					'share_desc'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
-					'share_img'		=> 'assets/img/urbino.jpg',
-					'share_url'		=> 'http://laureati.sti.uniurb.it'
+					'share_img'		=> 'https://laureati.sti.uniurb.it/assets/img/urbino_facebook.jpg',
+					'share_url'		=> 'https://laureati.sti.uniurb.it'
 				],
 				'dettaglio' => [
 					'title' 		=> 'Dettaglio Studente - Database Laureati Informatica Urbino',
 					'share_title' 	=> 'Database Laureati - Informatica Urbino',
 					'description'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
 					'share_desc'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
-					'share_img'		=> 'assets/img/urbino.jpg',
-					'share_url'		=> 'http://laureati.sti.uniurb.it'
+					'share_img'		=> 'https://laureati.sti.uniurb.it/assets/img/urbino_facebook.jpg',
+					'share_url'		=> 'https://laureati.sti.uniurb.it'
 				]
 			],
 
@@ -182,16 +182,16 @@ class Metadata {
 					'share_title' 	=> 'Database Laureati - Informatica Urbino',
 					'description'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
 					'share_desc'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
-					'share_img'		=> 'assets/img/urbino.jpg',
-					'share_url'		=> 'http://laureati.sti.uniurb.it'
+					'share_img'		=> 'https://laureati.sti.uniurb.it/assets/img/urbino_facebook.jpg',
+					'share_url'		=> 'https://laureati.sti.uniurb.it'
 				],
 				'impostazioni' => [
 					'title' 		=> 'Modifica Dati Studente - Database Laureati Informatica Urbino',
 					'share_title' 	=> 'Database Laureati - Informatica Urbino',
 					'description'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
 					'share_desc'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
-					'share_img'		=> 'assets/img/urbino.jpg',
-					'share_url'		=> 'http://laureati.sti.uniurb.it'
+					'share_img'		=> 'https://laureati.sti.uniurb.it/assets/img/urbino_facebook.jpg',
+					'share_url'		=> 'https://laureati.sti.uniurb.it'
 				]
 			],
 
@@ -202,48 +202,48 @@ class Metadata {
 					'share_title' 	=> 'Database Laureati - Informatica Urbino',
 					'description'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
 					'share_desc'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
-					'share_img'		=> 'assets/img/urbino.jpg',
-					'share_url'		=> 'http://laureati.sti.uniurb.it'
+					'share_img'		=> 'https://laureati.sti.uniurb.it/assets/img/urbino_facebook.jpg',
+					'share_url'		=> 'https://laureati.sti.uniurb.it'
 				],
 				'laureati' => [
 					'title' 		=> 'Laureati - Area Riservata',
 					'share_title' 	=> 'Database Laureati - Informatica Urbino',
 					'description'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
 					'share_desc'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
-					'share_img'		=> 'assets/img/urbino.jpg',
-					'share_url'		=> 'http://laureati.sti.uniurb.it'
+					'share_img'		=> 'https://laureati.sti.uniurb.it/assets/img/urbino_facebook.jpg',
+					'share_url'		=> 'https://laureati.sti.uniurb.it'
 				],
 				'aziende' => [
 					'title' 		=> 'Aziende - Area Riservata',
 					'share_title' 	=> 'Database Laureati - Informatica Urbino',
 					'description'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
 					'share_desc'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
-					'share_img'		=> 'assets/img/urbino.jpg',
-					'share_url'		=> 'http://laureati.sti.uniurb.it'
+					'share_img'		=> 'https://laureati.sti.uniurb.it/assets/img/urbino_facebook.jpg',
+					'share_url'		=> 'https://laureati.sti.uniurb.it'
 				],
 				'newsletter' => [
 					'title' 		=> 'Newsletter - Area Riservata',
 					'share_title' 	=> 'Database Laureati - Informatica Urbino',
 					'description'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
 					'share_desc'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
-					'share_img'		=> 'assets/img/urbino.jpg',
-					'share_url'		=> 'http://laureati.sti.uniurb.it'
+					'share_img'		=> 'https://laureati.sti.uniurb.it/assets/img/urbino_facebook.jpg',
+					'share_url'		=> 'https://laureati.sti.uniurb.it'
 				],
 				'curriculum' => [
 					'title' 		=> 'Curriculum - Area Riservata',
 					'share_title' 	=> 'Database Laureati - Informatica Urbino',
 					'description'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
 					'share_desc'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
-					'share_img'		=> 'assets/img/urbino.jpg',
-					'share_url'		=> 'http://laureati.sti.uniurb.it'
+					'share_img'		=> 'https://laureati.sti.uniurb.it/assets/img/urbino_facebook.jpg',
+					'share_url'		=> 'https://laureati.sti.uniurb.it'
 				],
 				'impostazioni' => [
 					'title' 		=> 'Impostazioni - Area Riservata',
 					'share_title' 	=> 'Database Laureati - Informatica Urbino',
 					'description'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
 					'share_desc'	=> 'Database consultabile dei laureati in informatica applicata dell\'universit&agrave; di Urbino.',
-					'share_img'		=> 'assets/img/urbino.jpg',
-					'share_url'		=> 'http://laureati.sti.uniurb.it'
+					'share_img'		=> 'https://laureati.sti.uniurb.it/assets/img/urbino_facebook.jpg',
+					'share_url'		=> 'https://laureati.sti.uniurb.it'
 				]
 			]
 			

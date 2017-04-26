@@ -89,7 +89,7 @@
                   <li class="list-inline-item"><a href="<?php echo APP_URL; ?>/aziende/">Area Aziende</a></li>
                 <?php endif; ?>
 
-                <li class="list-inline-item"><a href="<?php echo APP_URL; ?>/registrazione/">Registrazione</a></li>
+                <li class="list-inline-item"><a href="<?php echo APP_URL; ?>/registrazione/">Registrazione Aziende</a></li>
               </ul>
             </div>
             <!-- Mobile -->
@@ -133,7 +133,7 @@
   <!-- Footer del sito -->
   <footer>
     <div class="container">
-      <div class="float-left">&copy; <?php echo date("Y"); ?> STI Footer</div>
+      <div class="float-left">&copy; <?php echo date("Y"); ?> STI Uniurb</div>
       <div class="float-right">Developed by <strong><a href="http://www.biuni.it">Gianluca Bonifazi</a></strong></div>
       <div class="clear"></div>
     </div>

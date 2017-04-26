@@ -158,7 +158,7 @@
 			    <label for="Tesi" class="col-sm-2 col-form-label">Tesi</label>
 			    <div class="col-sm-10">
 			    	<input type="file" id="Tesi_upload" name="Tesi_upload">
-					<small class="form-text text-muted">Dimensione massima: <strong>6MB</strong>. File permessi: <strong>PDF, PNG, JPG</strong>.</small>
+					<small class="form-text text-muted">Dimensione massima: <strong>10MB</strong>. File permessi: <strong>PDF, PNG, JPG</strong>.</small>
 			    </div>
 			  </div>
 

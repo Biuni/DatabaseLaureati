@@ -13,7 +13,7 @@
 		<div class="container">
 
 			<h3>Impostazioni Account</h3>
-			<p class="lead">In questa pagina potrai consultare il database dei laureati del corso di laurea in Informatica Applicata. Per effettuare la ricerca ti basterà completare almeno uno dei campi messi a disposizione oppure consultare direttamente la tabella sottostante.</p>
+			<p class="lead">In questa pagina potrai modificare le impostazioni del tuo account.</p>
 
 		<form action="" method="post" id="mod-user-azienda">
 

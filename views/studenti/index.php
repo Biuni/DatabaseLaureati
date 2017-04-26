@@ -13,7 +13,7 @@
 		<div class="container">
 
 			<h3>Area Studenti</h3>
-			<p class="lead">Lorem Ipsum Dolor Sit amet.</p>
+			<p class="lead">In quest'area riservata potrai gestire i tuoi dati e renderli visibili, o meno, alle aziende.</p>
 
 				<div class="resume" id="resume">
 

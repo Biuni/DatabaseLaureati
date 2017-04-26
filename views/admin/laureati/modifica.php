@@ -461,7 +461,7 @@
 			      <!-- start form -->
 			      <form method="post" enctype="multipart/form-data" action="">
 					  <input type="file" id="Tesi_upload" name="Tesi_upload">
-					  <small class="form-text text-muted">Dimensione massima: <strong>6MB</strong>.<br>File permessi: <strong>PDF, PNG, JPG</strong>.</small>
+					  <small class="form-text text-muted">Dimensione massima: <strong>10MB</strong>.<br>File permessi: <strong>PDF, PNG, JPG</strong>.</small>
 			      </div>
 			      <div class="modal-footer">
 			        <button type="submit" class="btn btn-warning">Carica</button>

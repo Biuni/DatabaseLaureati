@@ -184,8 +184,8 @@ class AdminController {
 
                           if ($handle->uploaded) {
 
-                            // Dimensione massima del file: 6MB
-                            $handle->file_max_size = '50331648';
+                            // Dimensione massima del file: 10MB
+                            $handle->file_max_size = '82331648';
                             // Scrivo il nome del file con Matricola.Nome.Cognome
                             $handle->file_new_name_body = $students->Matricola.$students->Nome.$students->Cognome;
                             // Cartella dove caricare le tesi
@@ -321,8 +321,8 @@ class AdminController {
 
                           if ($handle->uploaded) {
 
-                            // Dimensione massima del file: 6MB
-                            $handle->file_max_size = '50331648';
+                            // Dimensione massima del file: 10MB
+                            $handle->file_max_size = '82331648';
                             // Scrivo il nome del file
                             $handle->file_new_name_body = $clean_value['Matricola'].$clean_value['Nome'].$clean_value['Cognome'];
                             // Cartella dove caricare le tesi

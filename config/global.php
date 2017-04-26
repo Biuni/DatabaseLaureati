@@ -17,7 +17,7 @@ return [
 
 	define('APP_COLOR', '#009d5c'),
 
-	define('APP_MAIL', 'info@campus.uniurb.it'),
+	define('APP_MAIL', 'cdl.informatica@uniurb.it'),
 
 	/*
 	|
@@ -28,11 +28,30 @@ return [
 
 	define('DB_HOST', 'localhost'),
 
-	define('DB_NAME', 'db_laureati'),
+	define('DB_NAME', 'prova_laureati'),
 
 	define('DB_USER', 'root'),
 
-	define('DB_PWD' , '')
+	define('DB_PWD', ''),
+
+	/*
+	|
+	| Variabili di configurazione
+	| per l'invio di email
+	|
+	*/
+
+	define('SMTP_HOST', 'postfix.uniurb.it'),
+
+	define('SMTP_USER', 'laureatisti'),
+
+	define('SMTP_PWD', 'Sdstldfm!'),
+
+	define('SMTP_PORT', 25),
+
+	define('EMAIL_FROM', 'alessandro.aldini@uniurb.it'),
+
+	define('NAME_FROM', 'Alessandro Aldini')
 
 ];
 

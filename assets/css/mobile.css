@@ -1,3 +1,9 @@
+@media only screen and (max-width:1200px) { 
+	#homepage .about-db-cdl blockquote {
+		min-height: 175px;
+	}
+}
+
 @media only screen and (max-width:990px) { 
 	.menu-navigation {
 		display: none;
@@ -15,8 +21,17 @@
 		width: 70%;
 		padding: 5px 5px 60px 50px;
 	}
+
+	#homepage .about-db-cdl blockquote {
+		min-height: 215px;
+	}
 }
 
+@media only screen and (max-width:768px) { 
+	#homepage .about-db-cdl blockquote {
+		min-height: 280px;
+	}
+}
 
 @media only screen and (max-width:576px) { 
 	.menu-row {
@@ -36,6 +51,9 @@
 	#homepage .urbino-top .lead {
 		max-width: 90%;
 		margin: 0 auto;
+	}
+	#homepage .about-db-cdl blockquote {
+		min-height: 160px;
 	}
 	#homepage .numbers-grow {
 		width: 100%;

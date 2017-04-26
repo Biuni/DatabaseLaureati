@@ -13,7 +13,7 @@
 		<div class="container">
 
 			<h3>Aggiorna Dati</h3>
-			<p class="lead">Lorem Ipsum dolor sit amet.</p>
+			<p class="lead">Compilare il form per aggiornare e/o modificare i propri dati. Lasciare vuoti i campi dei quali non si vuole mostrare informazioni.</p>
 
 		<form action="" method="post" id="mod-dati-studente">
 

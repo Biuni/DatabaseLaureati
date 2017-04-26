@@ -4040,18 +4040,20 @@ class PHPMailer
         $newsletter       = ($value['newsletter'] != 'on')? 'No' : 'Si';
 
         // Corpo dell'email
-        $mail->isSMTP();                                      // Set mailer to use SMTP
-        $mail->Host = 'smtp.mailtrap.io';                     // Specify main and backup SMTP servers
-        $mail->SMTPAuth = true;                               // Enable SMTP authentication
-        $mail->Username = '3e567f8c624716';                   // SMTP username
-        $mail->Password = '409bf0ae0b171c';                   // SMTP password
-        $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-        $mail->Port = 2525;                                   // TCP port to connect to
+        // Le variabili di configurazione dell'SMTP sono all'interno del file global.php
+        
+        $mail->isSMTP();                             // Set mailer to use SMTP
+        $mail->Host = SMTP_HOST;                     // Specify main and backup SMTP servers
+        $mail->SMTPAuth = true;                      // Enable SMTP authentication
+        $mail->Username = SMTP_USER;                 // SMTP username
+        $mail->Password = SMTP_PORT;                 // SMTP password
+        $mail->SMTPSecure = 'tls';                   // Enable TLS encryption, `ssl` also accepted
+        $mail->Port = SMTP_PORT;                     // TCP port to connect to
 
-        $mail->setFrom('no-replay@campus.uniurb.it', 'Database Laureati');
-        $mail->addAddress('npnaaagfaozu@dropmail.me', 'Test');
+        $mail->setFrom(EMAIL_FROM, NAME_FROM);
+        $mail->addAddress($emailreferente);
 
-        $mail->isHTML(true);                                  // Set email format to HTML
+        $mail->isHTML(true);                         // Set email format to HTML
         // Codifica dell'email
         $mail->CharSet = 'UTF-8';
         // Oggetto dell'email

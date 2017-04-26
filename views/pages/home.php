@@ -3,7 +3,7 @@
 	<!-- Presentazione CDL -->
 	<section class="urbino-top">
 		<h1>Database Laureati</h1>
-		<h6 class="lead">Questo portale consente alle aziende di richiedere un account per consultare il database dei laureati del Corso di Laurea in Informatica Applicata dell'Università di Urbino Carlo Bo.</h6>
+		<h6 class="lead">Informatica Applicata</h6>
 	</section>
 
 	<!-- Funzionamento DB Laureati -->
@@ -20,7 +20,7 @@
 				<div class="col-sm-6">
 					<blockquote class="blockquote">
 						<h4><i class="fa fa-graduation-cap" aria-hidden="true"></i> Sei uno studente?</h4>
-						<p class="mb-0">Questo portale consente ai laureandi di consegnare la propria tesi in formato PDF al Responsabile Tesi. Ai laureati permette di visualizzare, modificare, e rendere visibili alle aziende i propri dati, compresa una versione in PDF del curriculum vitae. Per accedere al proprio account rivolgersi al Responsabile Tesi.</p>
+						<p class="mb-0">Questo portale consente ai laureati del Corso di Laurea in Informatica Applicata di visualizzare, modificare, e rendere visibili alle aziende i propri dati, compresa una versione in PDF del curriculum vitae.</p>
 					</blockquote>
 				</div>
 				<div class="col-sm-6">
@@ -31,8 +31,8 @@
 				</div>
 				<div class="col-sm-6">
 					<blockquote class="blockquote">
-						<h4><i class="fa fa-sign-in" aria-hidden="true"></i> Registrazione account studente</h4>
-						<p class="mb-0">Sei uno studente laureato o laureando del Corso di Laurea in Informatica Applicata? Per poter registrare il tuo account all'interno del database dei laureati del CdL devi inviare una mail al manager didattico con oggetto "Iscrizione Database Laureati". Verrai ricontattato nel più breve tempo possibile con i dati di accesso.</p>
+						<h4><i class="fa fa-sign-in" aria-hidden="true"></i> Gestione account studente</h4>
+						<p class="mb-0">I laureandi del Corso Di Laurea in Informatica Applicata ricevono i dati di registrazione del proprio account il giorno della discussione della tesi.</p>
 					</blockquote>
 				</div>
 			</div>
@@ -54,11 +54,6 @@
 					<i class="fa fa-trophy" aria-hidden="true"></i>
 					<h4 class="counter"><?php echo $info->media_laurea; ?></h4>
 					<h5>Media Voto di Laurea</h5>
-				</div>
-				<div class="numbers-grow">
-					<i class="fa fa-briefcase" aria-hidden="true"></i>
-					<h4 class="counter percent">99</h4>
-					<h5>Percentuale Occupati</h5>
 				</div>
 			</div>
 			<div class="clear"></div>

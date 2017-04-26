@@ -3,7 +3,7 @@
 	<div class="container">
 		
 		<h3 class="reg-azienda">Registrazione azienda</h3>
-		<p class="lead">Per ricevere username e password compilare tutti i campi sottostanti. Le credenziali per l'accesso al database verranno inviate all'indirizzo email riportato. L'iscrizione alla newsletter consente di ricevere periodicamente informazioni sulle nostre iniziative e sugli aggiornamenti del database. La compilazione del form sottintende l'accettazione di quanto riportato nella nota informativa sulla privacy sotto riportata.</p>
+		<p class="lead">Per ricevere username e password compilare tutti i campi sottostanti. Le credenziali per l'accesso al database verranno inviate all'indirizzo email riportato. L'iscrizione alla newsletter consente di ricevere periodicamente informazioni sulle nostre iniziative e sugli aggiornamenti del database. La compilazione del form sottintende l'accettazione di quanto riportato nella nota informativa sulla privacy.</p>
 
 		<div class="alert alert-success <?php echo $hide_ok; ?>" role="alert">
 		  <strong>Registrazione effettuata!</strong> Stiamo controllando i tuoi dati, riceverai presto una mail con le credenziali di accesso.
@@ -37,7 +37,7 @@
 
 			<div class="form-group input-checkbox">
 				<label class="custom-control custom-checkbox privacy-check">
-				  <input type="checkbox" class="custom-control-input" name="privacy" checked="true">
+				  <input type="checkbox" class="custom-control-input" name="privacy">
 				  <span class="custom-control-indicator"></span>
 				  <span class="custom-control-description">Ho letto e accetto l'<u><a href="<?php echo APP_URL; ?>/registrazione/privacy" target="blank">informativa sulla privacy</a></u>.</span>
 				</label>
