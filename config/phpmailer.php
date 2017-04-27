@@ -4050,14 +4050,14 @@ class PHPMailer
         $mail->SMTPSecure = 'tls';                   // Enable TLS encryption, `ssl` also accepted
         $mail->Port = SMTP_PORT;                     // TCP port to connect to
 
-        $mail->setFrom(EMAIL_FROM, NAME_FROM);
-        $mail->addAddress($emailreferente);
+        $mail->setFrom('no-reply@uniurb.it', 'Database Laureati');
+        $mail->addAddress(EMAIL_FROM, NAME_FROM);
 
         $mail->isHTML(true);                         // Set email format to HTML
         // Codifica dell'email
         $mail->CharSet = 'UTF-8';
         // Oggetto dell'email
-        $mail->Subject = 'Iscrizione azienda Database Laureati';
+        $mail->Subject = 'Iscrizione azienda al Database Laureati';
         // Corpo dell'email
         $mail->Body    = '<h3 style="font-family: Verdana, sans-serif;">Una nuova azienda si è iscritta al Database Laureati di Urbino.</h3><h5 style="font-family: Verdana, sans-serif;">Le informazioni immesse sono:</h5><ul style="font-family: Consolas, monospace;font-size:13px;"><li><strong>Ragione Sociale:</strong> '.$ragionesociale.'</li><li><strong>Nome Referente:</strong> '.$nomereferente.'</li><li><strong>Cognome Referente:</strong> '.$cognomereferente.'</li><li><strong>Email Referente:</strong> '.$emailreferente.'</li><li><strong>Newsletter:</strong> '.$newsletter.'</li></ul><h5 style="font-family: Verdana, sans-serif;">I dati di accesso sono:</h5><ul style="font-family: Consolas, monospace;font-size:13px;"><li><strong>Username:</strong> '.$username.'</li><li><strong>Password:</strong> '.$password.'</li></ul>';
         // Corpo dell'email senza HTML
