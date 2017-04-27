@@ -28,7 +28,7 @@ return [
 
 	define('DB_HOST', 'localhost'),
 
-	define('DB_NAME', 'prova_laureati'),
+	define('DB_NAME', 'db_laureati'),
 
 	define('DB_USER', 'root'),
 
@@ -41,17 +41,17 @@ return [
 	|
 	*/
 
-	define('SMTP_HOST', 'postfix.uniurb.it'),
+	define('SMTP_HOST', 'smtp.mailtrap.io'),
 
-	define('SMTP_USER', 'laureatisti'),
+	define('SMTP_USER', '3e567f8c624716'),
 
-	define('SMTP_PWD', 'Sdstldfm!'),
+	define('SMTP_PWD', '409bf0ae0b171c'),
 
-	define('SMTP_PORT', 25),
+	define('SMTP_PORT', 2525),
 
-	define('EMAIL_FROM', 'alessandro.aldini@uniurb.it'),
+	define('EMAIL_FROM', 'info.gianlucabonifazi@gmail.com'),
 
-	define('NAME_FROM', 'Alessandro Aldini')
+	define('NAME_FROM', 'Gianluca Bonifazi')
 
 ];
 

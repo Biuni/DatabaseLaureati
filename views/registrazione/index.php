@@ -1,3 +1,5 @@
+<script src='https://www.google.com/recaptcha/api.js'></script>
+
 <main id="registrazione">
 
 	<div class="container">
@@ -46,6 +48,10 @@
 				  <span class="custom-control-indicator"></span>
 				  <span class="custom-control-description">Iscriviti alla newsletter.</span>
 				</label>
+			</div>
+
+			<div class="form-group">
+				<div class="g-recaptcha" data-sitekey="6LeV0h4UAAAAAEqo0Is0qOJLXVpUuzkJ_FaVVLGB"></div>
 			</div>
 
 			<div class="form-group">

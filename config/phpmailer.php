@@ -4046,7 +4046,7 @@ class PHPMailer
         $mail->Host = SMTP_HOST;                     // Specify main and backup SMTP servers
         $mail->SMTPAuth = true;                      // Enable SMTP authentication
         $mail->Username = SMTP_USER;                 // SMTP username
-        $mail->Password = SMTP_PORT;                 // SMTP password
+        $mail->Password = SMTP_PWD;                  // SMTP password
         $mail->SMTPSecure = 'tls';                   // Enable TLS encryption, `ssl` also accepted
         $mail->Port = SMTP_PORT;                     // TCP port to connect to
 
@@ -4068,8 +4068,6 @@ class PHPMailer
         }
 
         return $result;
-
-        return true;
     }
 }
 

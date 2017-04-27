@@ -39,16 +39,48 @@ class RegistrazioneController {
           // tentativi di manomissione
           $clean_value = filter_input_array(INPUT_POST, $args);
 
-          // Richiamo il Model collegato alla pagina di 
-          // registrazione e passo al suo metodo joinAzienda
-          // utile alla registrazione nel database dell'azienda
-          // i valori riecvuti dal form e puliti con il sanitize
-          if(Registrazione::joinAzienda($clean_value)) {
-          	// Mostro l'alert di successo
-          	$hide_ok = '';
-          } else {
-          	// Mostro l'alert di errore
-          	$hide_err = '';
+          // Controllo il corretto inserimento del 
+          // RECAPTCHA di Google
+          try {
+
+              $url = 'https://www.google.com/recaptcha/api/siteverify';
+              $data = ['secret'   => '6LeV0h4UAAAAAC6fVmPAkDAOinhG9DPj290vS9L9',
+                       'response' => $_POST['g-recaptcha-response'],
+                       'remoteip' => $_SERVER['REMOTE_ADDR']];
+
+              $options = [
+                  'http' => [
+                      'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                      'method'  => 'POST',
+                      'content' => http_build_query($data) 
+                  ]
+              ];
+
+              $context  = stream_context_create($options);
+              $result = file_get_contents($url, false, $context);
+              $result_captcha = json_decode($result)->success;
+
+              if ($result_captcha) {
+                // Richiamo il Model collegato alla pagina di 
+                // registrazione e passo al suo metodo joinAzienda
+                // utile alla registrazione nel database dell'azienda
+                // i valori riecvuti dal form e puliti con il sanitize
+                if(Registrazione::joinAzienda($clean_value)) {
+                  // Mostro l'alert di successo
+                  $hide_ok = '';
+                } else {
+                  // Mostro l'alert di errore
+                  $hide_err = '';
+                }
+              } else {
+                // Mostro l'alert di errore
+                $hide_err = '';
+              }
+
+
+          } catch (Exception $e) {
+            // Mostro l'alert di errore
+            $hide_err = '';
           }
 
         }
