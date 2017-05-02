@@ -285,7 +285,7 @@ class Admin {
         $db = Db::getInstance();
         // Compongo la query esludendo i campi
         // non visualizzati sulla tabella
-        $sql = "SELECT ID, Nome, Cognome, Voto_laurea, Data_Laurea, cum_laude FROM laureati_tb";
+        $sql = "SELECT ID, Nome, Cognome, Voto_laurea, Data_Laurea, cum_laude FROM laureati_tb WHERE Username <> 'admin'";
         // Eseguo la query
         $stmt = $db->query($sql);
         // Per ogni risultato della query

@@ -48,8 +48,8 @@
 			            <td><?php echo $student['Cognome']; ?></td>
 			            <td><?php echo $student['Voto_laurea'];  echo ($student['cum_laude'] == 'si')? " e lode" : ""; ?></td>
 			            <td><?php echo $student['Data_Laurea']; ?></td>
-			            <td><a href="<?php echo APP_URL; ?>/admin/laureati/dettaglio/<?php echo $student['ID'] ?>/" class="btn btn-warning view-more-student">Visualizza</a></td>
-			            <td><a href="<?php echo APP_URL; ?>/admin/laureati/modifica/<?php echo $student['ID'] ?>/" class="btn btn-warning view-more-student">Modifica</a></td>
+			            <td><a href="<?php echo APP_URL; ?>/admin/laureati/dettaglio/<?php echo $student['ID'] ?>/" class="btn btn-warning view-more-student" target="blank">Visualizza</a></td>
+			            <td><a href="<?php echo APP_URL; ?>/admin/laureati/modifica/<?php echo $student['ID'] ?>/" class="btn btn-warning view-more-student" target="blank">Modifica</a></td>
 			            </tr>
 
 					<?php } ?>

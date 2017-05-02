@@ -35,7 +35,7 @@ class Pages {
         // Mi collego al database
         $db = Db::getInstance();
         // Faccio la query per contare i laureati
-        $sql = $db->query('SELECT count(*) AS counter FROM laureati_tb');
+        $sql = $db->query('SELECT count(*) AS counter FROM laureati_tb WHERE ID <> 1');
         $count = $sql->fetchObject();
         // Faccio la query per calcolare la media voto
         $sql2 = $db->query('SELECT AVG(Voto_laurea) AS voto FROM laureati_tb WHERE Voto_laurea <> 0');

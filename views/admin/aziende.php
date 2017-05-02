@@ -49,7 +49,7 @@
 			            <td><?php echo $company['cognome']; ?></td>
 			            <td><?php echo $company['email']; ?></td>
 			            <td><?php echo ($company['newsletter'] == 'Si')? '<i class="fa fa-check" aria-hidden="true"></i> (Si)' : '<i class="fa fa-times" aria-hidden="true"></i> (No)'; ?></td>
-			            <td><a href="<?php echo APP_URL; ?>/admin/aziende/modifica/<?php echo $company['ID'] ?>/" class="btn btn-warning view-more-student">Modifica</a></td>
+			            <td><a href="<?php echo APP_URL; ?>/admin/aziende/modifica/<?php echo $company['ID'] ?>/" class="btn btn-warning view-more-student" target="blank">Modifica</a></td>
 			            </tr>
 
 					<?php } ?>

@@ -441,7 +441,7 @@ jQuery(document).ready(function($) {
     // Funzione che controlla tramite regex
     // la validità del testo inserito
     function validText(text) {
-        var pattern = /^[a-zA-Z]*$/;
+        var pattern = /^[a-zA-Z ']*$/;
         return pattern.test(text);
     };
 
