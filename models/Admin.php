@@ -220,7 +220,9 @@ class Admin {
         // Compongo le query
         $years = range(2005, date('Y'));
         foreach($years as $year){
-          $sql = "SELECT COUNT(ID) AS numero FROM laureati_tb WHERE YEAR(Data_laurea) = $year";
+          $one = $year+1;
+          $zero = $year-1;
+          $sql = "SELECT COUNT(ID) AS numero FROM laureati_tb WHERE Data_laurea > '$year-05-01' AND Data_laurea < '$one-04-30'";
           $count = $db->query($sql)->fetchObject();
           $list[] = $count->numero;
         }
@@ -252,9 +254,11 @@ class Admin {
         // Compongo la query
         $years = range(2005, date('Y'));
         foreach($years as $year){
-          $sql = "SELECT AVG(Voto_laurea) AS numero FROM laureati_tb WHERE Voto_laurea <> 0 AND YEAR(Data_laurea) = $year";
+          $one = $year+1;
+          $zero = $year-1;
+          $sql = "SELECT AVG(Voto_laurea) AS numero FROM laureati_tb WHERE Voto_laurea <> 0 AND Data_laurea > '$year-05-01' AND Data_laurea < '$one-04-30'";
           $count = $db->query($sql)->fetchObject();
-          $list[] = $count->numero;
+          $list[] = ($count->numero == null) ? "0" : $count->numero;
         }
 
       } catch(PDOException $ex) {

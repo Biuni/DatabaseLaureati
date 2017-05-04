@@ -30,11 +30,11 @@
 			<p class="lead">Nel grafico sottostante è possibile visualizzare l'andamento dei voti di laurea.</p>
 			<canvas id="vote-chart" class="mt-5 mb-5"></canvas>
 
-			<h3>Numero di laureati per anno</h3>
+			<h3>Numero di laureati per anno accademico</h3>
 			<p class="lead">Nel grafico sottostante è possibile visualizzare il numero dei laureati per ogni anno del CdL.</p>
 			<canvas id="year-chart" class="mt-5 mb-5"></canvas>
 
-			<h3>Media voto dei laureati per anno</h3>
+			<h3>Media voto dei laureati per anno accademico</h3>
 			<p class="lead">Nel grafico sottostante è possibile visualizzare la media del voto di laurea per ogni anno del CdL.</p>
 			<canvas id="avg-chart" class="mt-5 mb-5"></canvas>
 
@@ -42,6 +42,13 @@
 		</div>
 
 	</main>
+	<?php
+		$anni_accademici = array();
+		foreach (range(2005, date("Y")) as $number) {
+		    $number1 = $number-1;
+		    $anni_accademici[] = $number1.'-'.$number;
+		}
+	?>
 	<script>
 		var data = {
 	      labels: <?php echo json_encode($last_seven); ?>,
@@ -72,7 +79,7 @@
 	      ]
 		};
 		var data3 = {
-	      labels: <?php echo json_encode(range(2005, date("Y"))); ?>,
+	      labels: <?php echo json_encode($anni_accademici); ?>,
 	      datasets: [
 		    {
 		        backgroundColor: "rgba(214, 175, 102, 0.5)",
@@ -83,7 +90,7 @@
 	      ]
 		};
 		var data4 = {
-	      labels: <?php echo json_encode(range(2005, date("Y"))); ?>,
+	      labels: <?php echo json_encode($anni_accademici); ?>,
 	      datasets: [
 		    {
 		        backgroundColor: "rgba(28, 135, 150, 0.5)",
