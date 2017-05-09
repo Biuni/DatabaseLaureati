@@ -256,7 +256,8 @@ class AdminController {
                     'provincia'   => FILTER_SANITIZE_ENCODED,
                     'curriculum'  => FILTER_SANITIZE_SPECIAL_CHARS,
                     'cognome'   => FILTER_SANITIZE_ENCODED,
-                    'relatore'   => FILTER_SANITIZE_ENCODED
+                    'relatore'   => FILTER_SANITIZE_ENCODED,
+                    'tipologia'   => FILTER_SANITIZE_SPECIAL_CHARS
                   );
                   // Tramite la funzione filter_input_array pulisco
                   // i dati ricevuti in caso ci fossero stati

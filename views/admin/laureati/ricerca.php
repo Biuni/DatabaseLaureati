@@ -247,6 +247,17 @@
 							  <small class="form-text text-muted">Basata sul cognome del relatore.</small>
 							</div>
 						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+							  <label class="form-control-label" for="tipologia">Per tipologia di tesi</label>
+							  <select class="form-control" id="tipologia" name="tipologia">
+								<option value="">Scegli...</option>
+								<option value="compilativa/descrittiva">Compilativa - Descrittiva</option>
+								<option value="di ricerca/sperimentale">Ricerca - Sperimentale</option>
+							  </select>
+							  <small class="form-text text-muted">Basata sulla tipologia della tesi.</small>
+							</div>
+						</div>
 
 						<div class="col-md-12 text-center">
 							<button type="submit" class="btn btn-warning">Cerca</button>

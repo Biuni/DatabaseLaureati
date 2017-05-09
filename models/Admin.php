@@ -329,6 +329,7 @@ class Admin {
       $curriculum = $clean_value['curriculum'];
       $cognome = $clean_value['cognome'];
       $relatore = $clean_value['relatore'];
+      $tipologia = $clean_value['tipologia'];
 
       // Entro nella sezione critica dove 
       // effetuerò la query di selezione
@@ -375,6 +376,15 @@ class Admin {
         if ($relatore != '') {
           $sql .= " AND relatore LIKE :relatore";
           $params[':relatore'] = '%'.$relatore.'%';
+        }
+        if ($tipologia != '') {
+          if ($tipologia == 'di ricerca/sperimentale'){
+            $sql .= " AND (tipologia = :tipologia OR tipologia = 'sperimentale' OR tipologia = 'sperimentale all\'estero')";
+          } else {
+            $sql .= " AND tipologia = :tipologia";
+          }
+
+          $params[':tipologia'] = $tipologia;
         }
 
         // Preparo la query
