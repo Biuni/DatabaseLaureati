@@ -86,7 +86,7 @@ class Login {
 
       } catch(PDOException $ex) {
 
-        // Errore. Stampo l'eccezzione
+        // Errore. Stampo l'eccezione
         die('Errore: '.$sql.' - '.$ex->getMessage());
 
       }
@@ -116,7 +116,7 @@ class Login {
 
       } catch(PDOException $ex) {
 
-        // Errore. Stampo l'eccezzione
+        // Errore. Stampo l'eccezione
         die('Errore: '. $ex->getMessage());
 
       }
@@ -191,7 +191,7 @@ class Login {
 
       } catch(PDOException $ex) {
 
-        // Errore. Stampo l'eccezzione
+        // Errore. Stampo l'eccezione
         die('Errore: '.$sql.' - '.$ex->getMessage());
 
       }
@@ -225,7 +225,7 @@ class Login {
 
       } catch(PDOException $ex) {
 
-        // Errore. Stampo l'eccezzione
+        // Errore. Stampo l'eccezione
         die('Errore: '.$sql.' - '.$ex->getMessage());
 
       }
@@ -253,7 +253,7 @@ class Login {
 
       } catch(PDOException $ex) {
 
-        // Errore. Stampo l'eccezzione
+        // Errore. Stampo l'eccezione
         die('Errore: '. $ex->getMessage());
 
       }
@@ -313,7 +313,7 @@ class Login {
 
       } catch(PDOException $ex) {
 
-        // Errore. Stampo l'eccezzione
+        // Errore. Stampo l'eccezione
         die('Errore: '. $ex->getMessage());
 
       }
@@ -332,7 +332,7 @@ class Login {
 
       } catch(PDOException $ex) {
 
-        // Errore. Stampo l'eccezzione
+        // Errore. Stampo l'eccezione
         die('Errore: '.$sql.' - '.$ex->getMessage());
 
       }

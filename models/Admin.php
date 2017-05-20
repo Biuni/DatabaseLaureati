@@ -35,7 +35,7 @@ class Admin {
 
       } catch(PDOException $ex) {
 
-        // Errore. Stampo l'eccezzione
+        // Errore. Stampo l'eccezione
         die('Errore: '.$sql.' - '.$ex->getMessage());
 
       }
@@ -95,7 +95,7 @@ class Admin {
 
       } catch(PDOException $ex) {
 
-        // Errore. Stampo l'eccezzione
+        // Errore. Stampo l'eccezione
         die('Errore: '.$sql.' - '.$ex->getMessage());
 
       }
@@ -154,7 +154,7 @@ class Admin {
 
       } catch(PDOException $ex) {
 
-        // Errore. Stampo l'eccezzione
+        // Errore. Stampo l'eccezione
         die('Errore: '.$sql.' - '.$ex->getMessage());
 
       }
@@ -195,7 +195,7 @@ class Admin {
 
       } catch(PDOException $ex) {
 
-        // Errore. Stampo l'eccezzione
+        // Errore. Stampo l'eccezione
         die('Errore: '.$sql.' - '.$ex->getMessage());
 
       }
@@ -229,7 +229,7 @@ class Admin {
 
       } catch(PDOException $ex) {
 
-        // Errore. Stampo l'eccezzione
+        // Errore. Stampo l'eccezione
         die('Errore: '.$sql.' - '.$ex->getMessage());
 
       }
@@ -263,7 +263,7 @@ class Admin {
 
       } catch(PDOException $ex) {
 
-        // Errore. Stampo l'eccezzione
+        // Errore. Stampo l'eccezione
         die('Errore: '.$sql.' - '.$ex->getMessage());
 
       }
@@ -301,7 +301,7 @@ class Admin {
 
       } catch(PDOException $ex) {
 
-        // Errore. Stampo l'eccezzione
+        // Errore. Stampo l'eccezione
         die('Errore: '.$sql.' - '.$ex->getMessage());
 
       }
@@ -402,7 +402,7 @@ class Admin {
 
       } catch(PDOException $ex) {
 
-        // Errore. Stampo l'eccezzione
+        // Errore. Stampo l'eccezione
         die('Errore: '.$sql.' - '.$ex->getMessage());
 
       }
@@ -433,7 +433,7 @@ class Admin {
 
       } catch(PDOException $ex) {
 
-        // Errore. Stampo l'eccezzione
+        // Errore. Stampo l'eccezione
         die('Errore: '.$sql.' - '.$ex->getMessage());
 
       }
@@ -471,7 +471,7 @@ class Admin {
 
       } catch(PDOException $ex) {
 
-        // Errore. Stampo l'eccezzione
+        // Errore. Stampo l'eccezione
         die('Errore: '.$sql.' - '.$ex->getMessage());
 
       }
@@ -502,7 +502,7 @@ class Admin {
 
       } catch(PDOException $ex) {
 
-        // Errore. Stampo l'eccezzione
+        // Errore. Stampo l'eccezione
         die('Errore: '.$sql.' - '.$ex->getMessage());
 
       }
@@ -536,7 +536,7 @@ class Admin {
 
       } catch(PDOException $ex) {
 
-        // Errore. Stampo l'eccezzione
+        // Errore. Stampo l'eccezione
         die('Errore: '.$sql.' - '.$ex->getMessage());
 
       }
@@ -596,7 +596,7 @@ class Admin {
 
         } catch(PDOException $ex) {
 
-          // Errore. Stampo l'eccezzione
+          // Errore. Stampo l'eccezione
           die('Errore: '.$sql.' - '.$ex->getMessage());
 
         }
@@ -631,7 +631,7 @@ class Admin {
 
       } catch(PDOException $ex) {
 
-        // Errore. Stampo l'eccezzione
+        // Errore. Stampo l'eccezione
         die('Errore: '.$sql.' - '.$ex->getMessage());
 
       }
@@ -665,7 +665,7 @@ class Admin {
 
       } catch(PDOException $ex) {
 
-        // Errore. Stampo l'eccezzione
+        // Errore. Stampo l'eccezione
         die('Errore: '.$sql.' - '.$ex->getMessage());
 
       }
@@ -704,7 +704,7 @@ class Admin {
 
         } catch(PDOException $ex) {
 
-          // Errore. Stampo l'eccezzione
+          // Errore. Stampo l'eccezione
           die('Errore: '.$sql.' - '.$ex->getMessage());
 
         }
@@ -735,7 +735,7 @@ class Admin {
 
         } catch(PDOException $ex) {
 
-          // Errore. Stampo l'eccezzione
+          // Errore. Stampo l'eccezione
           die('Errore: '.$sql.' - '.$ex->getMessage());
 
         }
@@ -785,7 +785,7 @@ class Admin {
 
         } catch(PDOException $ex) {
 
-          // Errore. Stampo l'eccezzione
+          // Errore. Stampo l'eccezione
           die('Errore: '.$sql.' - '.$ex->getMessage());
 
         }
@@ -829,7 +829,7 @@ class Admin {
 
         } catch(PDOException $ex) {
 
-          // Errore. Stampo l'eccezzione
+          // Errore. Stampo l'eccezione
           die('Errore: '.$sql.' - '.$ex->getMessage());
 
         }
@@ -857,7 +857,7 @@ class Admin {
 
           } catch(PDOException $ex) {
 
-            // Errore. Stampo l'eccezzione
+            // Errore. Stampo l'eccezione
             die('Errore: '.$sql.' - '.$ex->getMessage());
 
           }
@@ -930,7 +930,7 @@ class Admin {
 
         } catch(PDOException $ex) {
 
-          // Errore. Stampo l'eccezzione
+          // Errore. Stampo l'eccezione
           die('Errore: '.$sql.' - '.$ex->getMessage());
 
         }
@@ -972,7 +972,7 @@ class Admin {
 
       } catch(PDOException $ex) {
 
-        // Errore. Stampo l'eccezzione
+        // Errore. Stampo l'eccezione
         die('Errore: '.$sql.' - '.$ex->getMessage());
 
       }
@@ -1083,7 +1083,7 @@ class Admin {
 
       } catch(PDOException $ex) {
 
-        // Errore. Stampo l'eccezzione
+        // Errore. Stampo l'eccezione
         die('Errore: '.$sql.' - '.$ex->getMessage());
 
       }
@@ -1137,7 +1137,7 @@ class Admin {
 
       } catch(PDOException $ex) {
 
-        // Errore. Stampo l'eccezzione
+        // Errore. Stampo l'eccezione
         die('Errore: '.$sql.' - '.$ex->getMessage());
 
       }
