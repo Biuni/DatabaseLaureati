@@ -9,7 +9,7 @@ return [
 	|
 	*/
 
-	define('APP_URL', 'http://localhost/DatabaseLaureati'),
+	define('APP_URL', 'http://localhost/databaselaureati'),
 
 	define('APP_CHARSET', 'utf-8'),
 
@@ -17,7 +17,7 @@ return [
 
 	define('APP_COLOR', '#009d5c'),
 
-	define('APP_MAIL', 'cdl.informatica@uniurb.it'),
+	define('APP_MAIL', 'email@email.com'),
 
 	/*
 	|
@@ -28,7 +28,7 @@ return [
 
 	define('DB_HOST', 'localhost'),
 
-	define('DB_NAME', 'db_laureati'),
+	define('DB_NAME', 'db'),
 
 	define('DB_USER', 'root'),
 
@@ -43,15 +43,15 @@ return [
 
 	define('SMTP_HOST', 'smtp.mailtrap.io'),
 
-	define('SMTP_USER', '3e567f8c624716'),
+	define('SMTP_USER', ''),
 
-	define('SMTP_PWD', '409bf0ae0b171c'),
+	define('SMTP_PWD', ''),
 
 	define('SMTP_PORT', 2525),
 
-	define('EMAIL_FROM', 'info.gianlucabonifazi@gmail.com'),
+	define('EMAIL_FROM', 'emal@email.com'),
 
-	define('NAME_FROM', 'Gianluca Bonifazi')
+	define('NAME_FROM', '')
 
 ];
 
